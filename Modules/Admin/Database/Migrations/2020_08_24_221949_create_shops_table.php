@@ -15,6 +15,15 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+
+            $table->integer('address_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('addresses')
+            ->delete('restrict')
+            ->update('cascade');
 
             $table->timestamps();
         });

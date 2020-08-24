@@ -15,7 +15,30 @@ class CreateApparentsTable extends Migration
     {
         Schema::create('apparents', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
 
+            $table->integer('gender_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('genders')
+            ->delete('restrict')
+            ->update('cascade');
+
+            $table->integer('address_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('addresses')
+            ->delete('restrict')
+            ->update('cascade');
+
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -1,0 +1,13 @@
+{
+    "name": "Apparent",
+    "alias": "apparent",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Apparent\\Providers\\ApparentServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

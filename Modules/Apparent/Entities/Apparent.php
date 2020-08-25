@@ -39,7 +39,7 @@ class Apparent extends Authenticatable
 
     public function gender()
     {
-        return $this->hasMany('Modules\Client\Entities\Gender');
+        return $this->belongsTo('Modules\Client\Entities\Gender');
     }
 
     public function address()

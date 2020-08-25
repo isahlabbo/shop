@@ -2,9 +2,29 @@
 
 namespace Modules\Admin\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class Shop extends Model
+class Shop extends BaseModel
 {
-    protected $fillable = [];
+    public function address()
+    {
+    	return $this->belongsTo('Modules\Client\Entities\Address');
+    }
+    
+    public function clients()
+    {
+    	return $this->hasMany('Modules\Client\Entities\Client');
+    }
+
+
+    public function apparentes()
+    {
+    	return $this->hasMany('Modules\Apparent\Entities\Apparent');
+    }
+
+    public function admin()
+    {
+    	return $this->belongsTo(Admin::class);
+    }
+
 }

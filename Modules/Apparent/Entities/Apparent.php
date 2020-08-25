@@ -36,4 +36,14 @@ class Apparent extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function gender()
+    {
+        return $this->hasMany('Modules\Client\Entities\Gender');
+    }
+
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
 }

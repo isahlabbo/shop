@@ -16,7 +16,6 @@ class Shop extends BaseModel
     	return $this->hasMany('Modules\Client\Entities\Client');
     }
 
-
     public function apparentes()
     {
     	return $this->hasMany('Modules\Apparent\Entities\Apparent');

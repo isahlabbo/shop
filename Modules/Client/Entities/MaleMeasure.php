@@ -2,9 +2,12 @@
 
 namespace Modules\Client\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class MaleMeasure extends Model
+class MaleMeasure extends BaseModel
 {
-    protected $fillable = [];
+    public function client()
+    {
+    	return $this->belongsTo(Client::class);
+    }
 }

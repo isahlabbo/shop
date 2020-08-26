@@ -11,7 +11,7 @@ class Address extends BaseModel
     	return $this->hasMany('Modules\Client\Entities\Client');
     }
 
-    public function apparentes()
+    public function apparents()
     {
     	return $this->hasMany('Modules\Apparent\Entities\Apparent');
     }

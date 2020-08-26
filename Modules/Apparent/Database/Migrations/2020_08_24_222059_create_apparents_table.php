@@ -28,6 +28,14 @@ class CreateApparentsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('shop_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('shops')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->integer('address_id')
             ->unsigned()->nullable()
             ->foreign()

@@ -47,5 +47,15 @@ class Client extends Authenticatable
         return $this->hasOne('Modules\Apparent\Entities\Address');
     }
 
+    public function femaleMeasure()
+    {
+        return $this->hasOne(FemaleMeasure::class);
+    }
+
+    public function maleMeasure()
+    {
+        return $this->hasOne(FemaleMeasure::class);
+    }
+
     
 }

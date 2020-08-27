@@ -8,11 +8,11 @@
     <link href="img/favicon.ico" rel="shortcut icon"/>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}"/>
 
     <!-- Main Stylesheets -->
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
 
 </head>

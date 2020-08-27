@@ -1,0 +1,69 @@
+<div class="form-group row">
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+
+    <div class="col-md-6">
+        <select class="form-control" name="country">
+        	<option value="1">Nigeria</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+    <div class="col-md-6">
+        <select class="form-control" name="state">
+        	<option value="">Choose State</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+    <div class="col-md-6">
+        <select class="form-control" name="state">
+        	<option value="">Choose LGA</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Town') }}</label>
+    <div class="col-md-6">
+        <input id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="town" required autocomplete="new-password">
+
+        @error('town')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
+    
+    <div class="col-md-6">
+        <input id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="area" required autocomplete="new-password">
+
+        @error('area')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+    
+    <div class="col-md-6">
+        <textarea id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="address" required autocomplete="new-password"></textarea>
+
+        @error('address')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+

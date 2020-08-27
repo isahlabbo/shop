@@ -4,8 +4,9 @@ namespace Modules\Client\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Client\Entities\Gender;
 
-class ClientDatabaseSeeder extends Seeder
+class GenderTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +15,10 @@ class ClientDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        $genders = ['Male','Female'];
 
-        $this->call(GenderTableSeeder::class);
+        foreach ($genders as $key => $value) {
+            Gender::firstOrCreate(['name'=>$value]);
+        }
     }
 }

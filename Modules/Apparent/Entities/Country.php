@@ -4,7 +4,7 @@ namespace Modules\Apparent\Entities;
 
 use App\BaseModel;
 
-class Country extends Model
+class Country extends BaseModel
 {
     public function states()
     {

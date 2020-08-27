@@ -16,6 +16,6 @@ class ApparentDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(AddressTableSeeder::class);
     }
 }

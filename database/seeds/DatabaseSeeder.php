@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Modules\Apparent\Database\Seeders\ApparentDatabaseSeeder;
+use Modules\Client\Database\Seeders\ClientDatabaseSeeder;
+use Modules\Admin\Database\Seeders\AdminDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->call(ApparentDatabaseSeeder::class);
+        $this->call(AdminDatabaseSeeder::class);
+        $this->call(ClientDatabaseSeeder::class);
+        
     }
 }

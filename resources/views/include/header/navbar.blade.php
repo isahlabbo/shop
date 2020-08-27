@@ -12,23 +12,11 @@
                 <!-- Main menu -->
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
+                        <a class="nav-link" href="{{url('/')}}">Home</a>
+                    </li> 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">the Brand</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>                                                                
+                        <a class="nav-link" href="{{ route('client.login') }}">{{ __('Login') }}</a>
+                    </li>                                                              
                 </ul>
                 
             </div>

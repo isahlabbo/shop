@@ -12,13 +12,14 @@
 */
 
 Route::prefix('client')
-    ->name('client')
+    ->name('client.')
     ->group(function() {
     Route::get('/', 'ClientController@index');
     // client authentication routes
     Route::namespace('Auth')
-    ->name('login')
     ->group(function() {
-        Route::get('/login', 'LoginController@index');
+        Route::get('/login', 'LoginController@index')->name('login');
+        Route::get('/registration', 'RegistrationController@index')->name('registration');
+        Route::post('/register', 'RegistrationController@register')->name('register');
     });
 });

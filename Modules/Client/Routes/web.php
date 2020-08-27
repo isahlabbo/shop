@@ -20,5 +20,6 @@ Route::prefix('client')
     ->name('login')
     ->group(function() {
         Route::get('/login', 'LoginController@index');
+        Route::get('/register', 'RegistrationController@index');
     });
 });

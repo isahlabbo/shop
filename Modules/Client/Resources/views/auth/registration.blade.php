@@ -1,0 +1,1 @@
+registration.blade.php

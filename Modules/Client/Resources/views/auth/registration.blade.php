@@ -123,3 +123,8 @@
 	</div>
 </div>
 @endsection
+
+@section('scripts')
+    <script src="{{asset('js/Ajax/address.js')}}"></script>
+@endsection
+

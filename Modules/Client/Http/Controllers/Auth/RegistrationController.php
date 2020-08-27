@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Modules\Apparent\Entities\State;
 
 class RegistrationController extends Controller
 {
@@ -15,7 +16,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('client::auth.registration');
+        return view('client::auth.registration',['states'=>State::all()]);
     }
 
     public function register(Request $request)

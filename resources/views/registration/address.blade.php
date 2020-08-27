@@ -13,14 +13,17 @@
     <div class="col-md-6">
         <select class="form-control" name="state">
         	<option value="">Choose State</option>
+        	@foreach($states as $state)
+        	    <option value="{{$state->id}}">{{$state->name}}</option>
+        	@endforeach
         </select>
     </div>
 </div>
 
 <div class="form-group row">
-    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('LGA') }}</label>
     <div class="col-md-6">
-        <select class="form-control" name="state">
+        <select class="form-control" name="lga">
         	<option value="">Choose LGA</option>
         </select>
     </div>

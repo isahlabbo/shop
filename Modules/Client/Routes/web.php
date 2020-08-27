@@ -15,6 +15,8 @@ Route::prefix('client')
     ->name('client.')
     ->group(function() {
     Route::get('/dashboard', 'ClientController@index')->name('dashboard');
+    Route::get('/', 'ClientController@verify')->name('verify');
+
     // client authentication routes
     Route::namespace('Auth')
     ->group(function() {
@@ -23,9 +25,8 @@ Route::prefix('client')
         Route::post('/register', 'RegistrationController@register')->name('register');
 		Route::get('/Authorisation/fail', 'Auth\LoginController@unauthorize')->name('auth.auth');
         
-        Route::get('/', 'ClientController@verify')->name('verify');
 	    
 	    Route::post('/login', 'LoginController@login')->name('login');
-	    Route::post('logout', 'LoginController@logout')->name('auth.logout');
+	    Route::post('logout', 'LoginController@logout')->name('logout');
     });
 });

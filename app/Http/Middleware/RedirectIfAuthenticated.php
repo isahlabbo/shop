@@ -24,10 +24,7 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 return redirect()->route('client.dashboard');
             }
-            break;
-        default 
-            return back();
-            break;       
+            break;      
         }
         return $next($request);
     }

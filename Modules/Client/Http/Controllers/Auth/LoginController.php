@@ -22,10 +22,10 @@ class LoginController extends Controller
     public function login(Request $request)
     {
       // Validate the form data
-      // $this->validate($request, [
-      //   'email'   => 'required|email',
-      //   'password' => 'required|min:6'
-      // ]);
+      $request->validate([
+        'email'   => 'required|email',
+        'password' => 'required|min:6'
+      ]);
 
       // Attempt to log the user in
       if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {

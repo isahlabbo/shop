@@ -36,13 +36,13 @@ class RegistrationController extends Controller
 
         $this->create($request->all(), $address->address);
 
-        return back();
+        return back()->withSuccess('Registered successfully');
 
     }
 
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:client');
     }
 
     /**

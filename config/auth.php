@@ -83,8 +83,9 @@ return [
         ],
 
         'clients' => [
-            'driver' => 'database',
-            'table' => 'clients',
+            'driver' => 'eloquent',
+            'model' => Modules\Client\Entities\Client::class,
+            
         ],
     ],
 

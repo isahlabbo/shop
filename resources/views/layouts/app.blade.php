@@ -57,6 +57,7 @@
     </header>
 
     <!-- Header section end-->
+    @include('sweetalert::alert')
     @yield('content')
     <!-- Slide section -->
         

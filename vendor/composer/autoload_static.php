@@ -35,6 +35,8 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '9f394da3192a168c4633675768d80428' => __DIR__ . '/..' . '/nwidart/laravel-modules/src/helpers.php',
+        '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
+        '381c1f7485be5ec909ca0fe1ede4b928' => __DIR__ . '/../..' . '/app/Helpers/Helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -91,6 +93,7 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         ),
         'R' => 
         array (
+            'RealRashid\\SweetAlert\\' => 22,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -311,6 +314,10 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'RealRashid\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/realrashid/sweet-alert/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -510,7 +517,15 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         'App\\BaseModel' => __DIR__ . '/../..' . '/app/BaseModel.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Ajax\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/Ajax/AddressController.php',
+        'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
+        'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
+        'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -2784,6 +2799,7 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         'Modules\\Admin\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/Modules/Admin/Http/Controllers/AdminController.php',
         'Modules\\Admin\\Providers\\AdminServiceProvider' => __DIR__ . '/../..' . '/Modules/Admin/Providers/AdminServiceProvider.php',
         'Modules\\Admin\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Admin/Providers/RouteServiceProvider.php',
+        'Modules\\Apparent\\Database\\Seeders\\AddressTableSeeder' => __DIR__ . '/../..' . '/Modules/Apparent/Database/Seeders/AddressTableSeeder.php',
         'Modules\\Apparent\\Database\\Seeders\\ApparentDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Apparent/Database/Seeders/ApparentDatabaseSeeder.php',
         'Modules\\Apparent\\Entities\\Address' => __DIR__ . '/../..' . '/Modules/Apparent/Entities/Address.php',
         'Modules\\Apparent\\Entities\\Apparent' => __DIR__ . '/../..' . '/Modules/Apparent/Entities/Apparent.php',
@@ -2795,12 +2811,15 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         'Modules\\Apparent\\Http\\Controllers\\ApparentController' => __DIR__ . '/../..' . '/Modules/Apparent/Http/Controllers/ApparentController.php',
         'Modules\\Apparent\\Providers\\ApparentServiceProvider' => __DIR__ . '/../..' . '/Modules/Apparent/Providers/ApparentServiceProvider.php',
         'Modules\\Apparent\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Apparent/Providers/RouteServiceProvider.php',
+        'Modules\\Apparent\\Services\\AddressHandle' => __DIR__ . '/../..' . '/Modules/Apparent/Services/AddressHandle.php',
         'Modules\\Client\\Database\\Seeders\\ClientDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Client/Database/Seeders/ClientDatabaseSeeder.php',
+        'Modules\\Client\\Database\\Seeders\\GenderTableSeeder' => __DIR__ . '/../..' . '/Modules/Client/Database/Seeders/GenderTableSeeder.php',
         'Modules\\Client\\Entities\\Client' => __DIR__ . '/../..' . '/Modules/Client/Entities/Client.php',
         'Modules\\Client\\Entities\\FemaleMeasure' => __DIR__ . '/../..' . '/Modules/Client/Entities/FemaleMeasure.php',
         'Modules\\Client\\Entities\\Gender' => __DIR__ . '/../..' . '/Modules/Client/Entities/Gender.php',
         'Modules\\Client\\Entities\\MaleMeasure' => __DIR__ . '/../..' . '/Modules/Client/Entities/MaleMeasure.php',
         'Modules\\Client\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/Modules/Client/Http/Controllers/Auth/LoginController.php',
+        'Modules\\Client\\Http\\Controllers\\Auth\\RegistrationController' => __DIR__ . '/../..' . '/Modules/Client/Http/Controllers/Auth/RegistrationController.php',
         'Modules\\Client\\Http\\Controllers\\ClientController' => __DIR__ . '/../..' . '/Modules/Client/Http/Controllers/ClientController.php',
         'Modules\\Client\\Providers\\ClientServiceProvider' => __DIR__ . '/../..' . '/Modules/Client/Providers/ClientServiceProvider.php',
         'Modules\\Client\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Client/Providers/RouteServiceProvider.php',
@@ -4124,6 +4143,13 @@ class ComposerStaticInitdc3f6b6a9b2ba9844f757b02aef4b08b
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'RealRashid\\SweetAlert\\Console\\PublishCommand' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Console/PublishCommand.php',
+        'RealRashid\\SweetAlert\\Facades\\Alert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Facades/Alert.php',
+        'RealRashid\\SweetAlert\\Storage\\AlertSessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/AlertSessionStore.php',
+        'RealRashid\\SweetAlert\\Storage\\SessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/SessionStore.php',
+        'RealRashid\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/SweetAlertServiceProvider.php',
+        'RealRashid\\SweetAlert\\ToSweetAlert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/ToSweetAlert.php',
+        'RealRashid\\SweetAlert\\Toaster' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Toaster.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

@@ -29,4 +29,10 @@ Route::prefix('client')
 	    Route::post('/login', 'LoginController@login')->name('login');
 	    Route::post('logout', 'LoginController@logout')->name('logout');
     });
+
+    Route::prefix('measurement')
+    ->name('measurement.')
+    ->group(function() {
+       Route::get('/', 'MeasurementController@index')->name('index');
+    });
 });

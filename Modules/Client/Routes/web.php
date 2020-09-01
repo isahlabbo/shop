@@ -34,5 +34,6 @@ Route::prefix('client')
     ->name('measurement.')
     ->group(function() {
        Route::get('/', 'MeasurementController@index')->name('index');
+       Route::post('/{clietId}/update', 'MeasurementController@update')->name('update');
     });
 });

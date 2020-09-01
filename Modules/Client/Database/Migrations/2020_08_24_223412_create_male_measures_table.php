@@ -15,16 +15,27 @@ class CreateMaleMeasuresTable extends Migration
     {
         Schema::create('male_measures', function (Blueprint $table) {
             $table->id();
+            $table->integer('client_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('clients')
+            ->delete('restrict')
+            ->update('cascade');
             $table->string('shoulder')->nullable();
             $table->string('trouser_length')->nullable();
-            $table->string('full_shirt_lenth')->nullable();
-            $table->string('half_shirt_lenth')->nullable();
-            $table->string('full_hand_lenth')->nullable();
-            $table->string('half_hand_lenth')->nullable();
-            $table->string('bonse')->nullable();
-            $table->string('under_bonse')->nullable();
-            $table->string('neck_width')->nullable();
+            $table->string('waist')->nullable();
+            $table->string('under_waist')->nullable();
+            $table->string('full_shirt_length')->nullable();
+            $table->string('half_shirt_length')->nullable();
+            $table->string('full_hand_length')->nullable();
+            $table->string('half_hand_length')->nullable();
+            $table->string('chest')->nullable();
+            $table->string('under_chest')->nullable();
+            $table->string('neck')->nullable();
             $table->string('hand_width')->nullable();
+            $table->string('clip_width')->nullable();
+            $table->string('arm_width')->nullable();
             $table->timestamps();
         });
     }

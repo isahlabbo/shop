@@ -64,7 +64,15 @@ class Client extends Authenticatable
 
     public function maleMeasure()
     {
-        return $this->hasOne(FemaleMeasure::class);
+        return $this->hasOne(MaleMeasure::class);
+    }
+
+    public function measurement()
+    {
+        if($this->gender->id == 1){
+            return $this->maleMeasure;
+        }
+        return $this->femaleMeasure;
     }
 
     

@@ -133,6 +133,34 @@
             </div>
 
             <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right">Half Cut</label>
+
+                <div class="col-md-6">
+                    <input id="password" type="number" class="form-control @error('half_cut') is-invalid @enderror" name="half_cut" required autocomplete="current-password">
+
+                    @error('half_cut')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right">Flip Play</label>
+
+                <div class="col-md-6">
+                    <input id="password" type="number" class="form-control @error('flip_play') is-invalid @enderror" name="flip_play" required autocomplete="current-password">
+
+                    @error('flip_play')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="password" class="col-md-4 col-form-label text-md-right">Sket Length</label>
 
                 <div class="col-md-6">
@@ -147,7 +175,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Hips</label>
+                <label for="password" class="col-md-4 col-form-label text-md-right">Hip</label>
 
                 <div class="col-md-6">
                     <input id="password" type="number" class="form-control @error('hip') is-invalid @enderror" name="hip" required autocomplete="current-password">

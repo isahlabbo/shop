@@ -63,7 +63,7 @@ class RegistrationController extends Controller
             'phone' => ['required', 'string', 'max:11', 'unique:clients'],
             'gender' => ['required'],
             'lga' => ['required'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -75,7 +75,7 @@ class RegistrationController extends Controller
      */
     protected function create(array $data, Address $address)
     {
-        return $address->clients()->create([
+        $client = $address->clients()->create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -83,6 +83,12 @@ class RegistrationController extends Controller
             'gender_id' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if($client->gender->id == 1){
+            $client->maleMeasure()->create([]);
+        }else{
+            $client->femaleMeasure()->create([]);
+        }
     }
 
     

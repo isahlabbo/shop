@@ -28,11 +28,11 @@ class CreateAdminsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
-            $table->integer('shop_id')
+            $table->integer('address_id')
             ->unsigned()->nullable()
             ->foreign()
             ->references('id')
-            ->on('shops')
+            ->on('addresses')
             ->delete('restrict')
             ->update('cascade');
 

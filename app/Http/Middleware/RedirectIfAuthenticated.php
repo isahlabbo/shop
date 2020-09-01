@@ -26,6 +26,13 @@ class RedirectIfAuthenticated
             }
             break;      
         }
+
+        case 'admin':
+            if (Auth::guard($guard)->check()) {
+                return redirect()->route('admin.dashboard');
+            }
+            break;      
+        }
         return $next($request);
     }
 }

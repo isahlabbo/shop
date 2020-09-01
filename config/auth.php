@@ -52,11 +52,24 @@ return [
             'provider' => 'clients',
         ],
 
-        'api' => [
+        'client_api' => [
             'driver' => 'token',
             'provider' => 'clients',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'admin_api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
+
+
     ],
 
     /*
@@ -87,6 +100,12 @@ return [
             'model' => Modules\Client\Entities\Client::class,
             
         ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => Modules\Admin\Entities\Admin::class,
+            
+        ],
     ],
 
     /*
@@ -114,6 +133,14 @@ return [
 
         'clients' => [
             'provider' => 'clients',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

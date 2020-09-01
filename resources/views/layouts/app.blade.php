@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <!-- Main menu -->
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    @yield('navbar')
+                    
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('client.login') }}">{{ __('Login') }}</a>
@@ -33,9 +33,10 @@
                             </li>
                         @endif
                     @else
+                        @yield('navbar')
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ client()->first_name }} {{ client()->last_name }}
+                                {{ user()->first_name }} {{ user()->last_name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

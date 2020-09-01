@@ -11,6 +11,17 @@
 |
 */
 
-Route::prefix('admin')->group(function() {
-    Route::get('/', 'AdminController@index');
+Route::prefix('admin')
+->name('admin.')
+->group(function() {
+    Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+    
+    Route::namespace('Auth')
+    ->group(function() {
+        Route::get('/login', 'AdminLoginController@index')->name('login');
+        Route::get('/registration', 'AdminRegistrationController@index')->name('registration');
+        Route::post('/register', 'AdminRegistrationController@register')->name('register');
+	    Route::post('/login', 'AdminLoginController@login')->name('login');
+	    Route::post('logout', 'AdminLoginController@logout')->name('logout');
+    });
 });

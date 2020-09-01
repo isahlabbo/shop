@@ -24,4 +24,11 @@ Route::prefix('admin')
 	    Route::post('/login', 'AdminLoginController@login')->name('login');
 	    Route::post('logout', 'AdminLoginController@logout')->name('logout');
     });
+
+    Route::name('shop.')
+    ->prefix('shop')
+    ->group(function() {
+        Route::get('/create', 'ShopController@create')->name('create');
+        
+    });
 });

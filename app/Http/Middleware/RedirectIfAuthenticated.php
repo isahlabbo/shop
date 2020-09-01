@@ -20,19 +20,21 @@ class RedirectIfAuthenticated
     {
         
         switch ($guard) {
-        case 'client':
+
+            case 'client':
             if (Auth::guard($guard)->check()) {
                 return redirect()->route('client.dashboard');
             }
-            break;      
-        }
+            break; 
 
-        case 'admin':
+            case 'admin':
             if (Auth::guard($guard)->check()) {
                 return redirect()->route('admin.dashboard');
             }
             break;      
+            
         }
+
         return $next($request);
     }
 }

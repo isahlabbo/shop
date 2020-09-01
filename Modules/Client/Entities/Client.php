@@ -69,10 +69,22 @@ class Client extends Authenticatable
 
     public function measurement()
     {
+        $measurement = null;
+
         if($this->gender->id == 1){
-            return $this->maleMeasure;
+            if(is_null($measurement)){
+                $this->maleMeasure()->create([]);
+            }
+            $measurement = $this->maleMeasure;
+        }else{
+            if(is_null($measurement)){
+                $this->femaleMeasure()->create([]);
+            }
+            $measurement = $this->femaleMeasure;
         }
-        return $this->femaleMeasure;
+
+        return $measurement;
+        
     }
 
     

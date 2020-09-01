@@ -25,7 +25,7 @@ class CreateFemaleMeasuresTable extends Migration
             $table->string('shoulder')->nullable();
             $table->string('half_cut')->nullable();
             $table->string('flip_play')->nullable();
-            $table->string('lowse_length')->nullable();
+            $table->string('blouse_length')->nullable();
             $table->string('bonse')->nullable();
             $table->string('under_bonse')->nullable();
             // hand measurement
@@ -33,7 +33,7 @@ class CreateFemaleMeasuresTable extends Migration
             $table->string('half_hand_length')->nullable();
             $table->string('hand_width')->nullable();
             // gown measurement
-            $table->string('full_gown_lenth')->nullable();
+            $table->string('full_gown_length')->nullable();
             $table->string('half_gown_length')->nullable();
             // sket
             $table->string('waist')->nullable();

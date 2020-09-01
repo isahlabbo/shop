@@ -22,17 +22,11 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <!-- Main menu -->
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    
-                    @guest
+                    @if(admin() || client())
+                        
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('client.login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route(routes()['home']) }}">{{ __('Dashboard') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('client.registration') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
                         @yield('navbar')
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -40,7 +34,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('client.logout') }}"
+                                <a class="dropdown-item" href="{{ route(routes()['logout']) }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -51,7 +45,16 @@
                                 </form>
                             </div>
                         </li>
-                    @endguest                                                              
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('client.login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('client.registration') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @endif                                                              
                 </ul>  
             </div>
         </nav>

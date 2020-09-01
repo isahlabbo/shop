@@ -24,14 +24,24 @@ if (!function_exists('admin')) {
 
 if (!function_exists('user')) {
     function user()
-    {
-        
+    {       
         if(admin()){
             $user = admin();
         }elseif (client()) {
         	$user = client();
         }
         return $user;
+    }
+}
+
+if (!function_exists('routes')) {
+    function routes()
+    {       
+        if (admin()) {
+            return ['home'=>'admin.dashboard','logout'=>'admin.logout'];
+        }elseif (client()) {
+            return ['home'=>'client.dashboard','logout'=>'client.logout'];
+        }
     }
 }
 

@@ -18,9 +18,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::namespace('Shop')
+	    ->name('shop.')
+	    ->group(function() {
+            Route::get('/{shop}', 'ShopController@index')->name('index');
+    });
 
     Route::prefix('ajax')
 	   ->namespace('Ajax')
@@ -31,36 +33,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 		   ->name('address')
 		   ->group(function() {
 	        Route::get('/state/{stateId}/get-lgas', 'AddressController@getLgas');
-        });
-        
-		Route::prefix('programme')
-		   ->name('address')
-		   ->group(function() {
-	        Route::get('/{programmeId}/get-programme-schedules', 'ProgrammeController@getProgrammeSchedules');
-	        Route::get('/{programmeId}/get-programme-courses', 'ProgrammeController@getProgrammeCourses');
-
-	        Route::get('/{programmeId}/get-programme-batches', 'ProgrammeController@getProgrammeBatches');
-	        Route::get('/{programmeId}/get-programme-semesters', 'ProgrammeController@getProgrammeSemesters');
-		});
-
-		Route::prefix('notification')
-		   ->name('notification')
-		   ->group(function() {
-	        Route::get('/to/{toId}', 'NotificationController@getProgramme');
-
-	        Route::get('/type/{typeId}', 'NotificationController@getField');
-
-		});   
-
-		Route::prefix('department')
-		   ->name('department')
-		   ->group(function() {
-	        Route::get('/{departmentId}/get-department-courses', 'ProgrammeController@getDepartmentCourses');
-		});   
-
-		Route::prefix('admission')
-		   ->group(function() {
-	        Route::get('/session/{session}/state/{state}/get-state-admission-numbers', 'AdmissionController@fetchStateAdmissionNumbers');
         });   
         
 	});

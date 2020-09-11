@@ -34,6 +34,13 @@ if (!function_exists('user')) {
     }
 }
 
+if (!function_exists('slug')) {
+    function slug($name)
+    {       
+        return strtolower(str_replace(' ', '-', $name));
+    }
+}
+
 if (!function_exists('routes')) {
     function routes()
     {       

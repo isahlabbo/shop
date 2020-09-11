@@ -29,6 +29,7 @@ Route::prefix('admin')
     ->prefix('shop')
     ->group(function() {
         Route::get('/create', 'ShopController@create')->name('create');
+        Route::post('/registration', 'ShopController@registration')->name('registration');
         
     });
 });

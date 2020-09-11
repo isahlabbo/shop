@@ -6,6 +6,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Apparent\Entities\State;
+use Modules\Admin\Entities\DesignType;
+use Modules\Apparent\Services\AddressHandle;
 
 class ShopController extends Controller
 {
@@ -29,7 +31,22 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return view('admin::shop.create',['states'=>State::all()]);
+        return view('admin::shop.create',[
+            'states'=>State::all(),
+            'designTypes'=>DesignType::all()
+        ]);
+    }
+
+    public function registration(Request $request)
+    {
+        $address = new AddressHandle($request->all());
+        $address->address->shops()->create([
+            'name'=>$request->name,
+            'design_type_id'=>$request->design,
+            'work_capacity'=>$request->work_capacity,
+        ]);
+
+        return redirect()->route('shop.index',[slug($request->name)])->withSuccess('Shop registration was successfull');
     }
 
 }

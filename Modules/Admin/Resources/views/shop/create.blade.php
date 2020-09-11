@@ -13,7 +13,7 @@
                 <div class="card-header" style="background-color: black; color: white">{{ __('New Shop Registration') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.login') }}">
+                    <form method="POST" action="{{ route('admin.shop.registration') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -49,6 +49,9 @@
                             <div class="col-md-6">
                                 <select name="design" class="form-control">
                                 	<option value="">Design Type</option>
+                                    @foreach($designTypes as $designType)
+                                        <option value="{{$designType->id}}">{{$designType->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

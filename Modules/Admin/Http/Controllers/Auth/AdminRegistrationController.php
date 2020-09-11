@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Modules\Apparent\Entities\State;
 use Modules\Apparent\Entities\Address;
+use Modules\Admin\Entities\DesignType;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Validator;
@@ -23,6 +24,7 @@ class AdminRegistrationController extends Controller
     {
         return view('admin::auth.adminRegistration',[
             'states'=>State::all(),
+            'designTypes'=>DesignType::all(),
             'genders'=>Gender::all(),
         ]);
     }

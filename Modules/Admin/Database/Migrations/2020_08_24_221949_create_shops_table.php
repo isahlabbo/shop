@@ -16,7 +16,7 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
+            $table->string('work_capacity');
             $table->integer('address_id')
             ->unsigned()->nullable()
             ->foreign()
@@ -24,7 +24,13 @@ class CreateShopsTable extends Migration
             ->on('addresses')
             ->delete('restrict')
             ->update('cascade');
-
+            $table->integer('design_type_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('design_types')
+            ->delete('restrict')
+            ->update('cascade');
             $table->timestamps();
         });
     }

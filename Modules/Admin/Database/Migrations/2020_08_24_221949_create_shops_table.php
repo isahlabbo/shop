@@ -17,6 +17,8 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('work_capacity');
+            $table->text('words')->default('I firmly believe that with the right service delivery one can rule the world');
+            $table->text('about')->default('we value our customers and we respect time with this two pint we stand');
             $table->integer('address_id')
             ->unsigned()->nullable()
             ->foreign()

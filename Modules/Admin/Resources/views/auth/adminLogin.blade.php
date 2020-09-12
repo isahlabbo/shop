@@ -9,8 +9,8 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<br>
-		<div class="card">
-                <div class="card-header">{{ __('Admin Login') }}</div>
+		<div class="card shadow">
+                <div class="card-header card-header-primary shadow">{{ __('Admin Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}">
@@ -58,7 +58,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary shadow">
                                     {{ __('Login') }}
                                 </button>
 

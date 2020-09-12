@@ -10,7 +10,7 @@
 	<div class="col-md-8">
 		<br>
 		<div class="card">
-                <div class="card-header">{{ __('Client Registration') }}</div>
+                <div class="card-header card-header-primary">{{ __('Client Registration') }}</div>
 
                 <div class="card-body">
                     

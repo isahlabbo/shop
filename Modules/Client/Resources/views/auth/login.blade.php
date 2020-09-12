@@ -10,7 +10,7 @@
 	<div class="col-md-6">
 		<br>
 		<div class="card">
-                <div class="card-header">{{ __('Client Login') }}</div>
+                <div class="card-header card-header-primary">{{ __('Client Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('client.login') }}">

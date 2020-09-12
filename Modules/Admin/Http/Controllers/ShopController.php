@@ -41,7 +41,7 @@ class ShopController extends Controller
     {
         $address = new AddressHandle($request->all());
         $address->address->shops()->create([
-            'name'=>$request->name,
+            'name'=>strtoupper($request->name),
             'design_type_id'=>$request->design,
             'work_capacity'=>$request->work_capacity,
         ]);

@@ -15,9 +15,8 @@ class DesignTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
 
-        $types = ['Male Only','Female Only', 'Male and Fema'];
+        $types = ['Male Only','Female Only', 'Male And Female'];
         
         foreach ($types as $type) {
             DesignType::create(['name'=>$type]);

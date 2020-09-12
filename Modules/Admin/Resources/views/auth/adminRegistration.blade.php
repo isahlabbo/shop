@@ -9,8 +9,8 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
 		<br>
-		<div class="card">
-                <div class="card-header">{{ __('Admin Registration') }}</div>
+		<div class="card shadow">
+                <div class="card-header card-header-primary shadow">{{ __('Admin Registration') }}</div>
 
                 <div class="card-body">
                     
@@ -115,7 +115,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button type="submit" class="btn btn-primary btn-block shadow">
                                     {{ __('Register') }}
                                 </button>
                             </div>

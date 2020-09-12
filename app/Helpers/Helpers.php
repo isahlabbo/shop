@@ -41,6 +41,13 @@ if (!function_exists('slug')) {
     }
 }
 
+if (!function_exists('deslug')) {
+    function deslug($name)
+    {       
+        return strtoupper(str_replace('-', ' ', $name));
+    }
+}
+
 if (!function_exists('routes')) {
     function routes()
     {       

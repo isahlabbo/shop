@@ -29,7 +29,7 @@
 	    .btn-primary{
 	    	color:#fff;
 	    	background-color:black;
-	    	border-color:black
+	    	border-color:black;
 	    }
 	    .btn-primary:hover{
 	    	color:#fff;background-color:#ab092e;
@@ -51,6 +51,18 @@
 	    }
 	    .btn-secondary:focus{
 	    	box-shadow:0 0 0 .1rem
+	    }
+
+	    .card-header-primary{
+	    	color:#fff;
+	    	background-color:black;
+	    	border-color:black;
+	    }
+
+	    .card-header-secondary{
+	    	color:#fff;
+	    	background-color:#ab092e;
+	    	border-color:#ab092e;
 	    }
         
 

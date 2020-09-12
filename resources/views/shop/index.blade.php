@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
-@include('include.header.head')
+@include('shop.include.head')
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -8,23 +8,16 @@
     </div>
 
     <!-- Header section -->
-    @include('include.header.navbar')
+    @include('shop.include.navbar')
     <!-- Header section end-->
 
-    <!-- Slide section -->
-    @include('include.body.slide')
-    <!-- Slide section end-->
-
+    
     <!-- Intro section -->
-    @include('include.body.intro')
+    @include('shop.include.intro')
     <!-- Intro section end-->
 
-    <!-- design section -->
-    @include('include.body.design')
-    <!-- design section end-->
-
     <!-- Blog section -->
-    @include('include.body.blog')
+    @include('shop.include.blog')
     <!-- Blog section end-->
 
     <!-- Back to top -->
@@ -35,7 +28,7 @@
     </div>
 
     <!-- Footer section -->
-    @include('include.footer.footer')
+    @include('shop.include.footer')
     <!-- Footer section end -->
     </body>
 </html>

@@ -10,7 +10,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{route('admin.shop.create')}}">New Shop</a>
             @foreach(admin()->shops as $shop)
-                <a class="dropdown-item" href="{{route('shop.index')}}">{{slug('$shop->name')}}</a>    
+                <a class="dropdown-item" href="{{route('shop.index',[slug($shop->name)])}}">{{$shop->name}}</a>    
             @endforeach    
         </div>
     </li>

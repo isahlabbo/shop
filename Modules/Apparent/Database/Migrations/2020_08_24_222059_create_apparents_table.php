@@ -44,6 +44,14 @@ class CreateApparentsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('grantor_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('grantors')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

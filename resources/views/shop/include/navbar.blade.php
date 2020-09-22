@@ -12,7 +12,7 @@
                 <!-- Main menu -->
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/')}}">Apparantes</a>
+                        <a class="nav-link" href="{{route('admin.shop.apparent.index',[$shop->id])}}">Apparantes</a>
                     </li> 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('client.login') }}">Customers</a>

@@ -17,4 +17,5 @@ $(document).ready(function(){
             $('select[name="lga"]').empty();
         }
     });
+    
 });

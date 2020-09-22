@@ -27,9 +27,17 @@ Route::prefix('admin')
 
     Route::name('shop.')
     ->prefix('shop')
+    ->namespace('Shop')
     ->group(function() {
         Route::get('/create', 'ShopController@create')->name('create');
         Route::post('/registration', 'ShopController@registration')->name('registration');
-        
+        // shop apparentes routes
+        Route::name('apparent.')
+        ->prefix('{shopId}/apparentes')
+        ->group(function() {
+            Route::get('/', 'ApparentController@index')->name('index');
+            Route::get('/create', 'ApparentController@create')->name('create');
+            Route::post('/register', 'ApparentController@register')->name('register');
+        });
     });
 });

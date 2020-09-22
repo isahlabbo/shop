@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admin\Http\Controllers;
+namespace Modules\Admin\Http\Controllers\Shop;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;

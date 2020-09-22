@@ -55,6 +55,34 @@
                                 </select>
                             </div>
                         </div>
+                        
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Shop words') }}</label>
+                            
+                            <div class="col-md-6">
+                                <textarea id="password" type="text" class="form-control @error('words') is-invalid @enderror" name="words" required autocomplete="word" placeholder="Write 1 to 2 sentences to identify your shop"></textarea>
+
+                                @error('words')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('About Shop') }}</label>
+                            
+                            <div class="col-md-6">
+                                <textarea id="password" type="text" class="form-control @error('about') is-invalid @enderror" name="about" required autocomplete="about" placeholder="Write 5 to 10 sentences about your shop"></textarea>
+
+                                @error('about')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         @include('registration.address')
 

@@ -17,13 +17,20 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('work_capacity');
-            $table->text('words')->default('I firmly believe that with the right service delivery one can rule the world');
-            $table->text('about')->default('we value our customers and we respect time with this two pint we stand');
+            $table->text('words')->nullable();
+            $table->text('about')->nullable();
             $table->integer('address_id')
             ->unsigned()->nullable()
             ->foreign()
             ->references('id')
             ->on('addresses')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('admin_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('admins')
             ->delete('restrict')
             ->update('cascade');
             $table->integer('design_type_id')

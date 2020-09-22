@@ -44,6 +44,9 @@ class ShopController extends Controller
             'name'=>strtoupper($request->name),
             'design_type_id'=>$request->design,
             'work_capacity'=>$request->work_capacity,
+            'admin_id'=> admin()->id,
+            'words'=>$request->words,
+            'about'=>$request->about
         ]);
 
         return redirect()->route('shop.index',[slug($request->name)])->withSuccess('Shop registration was successfull');

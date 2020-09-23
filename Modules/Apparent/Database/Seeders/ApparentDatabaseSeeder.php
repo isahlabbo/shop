@@ -14,8 +14,8 @@ class ApparentDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
         $this->call(AddressTableSeeder::class);
+        $this->call(ReligionTableSeeder::class);
+        $this->call(TribeTableSeeder::class);
     }
 }

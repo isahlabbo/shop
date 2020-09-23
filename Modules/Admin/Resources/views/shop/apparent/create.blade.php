@@ -110,6 +110,29 @@
                             </div>
 
                             <div class="col-md-4">
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Religion') }}</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="religion">
+                                            <option value="">Religion</option>
+                                            @foreach($religions as $religion)
+                                                <option value="{{$religion->id}}">{{$religion->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Tribe') }}</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="tribe">
+                                            <option value="">Tribe</option>
+                                            @foreach($tribes as $tribe)
+                                                <option value="{{$tribe->id}}">{{$tribe->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 @include('registration.address')
                             </div>
 

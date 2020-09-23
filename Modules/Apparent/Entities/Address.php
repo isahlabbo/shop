@@ -25,4 +25,9 @@ class Address extends BaseModel
     {
     	return $this->hasMany('Modules\Admin\Entities\Shop');
     }
+
+    public function grantors()
+    {
+        return $this->hasMany(Grantor::class);
+    }
 }

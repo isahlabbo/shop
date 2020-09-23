@@ -16,7 +16,16 @@ class Apparent extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'password',
+        'email',
+        'phone',
+        'gender_id',
+        'religion_id',
+        'tribe_id',
+        'shop_id',
+        'grantor_id'
     ];
 
     /**
@@ -40,6 +49,11 @@ class Apparent extends Authenticatable
     public function gender()
     {
         return $this->belongsTo('Modules\Client\Entities\Gender');
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo('Modules\Admin\Entities\Shop');
     }
 
     public function address()

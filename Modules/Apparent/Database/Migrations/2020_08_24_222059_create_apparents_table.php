@@ -28,6 +28,22 @@ class CreateApparentsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('religion_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('religions')
+            ->delete('restrict')
+            ->update('cascade');
+            
+            $table->integer('tribe_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('tribes')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->integer('shop_id')
             ->unsigned()->nullable()
             ->foreign()

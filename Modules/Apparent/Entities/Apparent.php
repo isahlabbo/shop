@@ -56,8 +56,23 @@ class Apparent extends Authenticatable
         return $this->belongsTo('Modules\Admin\Entities\Shop');
     }
 
+    public function religion()
+    {
+        return $this->belongsTo(Religion::class);
+    }
+
+    public function tribe()
+    {
+        return $this->belongsTo(Tribe::class);
+    }
+
+    public function grantor()
+    {
+        return $this->belongsTo(Grantor::class);
+    }
+
     public function address()
     {
-        return $this->hasOne(Address::class);
+        return $this->belongsTo(Address::class);
     }
 }

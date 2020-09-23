@@ -30,4 +30,9 @@ class Address extends BaseModel
     {
         return $this->hasMany(Grantor::class);
     }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
 }

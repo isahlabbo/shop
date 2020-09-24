@@ -4,7 +4,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-widget fw-about">
                         <img src="img/footer-logo.png" alt="">
-                        <p>Velit pulvinar, pellentesque neque vel, laoreet orci. Suspendisse potenti. Donec congue vel justo eget malesu ada. In arcu justo, sagittis consequat pulvinar.</p>
+                        <p>{{$shop->about}}.</p>
                         <div class="fw-social">
                             <a href="#"><i class="fa fa-pinterest"></i></a>
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -16,19 +16,13 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-widget resent-post">
-                        <h2 class="fw-title">Recent Posts</h2>
+                        <h2 class="fw-title">Programmes</h2>
+                        @foreach($shop->programmes as $programme)
                         <div class="rp-item">
-                            <h4>Paris Fashion Week</h4>
-                            <span>20 January 2019</span>
+                            <h4>{{$programme->name}}</h4>
+                            <span>{{$programme->created_at}}</span>
                         </div>
-                        <div class="rp-item">
-                            <h4>About Our Fashion App</h4>
-                            <span>20 January 2019</span>
-                        </div>
-                        <div class="rp-item">
-                            <h4>Simple Blog Post</h4>
-                            <span>20 January 2019</span>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
@@ -48,9 +42,15 @@
                     <div class="footer-widget contact-widget">
                         <h2 class="fw-title">Contact</h2>
                         <ul>
-                            <li><span>Address:</span>Main Str, no 23, New York</li>
-                            <li><span>Phone:</span>+546 990221 123</li>
-                            <li><span>Mail:</span>model@contact.com</li>
+                            <li><span>Address:</span>
+                            {{admin()->address->name}}
+                            ,{{admin()->address->area->name}}
+                            ,{{admin()->address->area->town->name}}
+                            ,{{admin()->address->area->town->lga->name}}
+                            ,{{admin()->address->area->town->lga->state->name}}
+                            </li>
+                            <li><span>Phone:</span>{{admin()->phone}}</li>
+                            <li><span>Mail:</span>{{admin()->email}}</li>
                         </ul>
                     </div>
                 </div>

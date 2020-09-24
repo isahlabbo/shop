@@ -57,4 +57,9 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo('Modules\Client\Entities\Gender');
     }
+
+    public function address()
+    {
+        return $this->belongsTo('Modules\Apparent\Entities\Address');
+    }
 }

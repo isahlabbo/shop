@@ -12,10 +12,11 @@ use Modules\Admin\Entities\DesignType;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Validator;
-
+use App\Services\Upload\FileUpload;
 
 class AdminRegistrationController extends Controller
 {
+    use FileUpload;
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -77,7 +78,9 @@ class AdminRegistrationController extends Controller
      */
     protected function create(array $data, Address $address)
     {
-        $client = $address->admins()->create([
+        
+
+        $admin = $address->admins()->create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -85,6 +88,10 @@ class AdminRegistrationController extends Controller
             'gender_id' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        if($data['image']){
+            $admin->update(['image'=>$this->storeFile($data['image'], 'Images/Profiles/Admins/')]);
+        }
     }
 
     

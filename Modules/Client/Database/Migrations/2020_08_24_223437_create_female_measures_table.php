@@ -40,7 +40,6 @@ class CreateFemaleMeasuresTable extends Migration
             $table->string('hip')->nullable();
             $table->string('under_hip')->nullable();
             $table->string('sket_length')->nullable();
-            // 
             
             $table->timestamps();
         });

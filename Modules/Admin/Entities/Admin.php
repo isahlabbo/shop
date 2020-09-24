@@ -27,6 +27,7 @@ class Admin extends Authenticatable
         'lga',
         'TID',
         'password',
+        'image',
     ];
 
     /**

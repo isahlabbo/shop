@@ -8,7 +8,7 @@ class Shop extends BaseModel
 {
     public function address()
     {
-    	return $this->belongsTo('Modules\Client\Entities\Address');
+    	return $this->belongsTo('Modules\Apparent\Entities\Address');
     }
     
     public function clients()

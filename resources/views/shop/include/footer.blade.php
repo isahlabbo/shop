@@ -43,11 +43,11 @@
                         <h2 class="fw-title">Contact</h2>
                         <ul>
                             <li><span>Address:</span>
-                            {{admin()->address->name}}
-                            ,{{admin()->address->area->name}}
-                            ,{{admin()->address->area->town->name}}
-                            ,{{admin()->address->area->town->lga->name}}
-                            ,{{admin()->address->area->town->lga->state->name}}
+                            {{$shop->address->name}}
+                            ,{{$shop->address->area->name}}
+                            ,{{$shop->address->area->town->name}}
+                            ,{{$shop->address->area->town->lga->name}}
+                            ,{{$shop->address->area->town->lga->state->name}}
                             </li>
                             <li><span>Phone:</span>{{admin()->phone}}</li>
                             <li><span>Mail:</span>{{admin()->email}}</li>

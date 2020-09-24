@@ -12,7 +12,7 @@
     <header class="header-section">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark site-navbar">
             <a class="navbar-brand site-logo" href="index.html#">
-                <h2><span>Ai</span>Style</h2>
+                <h2><span>sewmy</span>cloth</h2>
                 <p>Fashion Forward</p>
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"

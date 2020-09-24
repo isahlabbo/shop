@@ -39,5 +39,13 @@ Route::prefix('admin')
             Route::get('/create', 'ApparentController@create')->name('create');
             Route::post('/register', 'ApparentController@register')->name('register');
         });
+        //shop programmes routes
+        Route::name('programme.')
+        ->prefix('{shopId}/programmes')
+        ->group(function() {
+            Route::get('/', 'ProgrammeController@index')->name('index');
+            Route::get('/create', 'ProgrammeController@create')->name('create');
+            Route::post('/register', 'ProgrammeController@register')->name('register');
+        });
     });
 });

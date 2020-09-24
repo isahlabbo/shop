@@ -26,4 +26,9 @@ class Shop extends BaseModel
     	return $this->belongsTo(Admin::class);
     }
 
+    public function programmes()
+    {
+    	return $this->hasMany(Programme::class);
+    }
+
 }

@@ -70,6 +70,7 @@ class ApparentController extends Controller
             'gender_id' => $data['gender'],
             'religion_id' => $data['religion'],
             'tribe_id' => $data['tribe'],
+            'programme_id' => $data['programme'],
             'shop_id' => $shopId
 
         ]);

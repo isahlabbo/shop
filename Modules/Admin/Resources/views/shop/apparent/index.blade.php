@@ -44,7 +44,7 @@
                             Edit
                         </button>
                         <button class="btn-secondary btn">
-                                Delete
+                            Delete
                         </button>
                     </td>
                 </tr>

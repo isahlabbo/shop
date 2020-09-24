@@ -68,6 +68,14 @@ class CreateApparentsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('programme_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('programmes')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

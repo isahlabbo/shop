@@ -107,6 +107,19 @@
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Programme') }}</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="programme">
+                                            <option value="">Choose Programme</option>
+                                            @foreach($shop->programmes as $programme)
+                                                <option value="{{$programme->id}}">{{$programme->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="col-md-4">

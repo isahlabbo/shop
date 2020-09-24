@@ -4,8 +4,9 @@ namespace Modules\Admin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Admin\Entities\Schedule;
 
-class AdminDatabaseSeeder extends Seeder
+class ScheduleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +15,9 @@ class AdminDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(DesignTypeTableSeeder::class);
-        $this->call(ScheduleTableSeeder::class);
+        $schedules = ['Morning', 'Evening'];
+        foreach ($schedules as $key => $value) {
+           Schedule::firstOrCreate(['name'=>$value]);
+        }
     }
 }

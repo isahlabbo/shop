@@ -19,7 +19,7 @@ class DesignTypeTableSeeder extends Seeder
         $types = ['Male Only','Female Only', 'Male And Female'];
         
         foreach ($types as $type) {
-            DesignType::create(['name'=>$type]);
+            DesignType::firstOrCreate(['name'=>$type]);
         }
     }
 }

@@ -29,6 +29,8 @@ if (!function_exists('user')) {
             $user = admin();
         }elseif (client()) {
         	$user = client();
+        }elseif (apparent()) {
+            $user = apparent();
         }
         return $user;
     }

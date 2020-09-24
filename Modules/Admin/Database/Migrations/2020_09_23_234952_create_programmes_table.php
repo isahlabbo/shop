@@ -19,7 +19,8 @@ class CreateProgrammesTable extends Migration
             $table->integer('duration');
             $table->integer('fee');
             $table->text('about');
-
+            $table->blob('image')->nullable();
+            
             $table->integer('shop_id')
             ->unsigned()->nullable()
             ->foreign()

@@ -19,6 +19,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('client.login') }}">Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.shop.customer.index',[$shop->id]) }}">customers</a>
                     </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('client.login') }}">Designs</a>

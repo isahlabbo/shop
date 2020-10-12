@@ -37,7 +37,17 @@ Route::prefix('admin')
         ->group(function() {
             Route::get('/', 'ApparentController@index')->name('index');
             Route::get('/create', 'ApparentController@create')->name('create');
+            Route::get('/application', 'ApparentController@application')->name('application');
             Route::post('/register', 'ApparentController@register')->name('register');
+        });
+
+        // shop customers routes
+        Route::name('customer.')
+        ->prefix('{shopId}/customers')
+        ->group(function() {
+            Route::get('/', 'CustomerController@index')->name('index');
+            Route::get('/create', 'CustomerController@create')->name('create');
+            Route::post('/register', 'CustomerController@register')->name('register');
         });
         //shop programmes routes
         Route::name('programme.')

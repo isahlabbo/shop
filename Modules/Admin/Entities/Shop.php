@@ -11,9 +11,9 @@ class Shop extends BaseModel
     	return $this->belongsTo('Modules\Apparent\Entities\Address');
     }
     
-    public function clients()
+    public function shopClients()
     {
-    	return $this->hasMany('Modules\Client\Entities\Client');
+    	return $this->hasMany(ShopClient::class);
     }
 
     public function apparents()

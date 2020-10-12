@@ -36,6 +36,14 @@ class ApparentController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
+    public function application($shopId)
+    {
+        $shop = Shop::find($shopId);
+        if(is_null($shop)){
+            return back();
+        }
+       return view('admin::shop.apparent.application',['shop'=>$shop]);
+    }
     public function create($shopId)
     {
         $shop = Shop::find($shopId);

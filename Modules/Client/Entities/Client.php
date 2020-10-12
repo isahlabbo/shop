@@ -67,6 +67,12 @@ class Client extends Authenticatable
         return $this->hasOne(MaleMeasure::class);
     }
 
+    public function shopClients()
+    {
+    	return $this->hasMany('Modules\Admin\Entities\ShopClient');
+    }
+    
+
     public function measurement()
     {
         $measurement = null;

@@ -48,6 +48,15 @@ Route::prefix('admin')
             Route::get('/', 'CustomerController@index')->name('index');
             Route::get('/create', 'CustomerController@create')->name('create');
             Route::post('/register', 'CustomerController@register')->name('register');
+            
+            // shop customers works routes
+            Route::name('work.')
+            ->prefix('{clientId}/works')
+            ->group(function() {
+                Route::get('/', 'CustomerWorkController@index')->name('index');
+                Route::get('/create', 'CustomerWorkController@create')->name('create');
+                Route::post('/register', 'CustomerWorkController@register')->name('register');
+            });
 
             // shop customers measurment routes
             Route::name('measurement.')

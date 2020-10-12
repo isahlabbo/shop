@@ -30,6 +30,7 @@ class CreateShopClientsTable extends Migration
             ->on('clients')
             ->delete('restrict')
             ->update('cascade');
+            $table->string('refferal_code')->nullable();
             $table->timestamps();
         });
     }

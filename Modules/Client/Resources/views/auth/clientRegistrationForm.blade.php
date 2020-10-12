@@ -104,6 +104,13 @@
 
                             <div class="col-md-6">
                                 @include('registration.address')
+                                <div class="form-group row">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Refferal Code') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password-confirm" type="text" class="form-control" name="refferal_code" placeholder="Refferal Code">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row mb-0">

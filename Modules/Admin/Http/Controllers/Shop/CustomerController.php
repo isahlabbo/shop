@@ -62,7 +62,10 @@ class CustomerController extends Controller
 
         $client = $this->registerNewCustomer($request->all(), $address->address);
 
-        $client->shopClients()->create(['shop_id'=>$shopId]);
+        $client->shopClients()->create([
+            'shop_id'=>$shopId,
+            'refferal_code'=>$request->refferal_code,
+            ]);
 
         return redirect()->route('admin.shop.customer.index',[$shopId])->withSuccess('Customer Registered successfully');
     }

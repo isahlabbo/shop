@@ -54,7 +54,7 @@ class Client extends Authenticatable
 
     public function address()
     {
-        return $this->hasOne('Modules\Apparent\Entities\Address');
+        return $this->belongsTo('Modules\Apparent\Entities\Address');
     }
 
     public function femaleMeasure()

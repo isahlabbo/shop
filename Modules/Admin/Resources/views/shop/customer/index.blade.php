@@ -15,11 +15,11 @@
                 <th>EMAIL</th>
                 <th>PHONE</th>
                 <th>ADDRESS</th>
+                <th>GENDER</th>
                 <th>FINSHED</th>
                 <th>UN FINISHED</th>
                 <th>BONUS</th>
                 <th>REFFERAL</th>
-                <th></th>
                 <th> <a href="{{route('admin.shop.customer.create',[$shop->id])}}"> <button class="btn-secondary btn">New Customer</button> </a></th>
             </thead>
             <tbody>
@@ -31,15 +31,11 @@
                     <td>{{$shopClient->client->phone}}</td>
                     <td>{{$shopClient->client->address->name}}</td>
                     <td>{{$shopClient->client->gender->name}}</td>
-                    <td>{{$shopClient->client->religion->name}}</td>
-                    <td>{{$shopClient->client->tribe->name}}</td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#grantor_{{$shopClient->client->grantor->id}}"> 
-                            <button class="btn-primary btn">
-                                Grantor
-                            </button> 
-                        </a>
-                    </td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td></td>
+                    
                     <td>
                         <button class="btn-primary btn">
                             Edit

@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Entities\State;
+use Modules\Apparent\Entities\Address;
 use Modules\Apparent\Entities\Religion;
 use Modules\Apparent\Entities\Tribe;
 use Modules\Apparent\Services\AddressHandle;
@@ -37,9 +38,17 @@ class CustomerController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create($shopId)
     {
-        return view('admin::admin.shop.customer.create');
+        $shop = Shop::find($shopId);
+        if(is_null($shop)){
+            return back();
+        }
+        return view('admin::shop.customer.create',[
+            'shop'=>$shop,
+            'states'=>State::all(),
+            'genders'=>Gender::all(),
+            ]);
     }
 
     /**
@@ -47,9 +56,15 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function register(Request $request)
+    public function register(Request $request,$shopId )
     {
-        //
+        $address = new AddressHandle($request->all());
+
+        $client = $this->registerNewCustomer($request->all(), $address->address);
+
+        $client->shopClients()->create(['shop_id'=>$shopId]);
+
+        return redirect()->route('admin.shop.customer.index',[$shopId])->withSuccess('Customer Registered successfully');
     }
 
     /**
@@ -91,5 +106,24 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function registerNewCustomer(array $data, Address $address)
+    {
+        $client = $address->clients()->create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'gender_id' => $data['gender'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        if($client->gender->id == 1){
+            $client->maleMeasure()->create([]);
+        }else{
+            $client->femaleMeasure()->create([]);
+        }
+        return $client;
     }
 }

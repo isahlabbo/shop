@@ -55,6 +55,7 @@ Route::prefix('admin')
             ->group(function() {
                 Route::get('/', 'CustomerWorkController@index')->name('index');
                 Route::get('/create', 'CustomerWorkController@create')->name('create');
+                Route::get('/done', 'CustomerWorkController@done')->name('done');
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
             });
 

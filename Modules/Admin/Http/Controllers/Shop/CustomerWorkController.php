@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
 use Modules\Admin\Entities\ShopClient;
+use Modules\Admin\Entities\ShopClientWork;
 
 class CustomerWorkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -53,7 +58,8 @@ class CustomerWorkController extends Controller
     {
         $shopClient = ShopClient::find($shopClientId);
         $shopClient->shopClientWorks()->create(['description'=>$request->description]);
-        return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientId])->withSuccess('Work has been registerd successfully');
+        return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientId])
+        ->withSuccess('Work has been registered successfully');
     }
 
     /**
@@ -61,39 +67,13 @@ class CustomerWorkController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function done($shopId, $shopClientWorkId)
     {
-        return view('admin::show');
+        $work = ShopClientWork::find($shopClientWorkId);
+        $work->update(['status'=>1]);
+        return redirect()
+        ->route('admin.shop.customer.work.index',[$shopId,$work->shopClient->id])
+        ->withSuccess('Work done registered successfully');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

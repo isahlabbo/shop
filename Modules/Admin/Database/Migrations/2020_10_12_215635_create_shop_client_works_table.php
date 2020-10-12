@@ -23,6 +23,7 @@ class CreateShopClientWorksTable extends Migration
             ->delete('restrict')
             ->update('cascade');
             $table->text('description')->nullable();
+            $table->text('cloth_image')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

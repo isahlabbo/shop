@@ -27,9 +27,13 @@
                         <td>{{$work->created_at}}</td>
                         <td>{{$work->status == 0 ? 'Processing...' : 'Finished'}}</td>
                         <td>
-                            <button class="btn-primary btn">
+                        @if($work->status == 0)
+                            <a href="{{route('admin.shop.customer.work.done',[$shop->id,$work->id])}}" >
+                            <button class="btn-primary btn" onclick="return confirm('are you sure you are true with this work')"> 
                                 Done
-                            </button>  
+                            </button>
+                            </a>
+                        @endif      
                         </td>
                     </tr>
                     @endforeach

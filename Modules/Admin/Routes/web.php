@@ -48,6 +48,14 @@ Route::prefix('admin')
             Route::get('/', 'CustomerController@index')->name('index');
             Route::get('/create', 'CustomerController@create')->name('create');
             Route::post('/register', 'CustomerController@register')->name('register');
+
+            // shop customers measurment routes
+            Route::name('measurement.')
+            ->prefix('{clientId}/measurement')
+            ->group(function() {
+                Route::get('/', 'CustomerMeasurementController@index')->name('index');
+                Route::post('/update', 'CustomerMeasurementController@update')->name('update');
+            });
         });
         //shop programmes routes
         Route::name('programme.')

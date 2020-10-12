@@ -16,6 +16,7 @@
                 <th>PHONE</th>
                 <th>ADDRESS</th>
                 <th>GENDER</th>
+                <th>WORKS</th>
                 <th>FINSHED</th>
                 <th>UN FINISHED</th>
                 <th>BONUS</th>
@@ -31,10 +32,15 @@
                     <td>{{$shopClient->client->phone}}</td>
                     <td>{{$shopClient->client->address->name}}</td>
                     <td>{{$shopClient->client->gender->name}}</td>
+                    <td>
+                        <a href="{{route('admin.shop.customer.work.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
+                        {{count($shopClient->shopClientWorks)}}
+                        </a>
+                    </td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
-                    <td></td>
+                    <td>{{$shopClient->refferal_code}}</td>
                     
                     <td>
                         <button class="btn-primary btn">
@@ -43,6 +49,11 @@
                         <button class="btn-secondary btn">
                             Delete
                         </button>
+                        <a href="{{route('admin.shop.customer.measurement.index',[$shop->id,$shopClient->client->id])}}">
+                            <button class="btn-primary btn">
+                            Measurement
+                            </button>
+                        </a> 
                     </td>
                 </tr>
                 @endforeach

@@ -15,4 +15,9 @@ class ShopClient extends BaseModel
     {
     	return $this->belongsTo('Modules\Client\Entities\Client');
     }
+
+    public function shopClientWorks()
+    {
+        return $this->hasMany(ShopClientWork::class);
+    }
 }

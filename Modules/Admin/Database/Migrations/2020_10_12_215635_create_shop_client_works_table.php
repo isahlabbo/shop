@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShopClientsTable extends Migration
+class CreateShopClientWorksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,17 @@ class CreateShopClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_clients', function (Blueprint $table) {
+        Schema::create('shop_client_works', function (Blueprint $table) {
             $table->id();
-            $table->integer('shop_id')
+            $table->integer('shop_client_id')
             ->unsigned()->nullable()
             ->foreign()
             ->references('id')
-            ->on('shops')
+            ->on('shop_clients')
             ->delete('restrict')
             ->update('cascade');
-
-            $table->integer('client_id')
-            ->unsigned()->nullable()
-            ->foreign()
-            ->references('id')
-            ->on('clients')
-            ->delete('restrict')
-            ->update('cascade');
-            $table->string('refferal_code')->nullable();
-            $table->string('bonus')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
@@ -43,6 +35,6 @@ class CreateShopClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_clients');
+        Schema::dropIfExists('shop_client_works');
     }
 }

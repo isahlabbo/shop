@@ -40,9 +40,19 @@ class CustomerFamilyMemberController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create($shopId,$clientId)
     {
-        return view('admin::create');
+        $shop = Shop::find($shopId);
+        $client = Client::find($clientId);
+        if(is_null($shop) || is_null($client)){
+            return back()->withWarning('invalid URL');
+        }
+        return view('admin::shop.customer.familyMember.create',[
+            'client'=>$client,
+            'shop'=>$shop,
+            'states'=>State::all(),
+            'genders'=>Gender::all()
+        ]);
     }
 
     /**

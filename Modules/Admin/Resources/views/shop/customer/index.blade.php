@@ -29,7 +29,7 @@
                     <td>{{$shopClient->client->phone}}</td>
                     <td>
                     <a href="{{route('admin.shop.customer.family.member.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
-                        {{count($shopClient->client->clientChildren)}}
+                        {{count($shopClient->client->clientFamilyMembers)}}
                     </a>
                     </td>
 

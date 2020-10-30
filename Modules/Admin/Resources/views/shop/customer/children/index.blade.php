@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 
 @section('title')
-   {{$shop->name}} registered apparent in {{date('Y')}}
+   {{$client->first_name}} {{$client->first_name}} registered children
 @endsection
 
 @section('content')
@@ -20,28 +20,28 @@
                 <th>UN FINISHED</th>
                 <th>BONUS</th>
                 <th>REFFERAL</th>
-                <th> <a href="{{route('admin.shop.customer.create',[$shop->id])}}"> <button class="btn-secondary btn">New Customer</button> </a></th>
+                <th> <a href="{{route('admin.shop.customer.create',[$shop->id])}}"> <button class="btn-secondary btn">New Child</button> </a></th>
             </thead>
             <tbody>
-                @foreach($shop->shopClients as $shopClient)
+                @foreach($client->clientChildren as $clientChild)
                 <tr>
                     <td>{{$loop->index+1}}</td>
-                    <td> {{$shopClient->client->first_name}} {{$shopClient->client->last_name}}</td>
-                    <td>{{$shopClient->client->phone}}</td>
+                    <td> {{$clientChild->client->first_name}} {{$clientChild->client->last_name}}</td>
+                    <td>{{$clientChild->client->phone}}</td>
                     <td>
-                    <a href="{{route('admin.shop.customer.children.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
-                        {{count($shopClient->client->clientChildren)}}
+                    <a href="{{route('admin.shop.customer.children.index',[$shop->id,$clientChild->id])}}" class="btn-primary btn">
+                        {{count($clientChild->client->clientChildren)}}
                     </a>
                     </td>
 
                     <td>
-                    <a href="{{route('admin.shop.customer.work.index',[$shop->id,$shopClient->id])}}" class="btn-secondary btn">
-                        {{count($shopClient->client->clientWives)}}
+                    <a href="{{route('admin.shop.customer.work.index',[$shop->id,$clientChild->id])}}" class="btn-secondary btn">
+                        {{count($clientChild->client->clientWives)}}
                     </a>
                     </td>
                     <td>
-                        <a href="{{route('admin.shop.customer.work.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
-                        {{count($shopClient->shopClientWorks)}}
+                        <a href="{{route('admin.shop.customer.work.index',[$shop->id,$clientChild->id])}}" class="btn-primary btn">
+                        {{count($clientChild->shopClientWorks)}}
                         </a>
                     </td>
                     <td>0</td>

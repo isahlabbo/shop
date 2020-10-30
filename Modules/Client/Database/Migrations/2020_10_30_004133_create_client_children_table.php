@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShopClientWorksTable extends Migration
+class CreateClientChildrenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,23 @@ class CreateShopClientWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_client_works', function (Blueprint $table) {
+        Schema::create('client_children', function (Blueprint $table) {
             $table->id();
-            $table->integer('shop_client_id')
+            $table->integer('client_id')
             ->unsigned()->nullable()
             ->foreign()
             ->references('id')
-            ->on('shop_clients')
+            ->on('clients')
             ->delete('restrict')
             ->update('cascade');
-            $table->text('description')->nullable();
-            $table->text('cloth_image')->nullable();
-            $table->boolean('status')->default(0);
-            $table->integer('fee')->nullable(0);
-            $table->date('finish_date')->nullable(0);
+
+            $table->integer('child_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('clients')
+            ->delete('restrict')
+            ->update('cascade');
             $table->timestamps();
         });
     }
@@ -38,6 +41,6 @@ class CreateShopClientWorksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_client_works');
+        Schema::dropIfExists('client_children');
     }
 }

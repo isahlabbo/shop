@@ -72,6 +72,15 @@ class Client extends Authenticatable
     	return $this->hasMany('Modules\Admin\Entities\ShopClient');
     }
     
+    public function clientChildren()
+    {
+        return $this->hasMany(ClientChild::class);
+    }
+
+    public function clientWives()
+    {
+        return $this->hasMany(ClientWife::class);
+    }
 
     public function measurement()
     {

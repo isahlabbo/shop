@@ -59,6 +59,15 @@ Route::prefix('admin')
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
             });
 
+            // shop customers children routes
+            Route::name('children.')
+            ->prefix('{clientId}/children')
+            ->group(function() {
+                Route::get('/', 'CustomerChildrenController@index')->name('index');
+                Route::get('/create', 'CustomerChildrenController@create')->name('create');
+                
+            });
+
             // shop customers measurment routes
             Route::name('measurement.')
             ->prefix('{clientId}/measurement')

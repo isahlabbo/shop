@@ -23,20 +23,20 @@
                 <th> <a href="{{route('admin.shop.customer.create',[$shop->id])}}"> <button class="btn-secondary btn">New Child</button> </a></th>
             </thead>
             <tbody>
-                @foreach($client->clientChildren as $clientChild)
+                @foreach($client->clientFamilyMembers as $clientFamilyMember)
                 <tr>
                     <td>{{$loop->index+1}}</td>
-                    <td> {{$clientChild->client->first_name}} {{$clientChild->client->last_name}}</td>
-                    <td>{{$clientChild->client->phone}}</td>
+                    <td> {{$clientFamilyMember->client->first_name}} {{$clientFamilyMember->client->last_name}}</td>
+                    <td>{{$clientFamilyMember->client->phone}}</td>
                     <td>
-                    <a href="{{route('admin.shop.customer.children.index',[$shop->id,$clientChild->id])}}" class="btn-primary btn">
-                        {{count($clientChild->client->clientChildren)}}
+                    <a href="{{route('admin.shop.customer.children.index',[$shop->id,$clientFamilyMember->id])}}" class="btn-primary btn">
+                        {{count($clientFamilyMember->client->clientFamilyMemberren)}}
                     </a>
                     </td>
 
                     <td>
-                    <a href="{{route('admin.shop.customer.work.index',[$shop->id,$clientChild->id])}}" class="btn-secondary btn">
-                        {{count($clientChild->client->clientWives)}}
+                    <a href="{{route('admin.shop.customer.work.index',[$shop->id,$clientFamilyMember->id])}}" class="btn-secondary btn">
+                        {{count($clientFamilyMember->client->clientWives)}}
                     </a>
                     </td>
                     <td>

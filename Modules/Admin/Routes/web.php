@@ -59,14 +59,16 @@ Route::prefix('admin')
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
             });
 
-            // shop customers children routes
-            Route::name('children.')
-            ->prefix('{clientId}/children')
+            // shop customers family routes
+            Route::name('family.member.')
+            ->prefix('{clientId}/family-member')
             ->group(function() {
-                Route::get('/', 'CustomerChildrenController@index')->name('index');
-                Route::get('/create', 'CustomerChildrenController@create')->name('create');
+                Route::get('/', 'CustomerFamilyMemberController@index')->name('index');
+                Route::get('/create', 'CustomerFamilyMemberController@create')->name('create');
                 
             });
+
+           
 
             // shop customers measurment routes
             Route::name('measurement.')

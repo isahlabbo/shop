@@ -13,8 +13,7 @@
                 <th>S/N</th>
                 <th>NAME</th>
                 <th>PHONE</th>
-                <th>CHILDREN</th>
-                <th>WIVES</th>
+                <th>FAMILY MEMBERS</th>
                 <th>WORKS</th>
                 <th>FINSHED</th>
                 <th>UN FINISHED</th>
@@ -29,16 +28,11 @@
                     <td> {{$shopClient->client->first_name}} {{$shopClient->client->last_name}}</td>
                     <td>{{$shopClient->client->phone}}</td>
                     <td>
-                    <a href="{{route('admin.shop.customer.children.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
+                    <a href="{{route('admin.shop.customer.family.member.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
                         {{count($shopClient->client->clientChildren)}}
                     </a>
                     </td>
 
-                    <td>
-                    <a href="{{route('admin.shop.customer.work.index',[$shop->id,$shopClient->id])}}" class="btn-secondary btn">
-                        {{count($shopClient->client->clientWives)}}
-                    </a>
-                    </td>
                     <td>
                         <a href="{{route('admin.shop.customer.work.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
                         {{count($shopClient->shopClientWorks)}}

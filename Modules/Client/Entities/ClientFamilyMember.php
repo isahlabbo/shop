@@ -4,7 +4,7 @@ namespace Modules\Client\Entities;
 
 use App\BaseModel;
 
-class ClientWife extends BaseModel
+class ClientFamilyMember extends BaseModel
 {
     public function client()
     {

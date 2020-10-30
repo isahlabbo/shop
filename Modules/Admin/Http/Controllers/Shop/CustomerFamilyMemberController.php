@@ -15,7 +15,7 @@ use Modules\Apparent\Entities\Tribe;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Hash;
 
-class CustomerChildrenController extends Controller
+class CustomerFamilyMemberController extends Controller
 {
 
     public function __construct()
@@ -33,7 +33,7 @@ class CustomerChildrenController extends Controller
         if(is_null($shop) || is_null($client)){
             return back()->withWarning('invalid URL');
         }
-        return view('admin::shop.customer.children.index',['shop'=>$shop,'client'=>$client]);
+        return view('admin::shop.customer.familyMember.index',['shop'=>$shop,'client'=>$client]);
     }
 
     /**

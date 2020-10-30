@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientWivesTable extends Migration
+class CreateClientFamilyMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClientWivesTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_wives', function (Blueprint $table) {
+        Schema::create('client_family_members', function (Blueprint $table) {
             $table->id();
             $table->integer('client_id')
             ->unsigned()->nullable()
@@ -23,7 +23,7 @@ class CreateClientWivesTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
-            $table->integer('wife_id')
+            $table->integer('family_member_id')
             ->unsigned()->nullable()
             ->foreign()
             ->references('id')
@@ -41,6 +41,6 @@ class CreateClientWivesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_wives');
+        Schema::dropIfExists('client_family_members');
     }
 }

@@ -1,13 +1,14 @@
+
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
 		<br>
 		<div class="card">
-                <div class="card-header card-header-primary">{{ admin() ? $shop->name.' Cutomer Registration' :__('Client Registration') }}</div>
+                <div class="card-header card-header-primary">{{$message }}</div>
 
                 <div class="card-body">
                     
-                    <form method="POST" action="{{ admin() ? route('admin.shop.customer.register',[$shop->id]) : route('client.register') }}">
+                    <form method="POST" action="{{ $route ? $route : route('client.register') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -104,6 +105,19 @@
 
                             <div class="col-md-6">
                                 @include('registration.address')
+                                @if($status)
+                                <div class="form-group row">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Relation Ship') }}</label>
+                                    <div class="col-md-6">
+                                        <select name="relation" id="" class="form-control">
+                                            <option value="">Chose Relation</option>
+                                            @foreach($relations as $relation)
+                                                <option value="{{$relation->id}}">{{$relation->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                @else
                                 <div class="form-group row">
                                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Refferal Code') }}</label>
 
@@ -111,6 +125,7 @@
                                         <input id="password-confirm" type="text" class="form-control" name="refferal_code" placeholder="Refferal Code">
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row mb-0">

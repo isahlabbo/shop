@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
 use Modules\Client\Entities\Client;
+use Modules\Client\Entities\Relation;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Entities\State;
 use Modules\Apparent\Entities\Address;
@@ -51,7 +52,11 @@ class CustomerFamilyMemberController extends Controller
             'client'=>$client,
             'shop'=>$shop,
             'states'=>State::all(),
-            'genders'=>Gender::all()
+            'genders'=>Gender::all(),
+            'relations'=>Relation::all(),
+            'route'=>route('admin.shop.customer.family.member.register',[$shopId,$clientId]),
+            'message'=>$client->first_name.' '.$client->last_name.' Family Member Registration',
+            'status'=>1
         ]);
     }
 
@@ -60,9 +65,26 @@ class CustomerFamilyMemberController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function register(Request $request, $shopId, $clientId)
     {
-        //
+
+        $address = new AddressHandle($request->all());
+
+        $client = $address->address->registerNewCustomer($request->all());
+
+        $responsibleClient = Client::find($clientId);
+
+        $client->shopClients()->create([
+            'shop_id'=>$shopId,
+            ]);
+
+        $responsibleClient->clientFamilyMembers()->create([
+            'family_member_id'=>$client->id,
+            'relation_id'=>$request->relation
+            ]);
+       
+        return redirect()->route('admin.shop.customer.family.member.index',[$shopId, $clientId])
+        ->withSuccess('Customer family member Registered successfully');
     }
 
     /**

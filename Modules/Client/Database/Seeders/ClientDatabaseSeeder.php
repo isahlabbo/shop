@@ -17,5 +17,6 @@ class ClientDatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(GenderTableSeeder::class);
+        $this->call(RelationTableSeeder::class);
     }
 }

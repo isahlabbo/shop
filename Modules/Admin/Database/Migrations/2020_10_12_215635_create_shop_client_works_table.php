@@ -26,7 +26,9 @@ class CreateShopClientWorksTable extends Migration
             $table->text('cloth_image')->nullable();
             $table->boolean('status')->default(0);
             $table->integer('fee')->nullable(0);
-            $table->date('finish_date')->nullable(0);
+            $table->integer('paid_fee')->default(0);
+            $table->date('finishing_date')->nullable(0);
+            $table->time('finishing_time')->nullable(0);
             $table->timestamps();
         });
     }

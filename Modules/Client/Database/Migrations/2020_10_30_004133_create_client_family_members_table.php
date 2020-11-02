@@ -22,7 +22,13 @@ class CreateClientFamilyMembersTable extends Migration
             ->on('clients')
             ->delete('restrict')
             ->update('cascade');
-
+            $table->integer('relation_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('relations')
+            ->delete('restrict')
+            ->update('cascade');
             $table->integer('family_member_id')
             ->unsigned()->nullable()
             ->foreign()

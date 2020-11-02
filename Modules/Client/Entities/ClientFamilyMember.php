@@ -10,4 +10,14 @@ class ClientFamilyMember extends BaseModel
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function relation()
+    {
+        return $this->belongsTo(Relation::class);
+    }
+
+    public function subClient()
+    {
+        return Client::find($this->family_member_id);
+    }
 }

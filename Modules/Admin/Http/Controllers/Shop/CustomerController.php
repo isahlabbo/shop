@@ -48,6 +48,9 @@ class CustomerController extends Controller
             'shop'=>$shop,
             'states'=>State::all(),
             'genders'=>Gender::all(),
+            'message'=>$shop->name.' Customer Registration',
+            'route'=>route('admin.shop.customer.register',[$shop->id]),
+            'status'=>null
             ]);
     }
 

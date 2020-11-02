@@ -15,6 +15,11 @@
                 <thead>
                     <th>S/N</th>
                     <th>Description</th>
+                    <th>Fee</th>
+                    <th>paid</th>
+                    <th>Pending Payment</th>
+                    <th>Finishing Date</th>
+                    <th>Finishing Time</th>
                     <th>Registered At</th>
                     <th>Status</th>
                     <th> <a href="{{route('admin.shop.customer.work.create',[$shop->id,$shopClient->id])}}"> <button class="btn-secondary btn">Add Work</button> </a></th>
@@ -24,6 +29,11 @@
                     <tr>
                         <td>{{$loop->index+1}}</td>
                         <td> {{$work->description}}</td>
+                        <td> #{{$work->fee}}</td>
+                        <td> #{{$work->paid_fee}}</td>
+                        <td> #{{$work->fee - $work->paid_fee}}</td>
+                        <td> {{date('1-M-Y',strtotime($work->finishing_date))}}</td>
+                        <td> {{$work->finishing_time}}</td>
                         <td>{{$work->created_at}}</td>
                         <td>{{$work->status == 0 ? 'Processing...' : 'Finished'}}</td>
                         <td>

@@ -65,6 +65,7 @@ Route::prefix('admin')
             ->group(function() {
                 Route::get('/', 'CustomerFamilyMemberController@index')->name('index');
                 Route::get('/create', 'CustomerFamilyMemberController@create')->name('create');
+                Route::post('/register', 'CustomerFamilyMemberController@register')->name('register');
                 
             });
 

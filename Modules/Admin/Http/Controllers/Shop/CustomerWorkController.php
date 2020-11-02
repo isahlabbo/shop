@@ -30,7 +30,7 @@ class CustomerWorkController extends Controller
             return back()->withWarning('invalid shop ID');
         }
 
-        return view('admin::shop.customer.work',[
+        return view('admin::shop.customer.work.index',[
             'shop'=>$shop,
             'shopClient'=>$shopClient
         ]);
@@ -46,7 +46,7 @@ class CustomerWorkController extends Controller
         if(is_null($shopClient)){
             return back()->withWarning('invalid customer ID');
         }
-        return view('admin::shop.customer.newWork',['shopClient'=>$shopClient]);
+        return view('admin::shop.customer.work.create',['shopClient'=>$shopClient]);
     }
 
     /**
@@ -57,7 +57,13 @@ class CustomerWorkController extends Controller
     public function register(Request $request, $shopId, $shopClientId)
     {
         $shopClient = ShopClient::find($shopClientId);
-        $shopClient->shopClientWorks()->create(['description'=>$request->description]);
+        $shopClient->shopClientWorks()->create([
+            'description'=>$request->description,
+            'fee'=>$request->fee,
+            'paid_fee'=>$request->paid_fee,
+            'finishing_date'=>$request->finishing_date,
+            'finishing_time'=>$request->finishing_time
+            ]);
         return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientId])
         ->withSuccess('Work has been registered successfully');
     }

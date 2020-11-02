@@ -23,6 +23,7 @@
             </thead>
             <tbody>
                 @foreach($shop->shopClients as $shopClient)
+                @if($shopClient->client->stageOfThisClient() != 'sub client')
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td> {{$shopClient->client->first_name}} {{$shopClient->client->last_name}}</td>
@@ -38,8 +39,8 @@
                         {{count($shopClient->shopClientWorks)}}
                         </a>
                     </td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>{{count($shopClient->shopClientWorks->where('status',1))}}</td>
+                    <td>{{count($shopClient->shopClientWorks->where('status',0))}}</td>
                     <td>0</td>
                     <td>{{$shopClient->refferal_code}}</td>
                     
@@ -57,6 +58,7 @@
                         </a> 
                     </td>
                 </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>

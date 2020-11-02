@@ -5,6 +5,7 @@ namespace Modules\Client\Entities;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Modules\Admin\Entities\Shop;
 
 class Client extends Authenticatable
 {
@@ -71,13 +72,38 @@ class Client extends Authenticatable
     {
     	return $this->hasMany('Modules\Admin\Entities\ShopClient');
     }
+
+    public function getThisShopClient(Shop $shop)
+    {
+        foreach($this->shopClients->where('shop_id',$shop->id) as $shopClient){
+            return $shopClient;
+        }
+    }
     
     public function clientFamilyMembers()
     {
         return $this->hasMany(ClientFamilyMember::class);
     }
 
-    
+    public function stageOfThisClient()
+    {
+        if(count($this->clientFamilyMembers) > 0){
+            return 'super client';
+        }else if($this->subClient()){
+            return 'sub client';
+        }else{
+            return 'independent client';
+        }
+    }
+
+    public function subClient()
+    {
+        $flag = false;
+        foreach (ClientFamilyMember::where('family_member_id',$this->id)->get() as $client) {
+            $flag = true;
+        }
+        return $flag;
+    }
 
     public function measurement()
     {

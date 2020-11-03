@@ -15,4 +15,17 @@ class Area extends BaseModel
     {
     	return $this->belongsTo(Town::class);
     }
+
+    public function shops($count)
+    {
+        $shops = [];
+        foreach ($this->addresses as $address) {
+            foreach ($address->shops as $shop) {
+                if (count($shops) < $count) {
+                    $shops[]=$shop;
+                }
+            }
+        }
+        return $shops;
+    }
 }

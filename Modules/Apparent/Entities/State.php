@@ -15,4 +15,13 @@ class State extends BaseModel
     {
     	return $this->belongsTo(Country::class);
     }
+
+    public function shops($numberOfShopInEachArea)
+    {
+        $shops = [];
+        foreach ($this->lgas as $lga) {
+            array_merge($shops,$lga->shops($numberOfShopInEachArea));
+        }
+        return $shops;     
+    }
 }

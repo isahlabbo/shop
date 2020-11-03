@@ -15,4 +15,13 @@ class Town extends BaseModel
     {
     	return $this->belongsTo(Lga::class);
     }
+
+    public function shops($numberOfShopInEachArea)
+    {
+        $shops = [];
+        foreach ($this->areas as $area) {
+            array_merge($shops, $area->shops($numberOfShopInEachArea));
+        }
+        return $shops;
+    }
 }

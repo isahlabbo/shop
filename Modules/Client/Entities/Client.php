@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Admin\Entities\Shop;
+use Modules\Client\Services\AvailableShopTrait as HasShops;
 
 class Client extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasShops;
 
     /**
      * The attributes that are mass assignable.

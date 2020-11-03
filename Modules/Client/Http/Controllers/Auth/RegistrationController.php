@@ -24,6 +24,9 @@ class RegistrationController extends Controller
         return view('client::auth.registration',[
             'states'=>State::all(),
             'genders'=>Gender::all(),
+            'message'=>'Client Registration page',
+            'route'=>route('client.register'),
+            'status'=>null
         ]);
     }
 

@@ -15,10 +15,20 @@ class Shop extends BaseModel
     {
     	return $this->hasMany(ShopClient::class);
     }
+    
+    public function shopDesigns()
+    {
+    	return $this->hasMany(ShopDesign::class);
+    }
 
     public function apparents()
     {
     	return $this->hasMany('Modules\Apparent\Entities\Apparent');
+    }
+
+    public function designType()
+    {
+    	return $this->belongsTo(DesignType::class);
     }
 
     public function admin()

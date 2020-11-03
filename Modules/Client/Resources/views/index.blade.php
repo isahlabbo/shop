@@ -8,7 +8,31 @@
     <!-- available registered shops in the area -->
     <div class="row">
         @foreach(client()->areaShops() as $areaShop)
-            <div class="col-md-3">{{$areaShop->name}}</div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{asset('img/intro-img.jpg')}}" alt="" height="200">
+                        <table>
+                            <tr>
+                                <td><b>Title:</b> </td>
+                                <td>{{strtolower($areaShop->name)}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Design:</b> </td>
+                                <td>{{strtolower($areaShop->designType->name)}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Location:</b> </td>
+                                <td> {{$areaShop->address->area->town->lga->state->name}} {{$areaShop->address->area->town->lga->name}} {{$areaShop->address->area->town->name}} {{$areaShop->address->area->name}}, {{$areaShop->address->name}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Uploaded:</b> </td>
+                                <td><a href="#" >{{count($areaShop->shopDesigns)}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         @endforeach
     </div>
     <!-- available registered shops in the town -->

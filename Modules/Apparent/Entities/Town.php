@@ -21,7 +21,7 @@ class Town extends BaseModel
         $shops = [];
         foreach ($this->areas as $area) {
             array_merge($shops, $area->shops($numberOfShopInEachArea));
-        }
+        } 
         return $shops;
     }
 }

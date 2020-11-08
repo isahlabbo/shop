@@ -30,6 +30,13 @@ Route::prefix('client')
 	    Route::post('logout', 'LoginController@logout')->name('logout');
     });
 
+    Route::prefix('shops')
+    ->namespace('Shop')
+    ->name('shop.')
+    ->group(function() {
+       Route::get('/', 'SearchShopController@index')->name('index');
+    });
+
     Route::prefix('measurement')
     ->name('measurement.')
     ->group(function() {

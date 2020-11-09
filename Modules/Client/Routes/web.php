@@ -35,6 +35,8 @@ Route::prefix('client')
     ->name('shop.')
     ->group(function() {
        Route::get('/', 'SearchShopController@index')->name('index');
+       Route::get('/create', 'SearchShopController@index')->name('create');
+       Route::post('search', 'SearchShopController@search')->name('search');
     });
 
     Route::prefix('measurement')

@@ -21,7 +21,7 @@ class Area extends BaseModel
         $shops = [];
         foreach ($this->addresses as $address) {
             foreach ($address->shops as $shop) {
-                if (count($shops) < $count) {
+                if ($count != 'all' && count($shops) < $count) {
                     $shops[]=$shop;
                 }
             }

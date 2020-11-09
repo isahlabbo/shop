@@ -33,6 +33,9 @@ Auth::routes();
 		   ->name('address')
 		   ->group(function() {
 	        Route::get('/state/{stateId}/get-lgas', 'AddressController@getLgas');
+	        Route::get('/lga/{lgaId}/get-towns', 'AddressController@getTowns');
+	        Route::get('/town/{townId}/get-areas', 'AddressController@getAreas');
+	        Route::get('/area/{townId}/get-addresses', 'AddressController@getAddresses');
         });   
         
 	});

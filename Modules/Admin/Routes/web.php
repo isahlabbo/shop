@@ -41,6 +41,15 @@ Route::prefix('admin')
             Route::post('/register', 'ApparentController@register')->name('register');
         });
 
+        // shop apparentes routes
+        Route::name('design.')
+        ->prefix('{shopId}/designs')
+        ->group(function() {
+            Route::get('/', 'ShopDesignController@index')->name('index');
+            Route::get('/work/{workId}/create', 'ShopDesignController@create')->name('create');
+            Route::post('/work/{workId}/register', 'ShopDesignController@register')->name('register');
+        });
+
         // shop customers routes
         Route::name('customer.')
         ->prefix('{shopId}/customers')

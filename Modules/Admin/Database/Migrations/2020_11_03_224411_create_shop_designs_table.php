@@ -29,9 +29,23 @@ class CreateShopDesignsTable extends Migration
             ->on('apparents')
             ->delete('restrict')
             ->update('cascade');
+            $table->integer('admin_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('admins')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('shop_client_work_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('shop_client_works')
+            ->delete('restrict')
+            ->update('cascade');
             $table->text('design_image');
             $table->text('prove_image')->nullable();
-            $table->text('comment')->nullable();
+            $table->text('description')->nullable();
             $table->integer('fee')->nullable();
             $table->timestamps();
         });

@@ -1,7 +1,7 @@
 @extends('client::layouts.master')
 
 @section('title')
-    {{client()->first_name}} {{client()->last_name}} search shops
+    SEWMYCLOTH search shops
 @endsection
 
 @section('content')

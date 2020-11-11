@@ -18,13 +18,13 @@
                         <a class="nav-link" href="{{ route('admin.shop.programme.index',[$shop->id]) }}">Programmes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('client.login') }}">Works</a>
+                        <a class="nav-link" href="#">Works</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.shop.customer.index',[$shop->id]) }}">customers</a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('client.login') }}">Designs</a>
+                        <a class="nav-link" href="{{ route('admin.shop.design.index',[$shop->id]) }}">Designs</a>
                     </li>                                                                
                 </ul>
                 

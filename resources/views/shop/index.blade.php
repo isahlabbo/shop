@@ -18,6 +18,7 @@
 
     <!-- Blog section -->
     @include('shop.include.blog')
+    @include('sweetalert::alert')
     <!-- Blog section end-->
 
     <!-- Back to top -->

@@ -10,4 +10,9 @@ class ShopDesign extends BaseModel
     {
         return $this->belongsTo(Shop::class);
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }

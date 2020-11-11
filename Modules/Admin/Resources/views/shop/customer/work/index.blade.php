@@ -43,6 +43,10 @@
                                 Done
                             </button>
                             </a>
+                        @else
+                            <button class="btn-primary btn"> 
+                                <a href="{{route('admin.shop.design.create',[$shop->id,$work->id])}}" style="color: white">Upload Work</a>
+                            </button>
                         @endif      
                         </td>
                     </tr>

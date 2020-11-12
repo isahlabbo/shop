@@ -13,6 +13,10 @@ use Modules\Apparent\Entities\Area;
 
 class SearchShopController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:client');
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -41,6 +45,8 @@ class SearchShopController extends Controller
         $shops = $this->availableShops($request->all());
         if(count($shops) == 0){
             return redirect()->route('client.shop.create')->withWarning('No record found for this search');
+        }else {
+            return view('client::shop.search.index',['shops'=>$shops]);
         }
     }
 

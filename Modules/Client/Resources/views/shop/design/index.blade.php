@@ -1,4 +1,4 @@
-@extends('admin::layouts.master')
+@extends('client::layouts.master')
 
 @section('title')
    {{$shop->name}} uploaded designs

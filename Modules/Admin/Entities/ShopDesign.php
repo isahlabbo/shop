@@ -15,4 +15,14 @@ class ShopDesign extends BaseModel
     {
         return $this->belongsTo(Admin::class);
     }
+
+    public function shopDesignLikes()
+    {
+        return $this->hasMany(ShopDesignLike::class);
+    }
+
+    public function shopDesignRequests()
+    {
+        return $this->hasMany(ShopDesignRequest::class);
+    }
 }

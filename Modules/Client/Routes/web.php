@@ -30,13 +30,18 @@ Route::prefix('client')
 	    Route::post('logout', 'LoginController@logout')->name('logout');
     });
 
-    Route::prefix('shops')
+    Route::prefix('shop')
     ->namespace('Shop')
     ->name('shop.')
     ->group(function() {
-       Route::get('/', 'SearchShopController@index')->name('index');
-       Route::get('/create', 'SearchShopController@index')->name('create');
-       Route::post('search', 'SearchShopController@search')->name('search');
+        Route::get('/', 'SearchShopController@index')->name('index');
+        Route::get('/create', 'SearchShopController@create')->name('create');
+        Route::post('search', 'SearchShopController@search')->name('search');
+        Route::prefix('{shopId}/designs')
+            ->name('design.')
+            ->group(function() {
+            Route::get('/', 'ClientShopDesignController@index')->name('index');
+            });
     });
 
     Route::prefix('measurement')

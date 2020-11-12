@@ -74,6 +74,16 @@ class Client extends Authenticatable
     	return $this->hasMany('Modules\Admin\Entities\ShopClient');
     }
 
+    public function shopDesignRequests()
+    {
+    	return $this->hasMany('Modules\Client\Entities\ShopDesignRequest');
+    }
+
+    public function shopDesignLikes()
+    {
+    	return $this->hasMany('Modules\Client\Entities\ShopDesignLike');
+    }
+
     public function getThisShopClient(Shop $shop)
     {
         foreach($this->shopClients->where('shop_id',$shop->id) as $shopClient){

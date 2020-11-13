@@ -48,6 +48,18 @@ Route::prefix('admin')
             Route::get('/', 'ShopDesignController@index')->name('index');
             Route::get('/work/{workId}/create', 'ShopDesignController@create')->name('create');
             Route::post('/work/{workId}/register', 'ShopDesignController@register')->name('register');
+
+            Route::name('request.')
+            ->prefix('{designId}/requests')
+            ->group(function() {
+                Route::get('/', 'ShopDesignRequestController@index')->name('index');
+            });
+
+            Route::name('like.')
+            ->prefix('{designId}/likes')
+            ->group(function() {
+                Route::get('/', 'ShopDesignLikeController@index')->name('index');
+            });
         });
 
         // shop customers routes

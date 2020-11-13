@@ -76,12 +76,12 @@ class Client extends Authenticatable
 
     public function shopDesignRequests()
     {
-    	return $this->hasMany('Modules\Client\Entities\ShopDesignRequest');
+    	return $this->hasMany('Modules\Admin\Entities\ShopDesignRequest');
     }
 
     public function shopDesignLikes()
     {
-    	return $this->hasMany('Modules\Client\Entities\ShopDesignLike');
+    	return $this->hasMany('Modules\Admin\Entities\ShopDesignLike');
     }
 
     public function getThisShopClient(Shop $shop)

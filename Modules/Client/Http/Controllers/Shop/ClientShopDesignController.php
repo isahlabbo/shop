@@ -27,9 +27,17 @@ class ClientShopDesignController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function like($shopId, $shopDesignId)
     {
-        //
+        $requests = client()->shopDesignLikes->where('shop_design_id',$shopDesignId);
+        if(count($requests)>0){
+            foreach ($requests as $request) {
+                $request->delete();
+            }
+        }else {
+            client()->shopDesignLikes()->firstOrCreate(['shop_design_id'=>$shopDesignId]);
+        }
+        return back();
     }
 
     /**
@@ -37,39 +45,18 @@ class ClientShopDesignController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function request($shopId, $shopDesignId)
     {
-        return view('client::show');
+        $requests = client()->shopDesignRequests->where('shop_design_id',$shopDesignId);
+        if(count($requests)>0){
+            foreach ($requests as $request) {
+                $request->delete();
+            }
+        }else {
+            client()->shopDesignRequests()->firstOrCreate(['shop_design_id'=>$shopDesignId]);
+        }
+        
+        return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('client::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

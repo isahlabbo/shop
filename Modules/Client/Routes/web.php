@@ -41,6 +41,8 @@ Route::prefix('client')
             ->name('design.')
             ->group(function() {
             Route::get('/', 'ClientShopDesignController@index')->name('index');
+            Route::get('/{designId}/like', 'ClientShopDesignController@like')->name('like');
+            Route::get('/{designId}/request', 'ClientShopDesignController@request')->name('request');
             });
     });
 

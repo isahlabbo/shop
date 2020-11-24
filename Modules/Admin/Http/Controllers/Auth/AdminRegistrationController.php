@@ -13,6 +13,7 @@ use Modules\Client\Entities\Gender;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Validator;
 use App\Services\Upload\FileUpload;
+use Modules\Admin\Http\Requests\AdminRegistrationFormRequest as FormRequest;
 
 class AdminRegistrationController extends Controller
 {
@@ -30,11 +31,9 @@ class AdminRegistrationController extends Controller
         ]);
     }
 
-    public function register(Request $request)
+    public function register(FormRequest $request)
     {
-        
-        //$this->validator($request->all())->validate();
-        
+                
         $address = new AddressHandle($request->all());
 
         $this->create($request->all(), $address->address);
@@ -43,32 +42,6 @@ class AdminRegistrationController extends Controller
 
     }
 
-    public function __construct()
-    {
-        //$this->middleware('admin:client');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'town' => ['required', 'string', 'max:255'],
-            'area' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
-            'phone' => ['required', 'string', 'max:11', 'unique:admins'],
-            'gender' => ['required'],
-            'lga' => ['required'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
 
     /**
      * Create a new user instance after a valid registration.

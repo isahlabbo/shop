@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('select[name="states"]').on('change',function(){
+    $('select[name="state"]').on('change',function(){
         var state_id = $(this).val();
         if(state_id){
             $.ajax({
@@ -7,6 +7,7 @@ $(document).ready(function(){
                type: 'GET',
                dataType: 'json',
                success: function(data){
+                  console.log(data);
                     $('select[name="lga"]').empty();
                     $('select[name="lga"]').append('<option value="">Select Local Government</option>');
                     $.each(data, function(key, value){

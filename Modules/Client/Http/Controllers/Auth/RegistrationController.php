@@ -11,7 +11,7 @@ use Modules\Apparent\Entities\Address;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Validator;
-
+use Modules\Client\Http\Requests\ClientRegistrationFormRequest as FormRequest;
 
 class RegistrationController extends Controller
 {
@@ -30,7 +30,7 @@ class RegistrationController extends Controller
         ]);
     }
 
-    public function register(Request $request)
+    public function register(FormRequest $request)
     {
         
         //$this->validator($request->all())->validate();
@@ -53,22 +53,7 @@ class RegistrationController extends Controller
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'town' => ['required', 'string', 'max:255'],
-            'area' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
-            'phone' => ['required', 'string', 'max:11', 'unique:clients'],
-            'gender' => ['required'],
-            'lga' => ['required'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
+*/
 
     /**
      * Create a new user instance after a valid registration.

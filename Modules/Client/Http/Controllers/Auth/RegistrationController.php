@@ -67,7 +67,7 @@ class RegistrationController extends Controller
         ]);
 
         $client->update([
-            'TID'=>$client->generateIdentificationNumber(),
+            'CID'=>$client->generateIdentificationNumber(),
             'yearly_address_client_identification_id'=>$client->getIdentification()->id,
         ]);
 

@@ -7,21 +7,22 @@ trait HasIdentificationNumber
     
     public function generateIdentificationNumber()
     {
-    	if($this->hasThisYearIdentification()){
+    	if($this->hasThisYearIdentification() && !empty($this->getYearAddressIdentificationNumbers())){
+    		
     		// get the list of numbers in the address of this year
-                $identifications = $this->getYearAddressIdentificationNumbers();
-
-            // sort the numbers
-                sort($identifications);
+            $identifications = $this->getYearAddressIdentificationNumbers();
+        	
+        	// sort the numbers
+            sort($identifications);
 
             // get the last number from the sorted list
-                $lastNumber = last($identifications);
+            $lastNumber = last($identifications);
 
-    		// add one to it as new number to give this person
-                $newNumber = $lastNumber + 1;
+		    // add one to it as new number to give this person
+            $newNumber = $lastNumber + 1;
 
     		// return the number
-                return $newNumber;
+            return $newNumber;
     	}else{
     		// register the year identification session
 
@@ -40,7 +41,8 @@ trait HasIdentificationNumber
         return substr(date('Y'), 2, 2)
         .$this->stateFormat($this->address->area->town->lga->state->id)
         .$this->lgaFormat($this->address->area->town->lga->id)
-        .$this->gender->id.'0001';
+        .$this->gender->id.
+        '001';
     }
 
     public function stateFormat($number)
@@ -55,10 +57,8 @@ trait HasIdentificationNumber
     {
         $ext = '';
         if($number < 10){
-            $ext = '000';
+            $ext = '00';
         }elseif ($number < 100) {
-        	$ext = '00';
-        }else{
         	$ext = '0';
         }
         return $ext.$number;
@@ -66,12 +66,12 @@ trait HasIdentificationNumber
 
     public function newYearAddressIdetification()
     {
-    	$this->address->yearlyAddressClientIdentifications()->create([]);
+    	$this->address->yearlyAddressClientIdentification()->create([]);
     }
 
 	public function hasThisYearIdentification()
 	{
-		if(count($this->address->yearlyClientIdentificationNumbers->where('year',date('Y'))) > 0)
+		if(!is_null($this->address->yearlyAddressClientIdentification))
 			return true;
 		else
 			return false;
@@ -91,7 +91,7 @@ trait HasIdentificationNumber
 	public function getIdentification()
 	{
 		foreach ($this->address->yearlyAddressClientIdentifications->where('year',date('Y')) as $identification) {
-			return $identification
+			return $identification;
 		}
 	}
 }

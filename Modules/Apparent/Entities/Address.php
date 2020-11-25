@@ -15,6 +15,11 @@ class Address extends BaseModel
     	return $this->hasMany('Modules\Client\Entities\Client');
     }
 
+    public function yearlyAddressClientIdentification()
+    {
+        return $this->hasOne('Modules\Client\Entities\YearlyAddressClientIdentification');
+    }
+
     public function apparents()
     {
     	return $this->hasMany('Modules\Apparent\Entities\Apparent');

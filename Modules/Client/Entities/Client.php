@@ -28,7 +28,7 @@ class Client extends Authenticatable
         'phone',
         'gender_id',
         'lga',
-        'TID',
+        'CID',
         'password',
     ];
 

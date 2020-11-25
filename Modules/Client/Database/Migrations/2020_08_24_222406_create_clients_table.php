@@ -37,6 +37,14 @@ class CreateClientsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('yearly_address_client_identification_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('yearly_address_client_identifications')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('TID')->nullable();

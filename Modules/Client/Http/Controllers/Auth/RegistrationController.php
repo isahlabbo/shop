@@ -66,40 +66,21 @@ class RegistrationController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $client->update(['TID'=>$this->generateNumber($client)]);
+        $client->update([
+            'TID'=>$client->generateIdentificationNumber(),
+            'yearly_address_client_identification_id'=>$client->getIdentification()->id,
+        ]);
 
         if($client->gender->id == 1){
             $client->maleMeasure()->create([]);
         }else{
             $client->femaleMeasure()->create([]);
         }
+
+
     }
 
-    public function generateNumber($client)
-    {
-        return substr(date('Y'), 2, 2).$client->gender->id.$this->formatNumber($client->id);
-    }
-
-    public function formatNumber($number)
-    {
-        $ext = '';
-        if($number < 10){
-            $ext = '0000000';
-        }elseif ($number < 100) {
-            $ext = '000000';
-        }elseif ($number <1000) {
-            $ext = '00000';
-        }elseif ($number <10000) {
-            $ext = '0000';
-        }elseif ($number <100000) {
-            $ext = '000';
-        }elseif ($number <1000000) {
-            $ext = '00';
-        }elseif ($number <10000000) {
-            $ext = '0';
-        }
-        return $ext.$number;
-    }
+    
 
     
 }

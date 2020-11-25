@@ -7,10 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Admin\Entities\Shop;
 use Modules\Client\Services\AvailableShopTrait as HasShops;
+use Modules\Client\Services\HasIdentificationNumber as Identifiable;
 
 class Client extends Authenticatable
 {
-    use Notifiable, HasShops;
+    use Notifiable, HasShops, Identifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -53,7 +54,10 @@ class Client extends Authenticatable
     {
         return $this->belongsTo(Gender::class);
     }
-
+    public function yearlyAddressClientIdentification()
+    {
+        return $this->belongsTo(YearlyAddressClientIdentification::class);
+    }
     public function address()
     {
         return $this->belongsTo('Modules\Apparent\Entities\Address');

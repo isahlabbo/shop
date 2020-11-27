@@ -21,7 +21,7 @@ Route::prefix('client')
     Route::namespace('Auth')
     ->group(function() {
         Route::get('/login', 'LoginController@index')->name('login');
-        Route::get('/registration', 'RegistrationController@index')->name('registration');
+        Route::get('/registration/{refferal?}', 'RegistrationController@index')->name('registration');
         Route::post('/register', 'RegistrationController@register')->name('register');
 		Route::get('/Authorisation/fail', 'Auth\LoginController@unauthorize')->name('auth.auth');
         

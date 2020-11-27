@@ -7,6 +7,8 @@
 @section('content')
     <!-- available registered shops in the area -->
     <div class="row">
+        <div class="col-md-12">{{url('/client/registration/'.client()->CID)}}</div>
+        
         @foreach(client()->areaShops() as $areaShop)
             <div class="col-md-3">
                 <div class="card">

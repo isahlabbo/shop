@@ -19,14 +19,15 @@ class RegistrationController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index($refferal = null)
     {
         return view('client::auth.registration',[
             'states'=>State::all(),
             'genders'=>Gender::all(),
             'message'=>'Client Registration page',
             'route'=>route('client.register'),
-            'status'=>null
+            'status'=>null,
+            'refferal'=>$refferal
         ]);
     }
 
@@ -65,7 +66,7 @@ class RegistrationController extends Controller
             'gender_id' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
-        
+
         $client->update([
             'CID' => $client->generateIdentificationNumber(),
             'yearly_address_client_identification_id' => $address->getIdentification()->id,

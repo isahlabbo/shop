@@ -66,32 +66,32 @@ trait HasIdentificationNumber
 
     public function newYearAddressIdetification()
     {
-    	$this->address->yearlyAddressClientIdentification()->create([]);
+    	return $this->address->yearlyAddressClientIdentifications()->firstOrCreate(['year'=>date('Y')]);
     }
 
 	public function hasThisYearIdentification()
 	{
-		if(!is_null($this->address->yearlyAddressClientIdentification))
+		$count = 0;
+		foreach ($this->address->yearlyAddressClientIdentifications->where('year',date('Y')) as $key => $value) {
+			$count ++;
+		}
+		if($count > 0){
 			return true;
-		else
+		}else{
 			return false;
+		}
 	}
 
 	public function getYearAddressIdentificationNumbers()
 	{
 		$identifications = [];
-
+        
 		foreach ($this->address->clients as $client) {
-			$identifications = $client->TID;
+			$identifications[] = $client->CID;
 		}
-
+        
 		return $identifications;
 	}
 
-	public function getIdentification()
-	{
-		foreach ($this->address->yearlyAddressClientIdentifications->where('year',date('Y')) as $identification) {
-			return $identification;
-		}
-	}
+	
 }

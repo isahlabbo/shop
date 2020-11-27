@@ -15,9 +15,9 @@ class Address extends BaseModel
     	return $this->hasMany('Modules\Client\Entities\Client');
     }
 
-    public function yearlyAddressClientIdentification()
+    public function yearlyAddressClientIdentifications()
     {
-        return $this->hasOne('Modules\Client\Entities\YearlyAddressClientIdentification');
+        return $this->hasMany('Modules\Client\Entities\YearlyAddressClientIdentification');
     }
 
     public function apparents()
@@ -62,5 +62,17 @@ class Address extends BaseModel
             $client->femaleMeasure()->create([]);
         }
         return $client;
+    }
+
+    public function getIdentification()
+    {   
+        $identification = null;
+
+        foreach ($this->yearlyAddressClientIdentifications->where('year',date('Y')) as $clientIdentification) {
+            $identification = $clientIdentification;
+        }
+        
+        return $identification;
+        
     }
 }

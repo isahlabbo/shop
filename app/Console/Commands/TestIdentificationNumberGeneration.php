@@ -39,8 +39,11 @@ class TestIdentificationNumberGeneration extends Command
     public function handle()
     {
         foreach(Client::all() as $client){
-        
-            $client->update(['CID'=>$client->generateIdentificationNumber()]);
+           
+            $client->update([
+                'CID'=>$client->generateIdentificationNumber(),
+                'yearly_address_client_identification_id'=>$client->getIdentification()->id,
+            ]);
         }
     }
 }

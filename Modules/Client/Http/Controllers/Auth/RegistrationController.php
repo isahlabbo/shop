@@ -65,10 +65,10 @@ class RegistrationController extends Controller
             'gender_id' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
-
+        
         $client->update([
-            'CID'=>$client->generateIdentificationNumber(),
-            'yearly_address_client_identification_id'=>$client->getIdentification()->id,
+            'CID' => $client->generateIdentificationNumber(),
+            'yearly_address_client_identification_id' => $address->getIdentification()->id,
         ]);
 
         if($client->gender->id == 1){

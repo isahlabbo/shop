@@ -30,6 +30,7 @@ class CreateShopClientReferralBonusesTable extends Migration
             ->delete('restrict')
             ->update('cascade');
             $table->integer('amount')->default(0);
+            $table->tinyInt('status')->default(0);
             $table->timestamps();
         });
     }

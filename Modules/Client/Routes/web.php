@@ -34,6 +34,13 @@ Route::prefix('client')
     ->namespace('Shop')
     ->name('shop.')
     ->group(function() {
+
+        Route::get('/address/{addressId}', 'AddressAvailableShopController@address')->name('address');
+        Route::get('/area/{areaId}', 'AddressAvailableShopController@area')->name('area');
+        Route::get('/town/{townId}', 'AddressAvailableShopController@town')->name('town');
+        Route::get('/local-government/{lgaId}', 'AddressAvailableShopController@lga')->name('lga');
+        Route::get('/state/{stateId}', 'AddressAvailableShopController@state')->name('state');
+
         Route::get('/', 'SearchShopController@index')->name('index');
         Route::get('/create', 'SearchShopController@create')->name('create');
         Route::post('search', 'SearchShopController@search')->name('search');

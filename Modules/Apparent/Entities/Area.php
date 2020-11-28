@@ -23,6 +23,8 @@ class Area extends BaseModel
             foreach ($address->shops as $shop) {
                 if ($count != 'all' && count($shops) < $count) {
                     $shops[]=$shop;
+                }else{
+                    $shops[]=$shop;
                 }
             }
         }

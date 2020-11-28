@@ -20,7 +20,7 @@ class State extends BaseModel
     {
         $shops = [];
         foreach ($this->lgas as $lga) {
-            array_merge($shops,$lga->shops($numberOfShopInEachArea));
+            $shops = array_merge($shops,$lga->shops($numberOfShopInEachArea));
         }
         return $shops;     
     }

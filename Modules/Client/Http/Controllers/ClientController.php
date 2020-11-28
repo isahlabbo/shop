@@ -5,6 +5,7 @@ namespace Modules\Client\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Entities\Shop;
 
 class ClientController extends Controller
 {
@@ -19,7 +20,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client::index');
+        return view('client::index',['shops'=>Shop::cursor()]);
     }
 
     public function verify()

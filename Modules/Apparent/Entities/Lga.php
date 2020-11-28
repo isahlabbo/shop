@@ -20,7 +20,7 @@ class Lga extends BaseModel
     {
         $shops = [];
         foreach ($this->towns as $town) {
-            array_merge($shops,$town->shops($numberOfShopInEachArea));
+            $shops = array_merge($shops,$town->shops($numberOfShopInEachArea));
         }
         return $shops;
     }

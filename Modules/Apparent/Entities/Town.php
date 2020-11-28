@@ -18,10 +18,11 @@ class Town extends BaseModel
 
     public function shops($numberOfShopInEachArea)
     {
+
         $shops = [];
         foreach ($this->areas as $area) {
-            array_merge($shops, $area->shops($numberOfShopInEachArea));
-        } 
+            $shops = array_merge($shops, $area->shops($numberOfShopInEachArea));
+        }
         return $shops;
     }
 }

@@ -107,7 +107,7 @@
                     <div class="">
                         @foreach(client()->shopClients as $shopClient)
                             <div class="col-md-3">
-                                <a href="{{route('client.shop.create')}}">
+                                
                                     <div class="card shadow">
                                         <div class="card-header btn-primary" >
                                             {{$shopClient->shop->name}} SHOP
@@ -133,7 +133,7 @@
                                             
                                         </div>
                                     </div>
-                                </a>
+                                
                             </div>
                         @endforeach
                     </div>

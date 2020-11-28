@@ -19,7 +19,7 @@ class MeasurementController extends Controller
      */
     public function index()
     {
-        return view('client::measurements.index');
+        return view('client::measurements.index',['client'=>client()]);
     }
 
     /**

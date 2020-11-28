@@ -1,4 +1,5 @@
 <?php
+use Modules\Client\Entities\Client;
 
 if (!function_exists('client')) {
     function client()
@@ -15,6 +16,15 @@ if (!function_exists('storage_url')) {
     function storage_url($url)
     {
         return blank($url) ? $url: Storage::url($url);
+    }
+}
+
+if (!function_exists('referrer')) {
+    function referrer($code)
+    {
+        foreach (Client::where('CIN',$code)->get() as $client) {
+            return $client;
+        }
     }
 }
 

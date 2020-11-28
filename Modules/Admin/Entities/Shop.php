@@ -26,6 +26,11 @@ class Shop extends BaseModel
     	return $this->hasMany('Modules\Apparent\Entities\Apparent');
     }
 
+    public function clientShopReferralBonuses()
+    {
+        return $this->hasMany('Modules\Client\Entities\ClientShopReferralBonus');
+    }
+
     public function designType()
     {
     	return $this->belongsTo(DesignType::class);

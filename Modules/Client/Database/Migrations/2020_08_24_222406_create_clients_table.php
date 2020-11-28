@@ -47,7 +47,8 @@ class CreateClientsTable extends Migration
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('CID')->nullable();
+            $table->string('CIN')->nullable();
+            $table->string('referral_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

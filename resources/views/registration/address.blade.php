@@ -32,7 +32,7 @@
 <div class="form-group row">
     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Town') }}</label>
     <div class="col-md-6">
-        <input id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="town" required autocomplete="new-password">
+        <input id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="town" required autocomplete="town" value="{{old('town')}}">
 
         @error('town')
             <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
     
     <div class="col-md-6">
-        <input id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="area" required autocomplete="new-password">
+        <input id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="area" required autocomplete="area" value="{{old('area')}}">
 
         @error('area')
             <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
     
     <div class="col-md-6">
-        <textarea id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="address" required autocomplete="new-password"></textarea>
+        <textarea id="password" type="text" class="form-control @error('area') is-invalid @enderror" name="address" required autocomplete="address" value="{{old('address')}}"></textarea>
 
         @error('address')
             <span class="invalid-feedback" role="alert">

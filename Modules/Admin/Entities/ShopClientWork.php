@@ -10,4 +10,9 @@ class ShopClientWork extends BaseModel
     {
         return $this->belongsTo(ShopClient::class);
     }
+
+    public function shopClientReferralBonuses()
+    {
+        return $this->hasOne('Modules\Client\Entities\ShopClientReferralBonus');
+    }
 }

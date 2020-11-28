@@ -87,7 +87,7 @@ trait HasIdentificationNumber
 		$identifications = [];
         
 		foreach ($this->address->clients as $client) {
-			$identifications[] = $client->CID;
+			$identifications[] = $client->CIN;
 		}
         
 		return $identifications;

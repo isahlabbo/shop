@@ -29,7 +29,8 @@ class Client extends Authenticatable
         'gender_id',
         'lga',
         'yearly_address_client_identification_id',
-        'CID',
+        'CIN',
+        'referral_code',
         'password',
     ];
 
@@ -77,6 +78,11 @@ class Client extends Authenticatable
     public function shopClients()
     {
     	return $this->hasMany('Modules\Admin\Entities\ShopClient');
+    }
+
+    public function referral()
+    {
+        return Client::where('CIN',$this->referral_code)->get();
     }
 
     public function shopDesignRequests()

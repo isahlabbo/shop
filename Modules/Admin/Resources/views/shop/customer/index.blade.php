@@ -42,7 +42,7 @@
                     <td>{{count($shopClient->shopClientWorks->where('status',1))}}</td>
                     <td>{{count($shopClient->shopClientWorks->where('status',0))}}</td>
                     <td>0</td>
-                    <td>{{$shopClient->refferal_code}}</td>
+                    <td>{{$shopClient->client->referral_code}}</td>
                     
                     <td>
                         <button class="btn-primary btn">

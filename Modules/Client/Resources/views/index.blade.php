@@ -102,7 +102,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card shadow">
-                <div class="card-header btn-primary">Available Bonus In Different Shops</div>
+                <div class="card-header btn-primary">Available Bonus In Different Shops {{client()->CIN}}</div>
                 <div class="card-body">
                     
                 </div>

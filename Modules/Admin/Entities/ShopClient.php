@@ -20,4 +20,9 @@ class ShopClient extends BaseModel
     {
         return $this->hasMany(ShopClientWork::class);
     }
+
+    public function shopClientReferralBonuses()
+    {
+        return $this->hasMany('Modules\Client\Entities\ShopClientReferralBonus');
+    }
 }

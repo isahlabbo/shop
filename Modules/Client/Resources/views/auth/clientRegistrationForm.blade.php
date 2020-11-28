@@ -120,13 +120,13 @@
                                 @else
                                 <div class="form-group row">
                                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Refferal Code') }}</label>
-                                    @if($refferal)
+                                    @if($refferal ?? '')
                                     <div class="col-md-6">
-                                        <input id="password-confirm" type="text" class="form-control" name="refferal_code" value="{{$refferal ?? ''}}" placeholder="Refferal Code" disabled="">
+                                        <input id="password-confirm" type="text" class="form-control" name="refferal_code" value="{{$refferal ?? '' ?? ''}}" placeholder="Refferal Code" disabled="">
                                     </div>
                                     @else
                                     <div class="col-md-6">
-                                        <input id="password-confirm" type="text" class="form-control" name="refferal_code" value="{{old('refferal_code')}}" placeholder="Refferal Code">
+                                        <input id="password-confirm" type="text" class="form-control" name="referral_code" value="{{old('refferal_code')}}" placeholder="Refferal Code">
                                     </div>
                                     @endif
                                 </div>

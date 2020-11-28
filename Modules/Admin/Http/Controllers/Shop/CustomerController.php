@@ -122,7 +122,13 @@ class CustomerController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'gender_id' => $data['gender'],
+            'referral_code' => $data['referral_code'],
             'password' => Hash::make($data['password']),
+        ]);
+
+        $client->update([
+            'CIN' => $client->generateIdentificationNumber(),
+            'yearly_address_client_identification_id' => $address->getIdentification()->id,
         ]);
 
         if($client->gender->id == 1){

@@ -57,13 +57,25 @@ class CustomerWorkController extends Controller
     public function register(Request $request, $shopId, $shopClientId)
     {
         $shopClient = ShopClient::find($shopClientId);
-        $shopClient->shopClientWorks()->create([
+
+       $shopClientWork = $shopClient->shopClientWorks()->create([
             'description'=>$request->description,
             'fee'=>$request->fee,
             'paid_fee'=>$request->paid_fee,
             'finishing_date'=>$request->finishing_date,
             'finishing_time'=>$request->finishing_time
             ]);
+        if($shopClient->client->referral_code){
+            // get referrer
+            $referrer = referrer($shopClient->client->referral_code);
+            // make referrer a shop customer
+
+            $referrerShopClient = $referrer->shopClients()->firstOrCreate(['shop_id'=>$shopId]);
+            // if the work fee is more than or eqal to 1000 update shop client referral bonus
+            if($request->fee >= 1000){
+                $referrerShopClient->shopClientReferralBonuses()->create(['shop_client_work_id'=>$shopClientWork->id,'amount'=>100]);
+            }
+        }
         return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientId])
         ->withSuccess('Work has been registered successfully');
     }

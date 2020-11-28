@@ -15,4 +15,9 @@ class ShopClientWork extends BaseModel
     {
         return $this->hasOne('Modules\Client\Entities\ShopClientReferralBonus');
     }
+
+    public function pendingFee()
+    {
+    	return $this->fee - $this->paid_fee;
+    }
 }

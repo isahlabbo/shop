@@ -102,9 +102,41 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card shadow">
-                <div class="card-header btn-primary">Available Bonus In Different Shops {{client()->CIN}}</div>
+                <div class="card-header btn-secondary">Available Bonus In Different Shops {{client()->CIN}}</div>
                 <div class="card-body">
-                    
+                    <div class="">
+                        @foreach(client()->shopClients as $shopClient)
+                            <div class="col-md-3">
+                                <a href="{{route('client.shop.create')}}">
+                                    <div class="card shadow">
+                                        <div class="card-header btn-primary" >
+                                            {{$shopClient->shop->name}} SHOP
+                                        </div>
+                                        <div class="card-body">
+                                            <table>
+                                                <tr>
+                                                    <td>Bonus: </td>
+                                                    <td><b>#</b>{{$shopClient->Bonus()}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Pending payment: </td>
+                                                    <td><b>#</b>{{$shopClient->pendingPayment()}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Works: </td>
+                                                    <td>{{count($shopClient->shopClientWorks)}}</td>
+                                                </tr>
+
+                                            </table>
+                                            
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

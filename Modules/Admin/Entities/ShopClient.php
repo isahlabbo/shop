@@ -25,4 +25,22 @@ class ShopClient extends BaseModel
     {
         return $this->hasMany('Modules\Client\Entities\ShopClientReferralBonus');
     }
+
+    public function bonus()
+    {
+        $bonus = 0;
+        foreach ($this->shopClientReferralBonuses as $referralBonus) {
+            $bonus = $bonus+$referralBonus->amount;
+        }
+        return $bonus;
+    }
+
+    public function pendingPayment()
+    {
+        $fee = 0;
+        foreach ($this->shopClientWorks as $work) {
+            $fee = $fee+$work->pendingFee();
+        }
+        return $fee;
+    }
 }

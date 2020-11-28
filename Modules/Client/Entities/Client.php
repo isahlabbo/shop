@@ -80,11 +80,6 @@ class Client extends Authenticatable
     	return $this->hasMany('Modules\Admin\Entities\ShopClient');
     }
 
-    public function referral()
-    {
-        return Client::where('CIN',$this->referral_code)->get();
-    }
-
     public function shopDesignRequests()
     {
     	return $this->hasMany('Modules\Admin\Entities\ShopDesignRequest');

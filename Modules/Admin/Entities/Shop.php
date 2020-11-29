@@ -21,6 +21,11 @@ class Shop extends BaseModel
     	return $this->hasMany(ShopDesign::class);
     }
 
+    public function clientShopSubscriptions()
+    {
+        return $this->hasMany(ClientShopSubscription::class);
+    }
+
     public function apparents()
     {
     	return $this->hasMany('Modules\Apparent\Entities\Apparent');

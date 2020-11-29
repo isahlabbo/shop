@@ -13,6 +13,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <img src="{{asset('img/intro-img.jpg')}}" alt="" height="200">
+                <button class="btn-primary">Subscribe</button>
                 <table class="table">
                     <tr>
                         <td><b>Title:</b> </td>

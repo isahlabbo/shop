@@ -64,6 +64,11 @@ class Client extends Authenticatable
     {
         return $this->belongsTo('Modules\Apparent\Entities\Address');
     }
+    
+    public function clientShopSubscriptions()
+    {
+        return $this->hasMany('Modules\Apparent\Entities\ClientShopSubscription');
+    }
 
     public function femaleMeasure()
     {

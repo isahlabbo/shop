@@ -24,7 +24,11 @@ class AddressAvailableShopController extends Controller
      */
     public function address($addressId)
     {
-        return view('client::shop.search.index',['shops'=>Address::find($addressId)->shops]);
+        $shops = Address::find($addressId)->shops;
+        if(empty($shops)){
+            return back()->withWarning('No shops record found');
+        }
+        return view('client::shop.search.index',['shops'=>$shops]);
     }
 
     /**
@@ -33,7 +37,11 @@ class AddressAvailableShopController extends Controller
      */
     public function area($areaId)
     {
-        return view('client::shop.search.index',['shops'=>Area::find($areaId)->shops('all')]);
+        $shops = Area::find($areaId)->shops('all');
+        if(empty($shops)){
+            return back()->withWarning('No shops record found');
+        }
+        return view('client::shop.search.index',['shops'=>$shops]);
     }
 
     /**
@@ -43,7 +51,11 @@ class AddressAvailableShopController extends Controller
      */
     public function town($townId)
     {
-        return view('client::shop.search.index',['shops'=>Town::find($townId)->shops('all')]);
+        $shops = Town::find($townId)->shops('all');
+        if(empty($shops)){
+            return back()->withWarning('No shops record found');
+        }
+        return view('client::shop.search.index',['shops'=>$shops]);
     }
 
     /**
@@ -53,7 +65,11 @@ class AddressAvailableShopController extends Controller
      */
     public function lga($lgaId)
     {
-        return view('client::shop.search.index',['shops'=>Lga::find($lgaId)->shops('all')]);
+        $shops = Lga::find($lgaId)->shops('all');
+        if(empty($shops)){
+            return back()->withWarning('No shops record found');
+        }
+        return view('client::shop.search.index',['shops'=>$shops]);
     }
 
     /**
@@ -63,7 +79,11 @@ class AddressAvailableShopController extends Controller
      */
     public function state($stateId)
     {
-        return view('client::shop.search.index',['shops'=>State::find($stateId)->shops('all')]);
+        $shops = State::find($stateId)->shops('all');
+        if(empty($shops)){
+            return back()->withWarning('No shops record found');
+        }
+        return view('client::shop.search.index',['shops'=>$shops]);
     }
 
 }

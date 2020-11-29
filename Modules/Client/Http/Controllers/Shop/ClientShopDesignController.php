@@ -19,7 +19,11 @@ class ClientShopDesignController extends Controller
      */
     public function index($shopId)
     {
-        return view('client::shop.design.index',['shop'=>Shop::find($shopId)]);
+        $shop = Shop::find($shopId);
+        
+        return back()->withWarning('No designs uploaded in '.$shop->name);
+        
+        return view('client::shop.design.index',['shop'=>$shop]);
     }
 
     /**

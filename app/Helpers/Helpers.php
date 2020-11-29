@@ -28,6 +28,33 @@ if (!function_exists('referrer')) {
     }
 }
 
+if (!function_exists('referralFeeLimit')) {
+    function referralFeeLimit()
+    {
+        $limits = [];
+        for ($i=100; $i <= 10000 ; $i++) {
+            if($i % 100 == 0){
+                $limits[] = $i;
+            } 
+        }
+        return $limits;
+        
+    }
+}
+
+if (!function_exists('referralBonus')) {
+    function referralBonus()
+    {
+        $bonus = [];
+        for ($i=0; $i <= 500 ; $i++) { 
+            if($i % 5 == 0){
+                $bonus[] = $i;
+            }
+        }
+        return $bonus;
+    }
+}
+
 if (!function_exists('admin')) {
     function admin()
     {

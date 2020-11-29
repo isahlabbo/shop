@@ -36,6 +36,11 @@ class Shop extends BaseModel
         return $this->hasMany('Modules\Client\Entities\ClientShopReferralBonus');
     }
 
+    public function shopReferralPlan()
+    {
+        return $this->hasOne(ShopReferralPlan::class);
+    }
+
     public function designType()
     {
     	return $this->belongsTo(DesignType::class);

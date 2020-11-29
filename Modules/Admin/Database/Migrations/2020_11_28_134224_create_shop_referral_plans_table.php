@@ -15,7 +15,15 @@ class CreateShopReferralPlansTable extends Migration
     {
         Schema::create('shop_referral_plans', function (Blueprint $table) {
             $table->id();
-
+            $table->integer('shop_id')
+            ->unsigned()->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('shops')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('fee_limit')->nullable();
+            $table->integer('referral_bonus')->nullable();
             $table->timestamps();
         });
     }

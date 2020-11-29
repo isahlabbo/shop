@@ -55,6 +55,32 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Referral Fee Limit') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="fee_limit" class="form-control">
+                                    <option value="">Choose Limit</option>
+                                    @foreach(referralFeeLimit() as $limit)
+                                        <option value="{{$limit}}">{{$limit}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Referral Bonus') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="referral_bonus" class="form-control">
+                                    <option value="">Choose Bonus Plan</option>
+                                    @foreach(referralBonus() as $bonus)
+                                        <option value="{{$bonus}}">{{$bonus}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Shop words') }}</label>

@@ -57,8 +57,8 @@ class CustomerWorkController extends Controller
     public function register(Request $request, $shopId, $shopClientId)
     {
         $shopClient = ShopClient::find($shopClientId);
-
-       $shopClientWork = $shopClient->shopClientWorks()->create([
+        $shop = Shop::find($shopId);
+        $shopClientWork = $shopClient->shopClientWorks()->create([
             'description'=>$request->description,
             'fee'=>$request->fee,
             'paid_fee'=>$request->paid_fee,
@@ -72,8 +72,8 @@ class CustomerWorkController extends Controller
 
             $referrerShopClient = $referrer->shopClients()->firstOrCreate(['shop_id'=>$shopId]);
             // if the work fee is more than or eqal to 1000 update shop client referral bonus
-            if($request->fee >= 1000){
-                $referrerShopClient->shopClientReferralBonuses()->create(['shop_client_work_id'=>$shopClientWork->id,'amount'=>100]);
+            if($request->fee >= $shop->shopReferralPlan->fee_limit){
+                $referrerShopClient->shopClientReferralBonuses()->create(['shop_client_work_id'=>$shopClientWork->id,'amount'=>$shop->shopReferralPlan->referral_bonus]);
             }
         }
         return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientId])

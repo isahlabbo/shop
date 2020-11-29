@@ -2,9 +2,12 @@
 
 namespace Modules\Admin\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class ShopReferralPlan extends Model
+class ShopReferralPlan extends BaseModel
 {
-    protected $fillable = [];
+    public function shop()
+    {
+    	return $this->belongsTo(Shop::class);
+    }
 }

@@ -40,13 +40,18 @@ class ShopController extends Controller
     public function registration(Request $request)
     {
         $address = new AddressHandle($request->all());
-        $address->address->shops()->create([
+        $shop = $address->address->shops()->create([
             'name'=>strtoupper($request->name),
             'design_type_id'=>$request->design,
             'work_capacity'=>$request->work_capacity,
             'admin_id'=> admin()->id,
             'words'=>$request->words,
             'about'=>$request->about
+        ]);
+
+        $shop->shopReferralPlan()->firstOrCreate([
+            'fee_limit'=>$request->fee_limit,
+            'referral_bonus'=>$request->referral_bonus
         ]);
 
         return redirect()->route('shop.index',[slug($request->name)])->withSuccess('Shop registration was successfull');

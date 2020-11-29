@@ -13,7 +13,9 @@
         <div class="card shadow">
             <div class="card-body">
                 <img src="{{asset('img/intro-img.jpg')}}" alt="" height="200">
-                <button class="btn-primary">Subscribe</button>
+                <a href="{{route('client.shop.subscription.subscribe',[$shop->id])}}">
+                    <button class="btn-primary">{{client()->hasSubscription($shop->id) && client()->hasActiveSubscription($shop->id) ? 'Subscribed' : 'Subscribe'}}</button>
+                </a>
                 <table class="table">
                     <tr>
                         <td><b>Title:</b> </td>

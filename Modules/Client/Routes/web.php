@@ -44,6 +44,14 @@ Route::prefix('client')
         Route::get('/', 'SearchShopController@index')->name('index');
         Route::get('/create', 'SearchShopController@create')->name('create');
         Route::post('search', 'SearchShopController@search')->name('search');
+
+        Route::prefix('{shopId}/subscription')
+            ->name('subscription.')
+            ->group(function() {
+            Route::get('/', 'ShopSubscriptionController@subscribe')->name('subscribe');
+            
+        });
+
         Route::prefix('{shopId}/designs')
             ->name('design.')
             ->group(function() {

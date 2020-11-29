@@ -67,7 +67,7 @@ class Client extends Authenticatable
     
     public function clientShopSubscriptions()
     {
-        return $this->hasMany('Modules\Apparent\Entities\ClientShopSubscription');
+        return $this->hasMany('Modules\Admin\Entities\ClientShopSubscription');
     }
 
     public function femaleMeasure()
@@ -102,6 +102,26 @@ class Client extends Authenticatable
         }
     }
     
+    public function hasSubscription($shopId)
+    {
+        $flag = null;
+        foreach ($this->clientShopSubscriptions->where('shop_id',$shopId) as $subscription) {
+            $flag = true;
+        }
+        return $flag;
+    }
+
+    public function hasActiveSubscription($shopId)
+    {
+        $flag = null;
+        foreach ($this->clientShopSubscriptions->where('shop_id',$shopId)->where('status',1) as $subscription) {
+            $flag = true;
+        }
+        return $flag;
+    }
+
+    
+
     public function clientFamilyMembers()
     {
         return $this->hasMany(ClientFamilyMember::class);

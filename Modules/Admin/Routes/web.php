@@ -78,6 +78,8 @@ Route::prefix('admin')
                 Route::get('/create', 'CustomerWorkController@create')->name('create');
                 Route::get('/done', 'CustomerWorkController@done')->name('done');
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
+                Route::post('/{workId}/pay', 'CustomerWorkController@pay')->name('pay');
+
             });
 
             // shop customers family routes

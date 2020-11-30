@@ -166,6 +166,17 @@ class Client extends Authenticatable
         return $measurement;
         
     }
-
+    
+    public function availableBonusBalance()
+    {
+        $bonus = 0;
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientReferralBonuses as $referralBonus) {
+                $balance = $referralBonus->amount - $referralBonus->paid_amount;
+                $bonus = $bonus + $balance;
+            }
+        }
+        return $bonus;
+    }
     
 }

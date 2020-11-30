@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
+use Modules\Client\Entities\Client;
 use Modules\Admin\Entities\ShopClient;
 use Modules\Admin\Entities\ShopClientWork;
 
@@ -58,6 +59,7 @@ class CustomerWorkController extends Controller
     {
         $shopClient = ShopClient::find($shopClientId);
         $shop = Shop::find($shopId);
+        
         $shopClientWork = $shopClient->shopClientWorks()->create([
             'description'=>$request->description,
             'fee'=>$request->fee,
@@ -92,6 +94,35 @@ class CustomerWorkController extends Controller
         return redirect()
         ->route('admin.shop.customer.work.index',[$shopId,$work->shopClient->id])
         ->withSuccess('Work done registered successfully');
+    }
+
+    public function pay(Request $request, $shopId, $clientId, $shopClientWorkId)
+    {
+        $client = Client::find($clientId);
+
+        $work = ShopClientWork::find($shopClientWorkId);
+
+        $totalBonus = $client->availableBonusBalance();
+
+        $totalBalance = $totalBonus;
+
+        if($request->cash){
+            $totalBalance = $totalBalance + $request->cash;
+        }
+
+        // pay the current work with the total if can
+        $newBalance = $work->pay($totalBalance);
+
+        if($newBalance == 0 && $totalBonus > 0){
+            // clear all the bonus in the shop
+            foreach ($client->shopClients->where('shop_id',$shopId) as $shopClient) {
+                foreach ($shopClientReferralBonuses as $bonus) {
+                    $bonus->update(['paid_amount'=>$bonus->amount]);
+                }
+            }
+        }
+
+        return back()->withSuccess('Payment registered successful with '.$newBalance.' remaining');
     }
 
 }

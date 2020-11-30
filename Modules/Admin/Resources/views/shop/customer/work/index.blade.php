@@ -22,7 +22,9 @@
                     <th>Finishing Time</th>
                     <th>Registered At</th>
                     <th>Status</th>
-                    <th> <a href="{{route('admin.shop.customer.work.create',[$shop->id,$shopClient->id])}}"> <button class="btn-secondary btn">Add Work</button> </a></th>
+                    <th> <a href="{{route('admin.shop.customer.work.create',[$shop->id,$shopClient->id])}}"> <button class="btn-secondary btn">Add Work</button> </a>
+                    </th>
+                    <th></th>
                 </thead>
                 <tbody>
                     @foreach($shopClient->shopClientWorks as $work)
@@ -48,6 +50,16 @@
                                 <a href="{{route('admin.shop.design.create',[$shop->id,$work->id])}}" style="color: white">Upload Work</a>
                             </button>
                         @endif      
+                        </td>
+                        <td>
+                            @if($work->fee > $work->paid_fee)
+                            <button class="btn-secondary" data-toggle="modal" data-target="#work_{{$work->id}}">
+                                Pay #{{$work->fee - $work->paid_fee}} Now
+                            </button>
+                            @include('admin::shop.customer.work.payWork')
+                            @else
+                                Paid
+                            @endif
                         </td>
                     </tr>
                     @endforeach

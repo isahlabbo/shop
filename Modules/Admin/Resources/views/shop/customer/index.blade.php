@@ -19,6 +19,7 @@
                 <th>UN FINISHED</th>
                 <th>BONUS</th>
                 <th>REFFERAL</th>
+                <th>CIN</th>
                 <th> <a href="{{route('admin.shop.customer.create',[$shop->id])}}"> <button class="btn-secondary btn">New Customer</button> </a></th>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                     <td>{{count($shopClient->shopClientWorks->where('status',0))}}</td>
                     <td>0</td>
                     <td>{{$shopClient->client->referral_code}}</td>
+                    <td>{{$shopClient->client->CIN}}</td>
                     
                     <td>
                         <button class="btn-primary btn">

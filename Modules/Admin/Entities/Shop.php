@@ -56,4 +56,99 @@ class Shop extends BaseModel
     	return $this->hasMany(Programme::class);
     }
 
+    public function availablePaidBonus()
+    {
+        $bonuses = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientReferralBonuses->where('status',1) as $referralBonus) {
+                $bonuses[] = $referralBonus;
+            }
+        }
+        return $bonuses;
+    }
+
+    public function availableUnPaidBonus()
+    {
+        $bonuses = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientReferralBonuses->where('status',0) as $referralBonus) {
+                $bonuses[] = $referralBonus;
+            }
+        }
+        return $bonuses;
+    }
+
+    public function availablePaidReferralBonusBalance()
+    {
+        $balance = 0;
+        foreach ($this->availablePaidBonus() as $bonus) {
+            $balance = $balance + $bonus->amount;
+        }
+        return $balance;
+    }
+
+    public function availableUnPaidReferralBonusBalance()
+    {
+        $balance = 0;
+        foreach ($this->availableUnPaidBonus() as $bonus) {
+            $balance = $balance + $bonus->amount;
+        }
+        return $balance;
+    }
+
+    public function availablUnPaidWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                if($shopClientWork->paid_fee < $shopClientWork->fee){
+                    $works[] = $shopClientWork;
+                }
+            }
+        }
+        return $works;
+    }
+
+    public function availablPaidWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                if($shopClientWork->paid_fee > 0){
+                    $works[] = $shopClientWork;
+                }
+            }
+        }
+        return $works;
+    }
+
+    public function availableWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks->where('status',0) as $shopClientWork) {
+                $works[] = $shopClientWork;
+            }
+        }
+        return $works;
+    }
+
+    public function availablePaidBalance()
+    {
+        $balance = 0;
+        foreach ($this->availablPaidWorks() as $work) {
+            $balance = $balance+$work->paid_fee;
+        }
+        return $balance;
+    }
+
+    public function availableUnPaidBalance()
+    {
+        $balance = 0;
+        foreach ($this->availablUnPaidWorks() as $work) {
+            $balance = $balance+$work->pendingPayment();
+        }
+        return $balance;
+    }
+
 }

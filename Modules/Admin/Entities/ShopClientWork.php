@@ -20,4 +20,9 @@ class ShopClientWork extends BaseModel
     {
     	return $this->fee - $this->paid_fee;
     }
+
+    public function pendingPayment()
+    {
+        return $this->fee - $this->paid_fee;
+    }
 }

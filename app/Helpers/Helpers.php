@@ -28,6 +28,17 @@ if (!function_exists('referrer')) {
     }
 }
 
+if (!function_exists('connections')) {
+    function connections($client)
+    {
+        $connections = [];
+        foreach (Client::where('referral_code',$client->CIN)->get() as $connection) {
+            $connections[] = $connection;
+        }
+        return $connections;
+    }
+}
+
 if (!function_exists('referralFeeLimit')) {
     function referralFeeLimit()
     {

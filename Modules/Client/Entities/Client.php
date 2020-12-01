@@ -178,5 +178,47 @@ class Client extends Authenticatable
         }
         return $bonus;
     }
+
+    public function bonusEarnPaidFrom($client)
+    {
+        $bonus = 0;
+        foreach (connections(client()) as $connection) {
+            foreach ($connection->shopClients as $shopClient) {
+                foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                    $bonus = $bonus + $shopClientWork->shopClientReferralBonus->paid_amount;
+                }
+                
+            }
+        }
+        return $bonus;
+    }
+
+    public function bonusEarnNotPaidFrom($client)
+    {
+        $bonus = 0;
+        foreach (connections(client()) as $connection) {
+            foreach ($connection->shopClients->where('client_id',$client->id) as $shopClient) {
+                foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                    $bonus = $bonus + $shopClientWork->shopClientReferralBonus->amount - $shopClientWork->shopClientReferralBonus->paid_amount;
+                }
+            }
+        }
+        return $bonus;
+    }
+
+    public function bonusEarnFrom($client)
+    {
+        $bonus = 0;
+        foreach (connections(client()) as $connection) {
+            foreach ($connection->shopClients->where('client_id',$client->id) as $shopClient) {
+                foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                    $bonus = $bonus + $shopClientWork->shopClientReferralBonus->amount;
+                }
+            }
+        }
+        return $bonus;
+    }
+
+
     
 }

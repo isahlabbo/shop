@@ -1,7 +1,7 @@
     <footer class="footer-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-md-2">
                     <div class="footer-widget fw-about">
                         <img src="img/footer-logo.png" alt="">
                         <p>{{$shop->about}}.</p>
@@ -14,7 +14,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-md-2">
                     <div class="footer-widget resent-post">
                         <h2 class="fw-title">Programmes</h2>
                         @foreach($shop->programmes as $programme)
@@ -25,20 +25,18 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-md-6">
                     <div class="footer-widget">
                         <h2 class="fw-title">Usefull Links</h2>
-                        <ul>
-                            <li><a href="#">Testimonials</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Reviews</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                        </ul>
+                        <table class="tables">
+                            <tr>
+                                <td>Apparentes=></td>
+                                <td>{{url('/admin/shop/'.$shop->id.'/apparentes/create')}}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-md-2">
                     <div class="footer-widget contact-widget">
                         <h2 class="fw-title">Contact</h2>
                         <ul>
@@ -57,7 +55,7 @@
             </div>
 
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> AISTYLE All rights reserved
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{$shop->name}} All rights reserved
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
         </div>

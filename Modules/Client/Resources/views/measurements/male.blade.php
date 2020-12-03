@@ -3,7 +3,7 @@
     <div class="card-header" style="background-color: black; color: white">{{ $client->first_name }} {{ $client->last_name }} measurement</div>
 
     <div class="card-body">
-        <form method="POST" action="{{admin() ? route('admin.shop.customer.measurement.update',[$shop->id,$client->id]) : route('client.measurement.update',[$client->id])}}">
+        <form method="POST" action="{{$route ?? '' ? $route ?? '' : route('client.measurement.update',[$client->id])}}">
             @csrf
            
             <div class="form-group row">

@@ -28,7 +28,12 @@ class CustomerMeasurementController extends Controller
         if(is_null($shop)){
             return back()->withWarning('invalid shop ID');
         }
-        return view('admin::shop.customer.measurement',['client'=>$client,'shop'=>$shop]);
+        return view('admin::shop.customer.measurement',[
+            'client'=>$client,
+            'shop'=>$shop,
+            'route'=>route('admin.shop.customer.measurement.update',[$shopId,$clientId]),
+
+        ]);
     }
 
     /**

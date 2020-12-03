@@ -33,9 +33,7 @@ class RegistrationController extends Controller
 
     public function register(FormRequest $request)
     {
-        
-        //$this->validator($request->all())->validate();
-        
+                
         $address = new AddressHandle($request->all());
 
         $this->create($request->all(), $address->address);

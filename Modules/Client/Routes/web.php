@@ -30,6 +30,15 @@ Route::prefix('client')
 	    Route::post('logout', 'LoginController@logout')->name('logout');
     });
 
+    // client connection routes
+    Route::prefix('/connection')
+            ->name('connection.')
+            ->group(function() {
+            Route::get('/', 'ClientConnectionController@index')->name('index');
+            Route::get('/create/{referralCode}', 'ClientConnectionController@create')->name('create');
+            Route::post('/register/{referralCode}', 'ClientConnectionController@register')->name('register');
+    });
+
     Route::prefix('shop')
     ->namespace('Shop')
     ->name('shop.')
@@ -59,7 +68,7 @@ Route::prefix('client')
             Route::get('/{designId}/like', 'ClientShopDesignController@like')->name('like');
             Route::get('/{designId}/request', 'ClientShopDesignController@request')->name('request');
             });
-    });
+        });
 
     Route::prefix('measurement')
     ->name('measurement.')

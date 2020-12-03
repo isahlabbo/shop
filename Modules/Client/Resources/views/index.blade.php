@@ -85,7 +85,7 @@
                                             Shops Available In Different Location
                                         </div>
                                         <div class="card-body">
-                                            {{count($shops) - count(client()->address->shops)}}
+                                            {{count($shops ?? '') - count(client()->address->shops)}}
                                         </div>
                                     </div>
                                 </a>
@@ -163,7 +163,7 @@
                                     <th>Paid Bonus</th>
                                     <th>Pending Bonus</th>
                                     <th>
-                                        <a href="{{route('client.registration',[client()->CIN])}}">
+                                        <a href="{{route('client.connection.create',[client()->CIN])}}">
                                              <button class="btn btn-primary">New Connection</button>
                                         </a>
                                     </th>
@@ -176,7 +176,7 @@
                                         <td>{{$connection->first_name}} {{$connection->last_name}}</td>
                                         <td>{{$connection->gender->name}}</td>
                                         <td>{{$connection->email}}</td>
-                                        <td>{{$connection->phone}}</td>
+                                        <td>{{$connection->phone}}</td> 
                                         <td><b>#</b>{{$connection->bonusEarnFrom($connection)}}</td>
                                         <td><b>#</b>{{$connection->bonusEarnPaidFrom($connection)}}</td>
                                         <td><b>#</b>{{$connection->bonusEarnNotPaidFrom($connection)}}</td>

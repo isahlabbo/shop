@@ -23,7 +23,11 @@ class ShopDesignController extends Controller
      */
     public function index($shopId)
     {
-        return view('admin::shop.design.index',['shop'=>Shop::find($shopId)]);
+        $shop = Shop::find($shopId);
+        if(count($shop->shopDesigns) == 0){
+            return back()->withWarning('No design uploade yet in '.$shop->name.' shop');
+        }
+        return view('admin::shop.design.index',['shop'=>$shop]);
     }
 
     /**

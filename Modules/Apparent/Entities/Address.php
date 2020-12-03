@@ -45,7 +45,7 @@ class Address extends BaseModel
         return $this->belongsTo(Area::class);
     }
 
-    public function registerNewCustomer(array $data)
+    public function newClient(array $data)
     {
         $client = $this->clients()->create([
             'first_name' => $data['first_name'],
@@ -53,7 +53,13 @@ class Address extends BaseModel
             'email' => $data['email'],
             'phone' => $data['phone'],
             'gender_id' => $data['gender'],
+            'referral_code' => $data['referral_code'],
             'password' => Hash::make($data['password']),
+        ]);
+
+        $client->update([
+            'CIN' => $client->generateIdentificationNumber(),
+            'yearly_address_client_identification_id' => $this->getIdentification()->id,
         ]);
 
         if($client->gender->id == 1){

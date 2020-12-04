@@ -15,11 +15,16 @@ use Modules\Client\Http\Requests\ClientRegistrationFormRequest as FormRequest;
 
 class RegistrationController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('guest:client');
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index($refferal = null)
+    public function index($referral = null)
     {
         return view('client::auth.registration',[
             'states'=>State::all(),
@@ -27,7 +32,7 @@ class RegistrationController extends Controller
             'message'=>'Client Registration page',
             'route'=>route('client.register'),
             'status'=>null,
-            'refferal'=>$refferal
+            'referral'=>$referral
         ]);
     }
 
@@ -40,11 +45,6 @@ class RegistrationController extends Controller
 
         return redirect()->route('client.login')->withSuccess('Registered successfully');
 
-    }
-
-    public function __construct()
-    {
-        $this->middleware('guest:client');
     }
 
 

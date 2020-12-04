@@ -32,8 +32,10 @@ if (!function_exists('connections')) {
     function connections($client)
     {
         $connections = [];
-        foreach (Client::where('referral_code',$client->CIN)->get() as $connection) {
-            $connections[] = $connection;
+        if($client){
+            foreach (Client::where('referral_code',$client->CIN)->get() as $connection) {
+                $connections[] = $connection;
+            }
         }
         return $connections;
     }

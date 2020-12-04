@@ -13,6 +13,7 @@ use Modules\Apparent\Entities\Religion;
 use Modules\Apparent\Entities\Tribe;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Hash;
+use Modules\Client\Http\Requests\ClientConnectionRegistrationFormRequest;
 
 class CustomerController extends Controller
 {
@@ -50,7 +51,8 @@ class CustomerController extends Controller
             'genders'=>Gender::all(),
             'message'=>$shop->name.' Customer Registration',
             'route'=>route('admin.shop.customer.register',[$shop->id]),
-            'status'=>null
+            'status'=>null,
+            'referral'=>null
             ]);
     }
 
@@ -59,11 +61,14 @@ class CustomerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function register(Request $request,$shopId )
+    public function register(ClientConnectionRegistrationFormRequest $request,$shopId )
     {
-        $address = new AddressHandle($request->all());
 
-        $client = $this->registerNewCustomer($request->all(), $address->address);
+        $data = $this->prepareData($request->all());
+
+        $address = new AddressHandle($data);
+
+        $client = $this->registerNewCustomer($data, $address->address);
 
         $client->shopClients()->create([
             'shop_id'=>$shopId,
@@ -73,6 +78,14 @@ class CustomerController extends Controller
         return redirect()->route('admin.shop.customer.index',[$shopId])->withSuccess('Customer Registered successfully');
     }
 
+    public function prepareData($data,$code)
+    {
+
+        $data['email'] = $data['phone'].'@shop.com'; 
+        $data['password'] = $data['phone']; 
+        $data['referral_code'] = $code; 
+        return $data; 
+    }
     /**
      * Show the specified resource.
      * @param int $id

@@ -64,7 +64,7 @@ class CustomerController extends Controller
     public function register(ClientConnectionRegistrationFormRequest $request,$shopId )
     {
 
-        $data = $this->prepareData($request->all());
+        $data = $this->prepareData($request->all(),null);
 
         $address = new AddressHandle($data);
 

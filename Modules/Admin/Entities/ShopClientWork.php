@@ -39,4 +39,9 @@ class ShopClientWork extends BaseModel
     	}
     	return $newTotal;
     }
+
+    public function remeningDaysToComplete()
+    {
+    	return round((time() - strtotime($this->finishing_date)) / 86400);
+    }
 }

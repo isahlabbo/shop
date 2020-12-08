@@ -151,4 +151,15 @@ class Shop extends BaseModel
         return $balance;
     }
 
+    public function workExpectedToBeCompletedToaday()
+    {
+        $works = [];
+        foreach ($this->availableWorks() as $work) {
+            if($work->remeningDaysToComplete() <= 1){
+                $works[] = $work;
+            }
+        }
+        return $works;
+    }
+
 }

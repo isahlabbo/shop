@@ -7,6 +7,36 @@
     <div class="col-md-10">
     <br>
     <div class="card shadow">
+        <div class="card-header btn-primary">Your Available Shop Works For {{date('d/M/Y',time())}}</div>
+        <div class="card-body">
+            <div class="row">
+                @foreach(admin()->shops as $shop)
+                
+                <div class="col-md-3">
+                    <div class="card shadow">
+                        <div class="card-header btn-secondary">{{$shop->name}}</div>
+                        <div class="card-body">
+                            {{count($shop->workExpectedToBeCompletedToaday())}}
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                
+                @endforeach
+            </div>
+        </div>
+    </div>
+    </div>    
+</div>
+
+<!-- shop activities start -->
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    <br>
+    <div class="card shadow">
     	<div class="card-header btn-primary">Your Available Shops Activities Analysis</div>
     	<div class="card-body">
     		<div class="row">

@@ -106,9 +106,19 @@ class CustomerWorkController extends Controller
     {
         $work = ShopClientWork::find($shopClientWorkId);
         $work->update(['status'=>1]);
-        return back()
-        ->route('admin.shop.customer.work.index',[$shopId,$work->shopClient->id])
+        $work->shopClientWorkDone()->create([]);
+        return redirect()->route('admin.shop.customer.work.index',[$shopId,$work->shopClient->id])
         ->withSuccess('Work done registered successfully');
+    }
+
+    public function collect($shopId, $shopClientWorkId)
+    {
+        $work = ShopClientWork::find($shopClientWorkId);
+        $work->update(['status'=>2]);
+        $work->shopClientWorkCollect()->create([]);
+        return redirect()
+        ->route('admin.shop.customer.work.index',[$shopId,$work->shopClient->id])
+        ->withSuccess('Work collection registered successfully');
     }
 
     public function pay(Request $request, $shopId, $clientId, $shopClientWorkId)

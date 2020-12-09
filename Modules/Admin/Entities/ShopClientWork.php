@@ -16,6 +16,16 @@ class ShopClientWork extends BaseModel
         return $this->hasOne('Modules\Client\Entities\ShopClientReferralBonus');
     }
 
+    public function shopClientWorkCollect()
+    {
+    	return $this->hasOne(ShopClientWorkCollect::class);
+    }
+
+    public function shopClientWorkDone()
+    {
+    	return $this->hasOne(ShopClientDone::class);
+    }
+
     public function pendingFee()
     {
     	return $this->fee - $this->paid_fee;

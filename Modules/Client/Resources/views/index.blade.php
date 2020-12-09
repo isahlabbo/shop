@@ -12,9 +12,12 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card shadow">
-                <div class="card-header btn-secondary">Available Works In Different Shops </div>
+                <div class="card-header btn-secondary">Available Works Progress In Different Shops </div>
                 <div class="card-body">
                     <div class="row">
+                        @if(empty(client()->availableWorks()))
+                            <div class=" col-md-12 alert alert-danger">No work register pls ask you tailor to add your work if any</div>
+                        @else
                         @foreach(client()->availableWorks() as $work)
                             <div class="col-md-3">
                                 <div class="card shadow">
@@ -49,6 +52,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

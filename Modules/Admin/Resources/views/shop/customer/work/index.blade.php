@@ -45,10 +45,14 @@
                                 Done
                             </button>
                             </a>
+                        @elseif($work->status == 1)
+                            <button class="btn-primary btn"> 
+                                <a href="{{route('admin.shop.customer.work.collect',[$shop->id,$work->id])}}" style="color: white">Collected</a>
+                            </button>
                         @else
                             <button class="btn-primary btn"> 
                                 <a href="{{route('admin.shop.design.create',[$shop->id,$work->id])}}" style="color: white">Upload Work</a>
-                            </button>
+                            </button>    
                         @endif      
                         </td>
                         <td>

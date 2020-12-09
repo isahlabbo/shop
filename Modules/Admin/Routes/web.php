@@ -32,6 +32,14 @@ Route::prefix('admin')
         Route::get('/create', 'ShopController@create')->name('create');
         Route::post('/registration', 'ShopController@registration')->name('registration');
         
+
+        // shop payment routes
+        Route::name('payment.')
+        ->prefix('{shopId}/payment')
+        ->group(function() {
+            Route::get('/total-fee', 'WorkPaymentController@totalFee')->name('totalFee');
+            
+        });
         
         // shop apparentes routes
         Route::name('apparent.')

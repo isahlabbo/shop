@@ -23,7 +23,7 @@ class ShopClientWork extends BaseModel
 
     public function shopClientWorkDone()
     {
-    	return $this->hasOne(ShopClientDone::class);
+    	return $this->hasOne(ShopClientWorkDone::class);
     }
 
     public function pendingFee()

@@ -122,6 +122,17 @@ class Shop extends BaseModel
         return $works;
     }
 
+    public function allRegisteredWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                $works[] = $shopClientWork;
+            }
+        }
+        return $works;
+    }
+
     public function availableWorks()
     {
         $works = [];

@@ -110,7 +110,7 @@
     						<table class="table table-responsive">
     							<tr>
     								<td>Total Work Fees</td>
-    								<td><b>#</b>{{$shop->availableBalance()}}</td>
+    								<td><a href="{{route('admin.shop.payment.totalFee',[$shop->id])}}">#{{$shop->availableBalance()}}</a></td>
     							</tr>
                                 <tr>
                                     <td>Paid Fee</td>

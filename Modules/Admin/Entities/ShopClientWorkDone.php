@@ -2,7 +2,7 @@
 
 namespace Modules\Admin\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
 class ShopClientWorkDone extends Model
 {

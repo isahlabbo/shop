@@ -2,9 +2,12 @@
 
 namespace Modules\Admin\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class ShopClientWorkCollect extends Model
+class ShopClientWorkCollect extends BaseModel
 {
-    protected $fillable = [];
+    public function shopClientWork()
+    {
+    	return $this->belongsTo(ShopClientWork::class);
+    }
 }

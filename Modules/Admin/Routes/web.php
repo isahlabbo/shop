@@ -38,6 +38,8 @@ Route::prefix('admin')
         ->prefix('{shopId}/payment')
         ->group(function() {
             Route::get('/total-fee', 'WorkPaymentController@totalFee')->name('totalFee');
+            Route::get('/paid-fee', 'WorkPaymentController@paidFee')->name('paidFee');
+            Route::get('/pending-fee', 'WorkPaymentController@pendingFee')->name('pendingFee');
             
         });
         

@@ -133,6 +133,30 @@ class Shop extends BaseModel
         return $works;
     }
 
+    public function paidWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                if($shopClientWork->paid_fee > 0)
+                    $works[] = $shopClientWork;
+            }
+        }
+        return $works;
+    }
+
+    public function pendingPaymentWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                if($shopClientWork->paid_fee < $shopClientWork->fee)
+                    $works[] = $shopClientWork;
+            }
+        }
+        return $works;
+    }
+
     public function availableWorks()
     {
         $works = [];

@@ -114,11 +114,11 @@
     							</tr>
                                 <tr>
                                     <td>Paid Fee</td>
-                                    <td><b>#</b>{{$shop->availablePaidBalance()}}</td>
+                                    <td><a href="{{route('admin.shop.payment.paidFee',[$shop->id])}}"><b>#</b>{{$shop->availablePaidBalance()}}</a></td>
                                 </tr>
     							<tr>
     								<td>Pending Payment</td>
-    								<td><b>#</b>{{$shop->availableUnPaidBalance()}}</td>
+    								<td><a href="{{route('admin.shop.payment.pendingFee',[$shop->id])}}"><b>#</b>{{$shop->availableUnPaidBalance()}}</a></td>
     							</tr>
 
     							<tr>

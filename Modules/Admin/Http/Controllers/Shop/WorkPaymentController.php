@@ -33,9 +33,16 @@ class WorkPaymentController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function paidFee($shopId)
     {
-        return view('admin::create');
+        $shop = Shop::find($shopId);
+        if(!$shop){
+            return back()->withWarning('invalid shop ID');
+        }
+        return view('admin::shop.customer.work.payment.paid',[
+            'shop'=>$shop, 
+            'works'=>$shop->paidWorks()
+        ]);
     }
 
     /**
@@ -43,9 +50,16 @@ class WorkPaymentController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function pendingFee($shopId)
     {
-        //
+        $shop = Shop::find($shopId);
+        if(!$shop){
+            return back()->withWarning('invalid shop ID');
+        }
+        return view('admin::shop.customer.work.payment.pending',[
+            'shop'=>$shop, 
+            'works'=>$shop->pendingPaymentWorks()
+        ]);
     }
 
     /**

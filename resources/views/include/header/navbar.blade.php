@@ -12,8 +12,17 @@
                 <!-- Main menu -->
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/')}}">Home</a>
-                    </li> 
+                        <a class="nav-link" href="{{route('client.registration')}}">join {{count($clients)}} Clients</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('admin.registration')}}">join {{count($shops)}} Shops</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('client.registration')}}">Register</a>
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('client.login') }}">{{ __('Login') }}</a>
                     </li>                                                              

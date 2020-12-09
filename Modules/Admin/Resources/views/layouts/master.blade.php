@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('navbar')
-
+    @if(admin())
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             shops
@@ -9,12 +9,10 @@
 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{route('admin.shop.create')}}">New Shop</a>
-            @if(admin())
             @foreach(admin()->shops as $shop)
                 <a class="dropdown-item" href="{{route('shop.index',[slug($shop->name)])}}">{{$shop->name}}</a>    
             @endforeach
-            @endif    
         </div>
     </li>
-    
+     @endif  
 @endsection

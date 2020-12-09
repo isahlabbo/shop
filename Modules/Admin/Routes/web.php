@@ -31,6 +31,8 @@ Route::prefix('admin')
     ->group(function() {
         Route::get('/create', 'ShopController@create')->name('create');
         Route::post('/registration', 'ShopController@registration')->name('registration');
+        
+        
         // shop apparentes routes
         Route::name('apparent.')
         ->prefix('{shopId}/apparentes')
@@ -80,6 +82,13 @@ Route::prefix('admin')
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
                 Route::post('/{workId}/pay', 'CustomerWorkController@pay')->name('pay');
 
+            });
+            
+            // shop todays works routes
+            Route::name('work.today.')
+            ->prefix('/works/'.date('d-M-Y',time()))
+            ->group(function() {
+                Route::get('/', 'CustomerWorkController@workToday')->name('index');
             });
 
             // shop customers family routes

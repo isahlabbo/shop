@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Modules\Admin\Entities\Shop;
+use Modules\Client\Entities\Client;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',[
+    	'shops'=>Shop::cursor(),
+    	'clients'=>Client::cursor(),
+    ]);
 });
 
 Auth::routes();

@@ -11,16 +11,17 @@
         <div class="card-body">
             <div class="row">
                 @foreach(admin()->shops as $shop)
-                
-                <div class="col-md-3">
-                    <div class="card shadow">
-                        <div class="card-header btn-secondary">{{$shop->name}}</div>
-                        <div class="card-body">
-                            {{count($shop->workExpectedToBeCompletedToaday())}}
+                    <div class="col-md-3">
+                        <a href="{{route('admin.shop.customer.work.today.index',[$shop->id])}}">
+                        <div class="card shadow">
+                            <div class="card-header btn-secondary">{{$shop->name}}</div>
+                            <div class="card-body">
+                                {{count($shop->workExpectedToBeCompletedToaday())}}
+                            </div>
                         </div>
+                        </a>
                     </div>
-                </div>
-
+                
                 <br>
                 
                 @endforeach

@@ -16,6 +16,18 @@ class CustomerWorkController extends Controller
     {
         $this->middleware('auth:admin');
     }
+
+    public function workToday ($shopId)
+    {
+        $shop = Shop::find($shopId);
+        if(is_null($shop)){
+            return back()->withWarning('invalid shop ID');
+        }
+        return view('admin::shop.customer.work.today.index',[
+            'shop'=>$shop
+        ]);
+
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -46,6 +58,9 @@ class CustomerWorkController extends Controller
         $shopClient = ShopClient::find($shopClientId);
         if(is_null($shopClient)){
             return back()->withWarning('invalid customer ID');
+        }
+        if(empty($shop->workExpectedToBeCompletedToaday())){
+            return back()->withWarning('There is no available work today');
         }
         return view('admin::shop.customer.work.create',['shopClient'=>$shopClient]);
     }
@@ -91,7 +106,7 @@ class CustomerWorkController extends Controller
     {
         $work = ShopClientWork::find($shopClientWorkId);
         $work->update(['status'=>1]);
-        return redirect()
+        return back()
         ->route('admin.shop.customer.work.index',[$shopId,$work->shopClient->id])
         ->withSuccess('Work done registered successfully');
     }

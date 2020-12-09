@@ -50,19 +50,30 @@
     						<table class="table table-responsive">
     							<tr>
     								<td>Apparentes</td>
-    								<td>{{count($shop->apparents)}}</td>
+    								<td>
+                                    <a href="{{ route('admin.shop.apparent.index',[$shop->id]) }}">
+                                        {{count($shop->apparents)}}
+                                    </a></td>
     							</tr>
     							<tr>
     								<td>Customers</td>
-    								<td>{{count($shop->shopClients)}}</td>
+    								<td>
+                                        <a href="{{ route('admin.shop.customer.index',[$shop->id]) }}">{{count($shop->shopClients)}}</a>
+                                    </td>
     							</tr>
     							<tr>
     								<td>Designs</td>
-    								<td>{{count($shop->shopDesigns)}}</td>
+    								<td>
+                                    <a href="{{ route('admin.shop.design.index',[$shop->id]) }}">
+                                        {{count($shop->shopDesigns)}}
+                                    </a></td>
     							</tr>
     							<tr>
     								<td>Programmes</td>
-    								<td>{{count($shop->programmes)}}</td>
+    								<td>
+                                        <a href="{{ route('admin.shop.programme.index',[$shop->id]) }}">{{count($shop->programmes)}}
+                                        </a>
+                                    </td>
     							</tr>
     							<tr>
     								<td>Available Works</td>
@@ -98,9 +109,13 @@
     					<div class="card-body">
     						<table class="table table-responsive">
     							<tr>
-    								<td>Paid</td>
-    								<td><b>#</b>{{$shop->availablePaidBalance()}}</td>
+    								<td>Total Work Fees</td>
+    								<td><b>#</b>{{$shop->availableBalance()}}</td>
     							</tr>
+                                <tr>
+                                    <td>Paid Fee</td>
+                                    <td><b>#</b>{{$shop->availablePaidBalance()}}</td>
+                                </tr>
     							<tr>
     								<td>Pending Payment</td>
     								<td><b>#</b>{{$shop->availableUnPaidBalance()}}</td>

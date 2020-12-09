@@ -8,6 +8,7 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
+        <br>
         <div class="card shadow">
         <div class="card-header btn btn-primary">{{strtoupper($shopClient->client->first_name)}} {{strtoupper($shopClient->client->last_name)}} REGISTERED WORKS IN {{$shop->name}}</div>
         <div class="card-body">

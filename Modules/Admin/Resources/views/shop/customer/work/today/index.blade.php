@@ -8,12 +8,14 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
+    	<br>
         <div class="card shadow">
             <div class="card-header btn btn-primary">{{$shop->name}} WORKS FOR {{date('d/M/Y',time())}}</div>
 	        <div class="card-body">
 	            <table class="table">
 	                <thead>
 	                    <th>S/N</th>
+	                    <th>Customer Name</th>
 	                    <th>Description</th>
 	                    <th>Fee</th>
 	                    <th>paid</th>
@@ -31,10 +33,11 @@
 	                    <tr>
 	                        <td>{{$loop->index+1}}</td>
 	                        <td> {{$work->description}}</td>
-	                        <td> #{{$work->fee}}</td>
-	                        <td> #{{$work->paid_fee}}</td>
-	                        <td> #{{$work->fee - $work->paid_fee}}</td>
-	                        <td> {{date('1-M-Y',strtotime($work->finishing_date))}}</td>
+	                        <td> {{$work->shopClient->client->first_name}} {{$work->shopClient->client->last_name}}</td>
+	                        <td> # {{$work->fee}}</td>
+	                        <td> # {{$work->paid_fee}}</td>
+	                        <td> # {{$work->fee - $work->paid_fee}}</td>
+	                        <td> {{date('d/M/Y',strtotime($work->finishing_date))}}</td>
 	                        <td> {{$work->finishing_time}}</td>
 	                        <td>{{$work->created_at}}</td>
 	                        <td>{{$work->status == 0 ? 'Processing...' : 'Finished'}}</td>

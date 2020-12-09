@@ -59,9 +59,7 @@ class CustomerWorkController extends Controller
         if(is_null($shopClient)){
             return back()->withWarning('invalid customer ID');
         }
-        if(empty($shop->workExpectedToBeCompletedToaday())){
-            return back()->withWarning('There is no available work today');
-        }
+        
         return view('admin::shop.customer.work.create',['shopClient'=>$shopClient]);
     }
 

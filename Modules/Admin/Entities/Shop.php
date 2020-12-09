@@ -142,6 +142,17 @@ class Shop extends BaseModel
         return $balance;
     }
 
+    public function availableBalance()
+    {
+        $balance = 0;
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $work) {
+                $balance = $balance + $work->fee;
+            }
+        }
+        return $balance;
+    }
+
     public function availableUnPaidBalance()
     {
         $balance = 0;

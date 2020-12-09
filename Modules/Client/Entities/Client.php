@@ -219,6 +219,18 @@ class Client extends Authenticatable
         return $bonus;
     }
 
+    public function availableWorks()
+    {
+        $works = [];
+        foreach ($this->shopClients as $shopClient) {
+            foreach ($shopClient->shopClientWorks as $shopClientWork) {
+                if($shopClientWork->progress() != 'Collected')
+                    $works[] = $shopClientWork;
+            }
+        }
+        return $works;
+    }
+
 
     
 }

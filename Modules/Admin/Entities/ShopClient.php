@@ -38,7 +38,7 @@ class ShopClient extends BaseModel
     public function pendingPayment()
     {
         $fee = 0;
-        foreach ($this->shopClientWorks->where('status',0) as $work) {
+        foreach ($this->shopClientWorks as $work) {
             $fee = $fee+$work->pendingFee();
         }
         return $fee;

@@ -5,6 +5,56 @@
 @endsection
 
 @section('content')
+
+<!-- client bonus dashboard -->
+    <br>
+    <div class="row">   
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header btn-secondary">Available Works In Different Shops </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach(client()->availableWorks() as $work)
+                            <div class="col-md-3">
+                                <div class="card shadow">
+                                    <div class="card-header btn-primary" >
+                                        {{$work->shopClient->shop->name}} SHOP
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <tr>
+                                                <td>Total Work Fee</td>
+                                                <td><b>#</b> {{$work->fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Advance Given</td>
+                                                <td><b>#</b> {{$work->paid_fee}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Remaining Work Balance</td>
+                                                <td><b>#</b> {{$work->pendingPayment()}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Work Progress</td>
+                                                <td>
+                                                    {{$work->progress()}}
+                                                    @if($work->status == 1)
+                                                        and waiting for you to collect
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
@@ -102,7 +152,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card shadow">
-                <div class="card-header btn-secondary">Available Bonus In Different Shops {{client()->CIN}}</div>
+                <div class="card-header btn-secondary">Available Bonus In Different Shops </div>
                 <div class="card-body">
                     <div class="">
                         @foreach(client()->shopClients as $shopClient)

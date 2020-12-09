@@ -44,4 +44,26 @@ class ShopClientWork extends BaseModel
     {
     	return round((time() - strtotime($this->finishing_date)) / 86400);
     }
+
+    public function progress()
+    {
+    	$progress = null;
+    	switch ($this->status) {
+    		case '0':
+    			$progress = 'Processing';
+    			break;
+
+    		case '1':
+    			$progress = 'Done';
+    			break;
+    		case '2':
+    			$progress = 'Collected';
+    			break;		
+    		
+    		default:
+    			$progress = 'Undefine Status';
+    			break;
+    	}
+    	return $progress;
+    }
 }

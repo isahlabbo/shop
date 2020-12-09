@@ -31,13 +31,13 @@
                     <td>{{$shopClient->client->phone}}</td>
                     <td>
                     <a href="{{route('admin.shop.customer.family.member.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
-                        {{count($shopClient->client->clientFamilyMembers)}}
+                        {{count($shopClient->client->clientFamilyMembers)}} Members
                     </a>
                     </td>
 
                     <td>
                         <a href="{{route('admin.shop.customer.work.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">
-                        {{count($shopClient->shopClientWorks)}}
+                        {{count($shopClient->shopClientWorks)}} Works
                         </a>
                     </td>
                     <td>{{count($shopClient->shopClientWorks->where('status',1))}}</td>

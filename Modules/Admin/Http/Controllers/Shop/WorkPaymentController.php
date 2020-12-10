@@ -67,9 +67,16 @@ class WorkPaymentController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function paidBonus($shopId)
     {
-        return view('admin::show');
+        $shop = Shop::find($shopId);
+        if(!$shop){
+            return back()->withWarning('invalid shop ID');
+        }
+        return view('admin::shop.customer.work.payment.bonus.paid',[
+            'shop'=>$shop, 
+            'bonuses'=>$shop->availablePaidBonus()
+        ]);
     }
 
     /**
@@ -77,9 +84,16 @@ class WorkPaymentController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function pendingBonus($shopId)
     {
-        return view('admin::edit');
+        $shop = Shop::find($shopId);
+        if(!$shop){
+            return back()->withWarning('invalid shop ID');
+        }
+        return view('admin::shop.customer.work.payment.bonus.pending',[
+            'shop'=>$shop, 
+            'bonuses'=>$shop->availableUnPaidBonus()
+        ]);
     }
 
     /**

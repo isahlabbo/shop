@@ -123,12 +123,12 @@
 
     							<tr>
     								<td>Paid Referral Bonus</td>
-    								<td><b>#</b>{{$shop->availablePaidReferralBonusBalance()}}</td>
+    								<td><a href="{{route('admin.shop.payment.paidBonus',[$shop->id])}}"><b>#</b>{{$shop->availablePaidReferralBonusBalance()}}</a></td>
     							</tr>
 
     							<tr>
     								<td>Pending Referral Bonus</td>
-    								<td><b>#</b>{{$shop->availableUnPaidReferralBonusBalance()}}</td>
+    								<td><a href="{{route('admin.shop.payment.pendingBonus',[$shop->id])}}"><b>#</b>{{$shop->availableUnPaidReferralBonusBalance()}}</a></td>
     							</tr>
 
     						</table>

@@ -40,6 +40,8 @@ Route::prefix('admin')
             Route::get('/total-fee', 'WorkPaymentController@totalFee')->name('totalFee');
             Route::get('/paid-fee', 'WorkPaymentController@paidFee')->name('paidFee');
             Route::get('/pending-fee', 'WorkPaymentController@pendingFee')->name('pendingFee');
+            Route::get('/pending-bonuses', 'WorkPaymentController@pendingBonus')->name('pendingBonus');
+            Route::get('/paid-bonuses', 'WorkPaymentController@paidBonus')->name('paidBonus');
             
         });
         

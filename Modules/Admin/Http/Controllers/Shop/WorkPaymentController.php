@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
+use Modules\Client\Entities\ShopClientReferralBonus;
 
 class WorkPaymentController extends Controller
 {
@@ -97,23 +98,24 @@ class WorkPaymentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function clearBonus(Request $request,$shopId, $bonusId)
     {
-        //
+        $bonus = ShopClientReferralBonus::find($bonusId);
+        if($request->amount > $bonus->amount){
+            $message = "The valid amount is #".$bonus->amount.' or less';
+        }else{
+            $bonus->update(['paid_amount'=>$request->amount + $bonus->paid_amount]);
+            if($bonus->amount == $bonus->paid_amount){
+                $bonus->update(['status'=>1]);
+            }
+            $message = "#".$request->amount." Bonus cleared successfully";
+        }
+
+        return redirect()->route('admin.shop.payment.pendingBonus',[$shopId])->withWarning($message);
+        
     }
 }

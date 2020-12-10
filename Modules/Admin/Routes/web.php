@@ -42,6 +42,7 @@ Route::prefix('admin')
             Route::get('/pending-fee', 'WorkPaymentController@pendingFee')->name('pendingFee');
             Route::get('/pending-bonuses', 'WorkPaymentController@pendingBonus')->name('pendingBonus');
             Route::get('/paid-bonuses', 'WorkPaymentController@paidBonus')->name('paidBonus');
+            Route::post('/bonus/{bonusId}/clear', 'WorkPaymentController@clearBonus')->name('bonus.clear');
             
         });
         

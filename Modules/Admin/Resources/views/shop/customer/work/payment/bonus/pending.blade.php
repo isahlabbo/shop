@@ -17,7 +17,7 @@
 	                    <th>S/N</th>
 	                    <th>Customer Name</th>
 	                    <th>Description</th>
-	                    <th>Paid Fee</th>
+	                    <th>Pending Fee</th>
 	                    <th>Referral No</th>
 	                    <th></th>
 	                </thead>
@@ -31,7 +31,10 @@
 	                        <td>
 	                            {{$bonus->shopClientWork->shopClient->client->CIN}}
 	                        </td>
-	                        <td><button class="btn btn-primary">Clear Bonus</button></td>
+	                        <td>
+	                        	<button class="btn btn-primary" data-toggle="modal" data-target="#bonus_{{$bonus->id}}">Clear Bonus</button>
+                                @include('admin::shop.customer.work.payment.bonus.clear')
+	                        </td>
 	                    </tr>
 	                    @endforeach
 	                    <tr>

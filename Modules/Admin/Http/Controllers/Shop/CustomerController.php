@@ -81,7 +81,7 @@ class CustomerController extends Controller
     public function prepareData($data,$code)
     {
 
-        $data['email'] = $data['phone'].'@shop.com'; 
+        $data['email'] = $data['phone'].'@sewmycloth.com'; 
         $data['password'] = $data['phone']; 
         $data['referral_code'] = $code; 
         return $data; 

@@ -66,7 +66,7 @@ trait HasIdentificationNumber
 
     public function newYearAddressIdetification()
     {
-    	return $this->address->yearlyAddressClientIdentifications()->firstOrCreate(['year'=>date('Y')]);
+    	return $this->address->yearlyAddressClientIdentifications()->create(['year'=>date('Y')]);
     }
 
 	public function hasThisYearIdentification()

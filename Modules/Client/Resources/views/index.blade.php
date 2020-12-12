@@ -12,7 +12,7 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card shadow">
-                <div class="card-header btn-secondary">Available Works Progress In Different Shops </div>
+                <div class="card-header btn-secondary">Works </div>
                 <div class="card-body">
                     <div class="row">
                         @if(empty(client()->availableWorks()))
@@ -58,13 +58,57 @@
             </div>
         </div>
     </div>
+   <!-- client bonus dashboard -->
+    <br>
+    <div class="row">   
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header btn-secondary">Bonus </div>
+                <div class="card-body">
+                    <div class="">
+                        @foreach(client()->shopClients as $shopClient)
+                            <div class="col-md-3">
+                                
+                                    <div class="card shadow">
+                                        <div class="card-header btn-primary" >
+                                            {{$shopClient->shop->name}} SHOP
+                                        </div>
+                                        <div class="card-body">
+                                            <table>
+                                                <tr>
+                                                    <td>Bonus: </td>
+                                                    <td><b>#</b>{{$shopClient->Bonus()}}</td>
+                                                </tr>
 
+                                                <tr>
+                                                    <td>Pending payment: </td>
+                                                    <td><b>#</b>{{$shopClient->pendingPayment()}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Works: </td>
+                                                    <td>{{count($shopClient->shopClientWorks)}}</td>
+                                                </tr>
+
+                                            </table>
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <br>
             <div class="card shadow">
-                <div class="card-header btn-primary" >Available Shops Around You</div>
+                <div class="card-header btn-primary" >Shops</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
@@ -150,50 +194,6 @@
         </div>
     </div>
 
-    <!-- client bonus dashboard -->
-    <br>
-    <div class="row">   
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="card shadow">
-                <div class="card-header btn-secondary">Available Bonus In Different Shops </div>
-                <div class="card-body">
-                    <div class="">
-                        @foreach(client()->shopClients as $shopClient)
-                            <div class="col-md-3">
-                                
-                                    <div class="card shadow">
-                                        <div class="card-header btn-primary" >
-                                            {{$shopClient->shop->name}} SHOP
-                                        </div>
-                                        <div class="card-body">
-                                            <table>
-                                                <tr>
-                                                    <td>Bonus: </td>
-                                                    <td><b>#</b>{{$shopClient->Bonus()}}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>Pending payment: </td>
-                                                    <td><b>#</b>{{$shopClient->pendingPayment()}}</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>Works: </td>
-                                                    <td>{{count($shopClient->shopClientWorks)}}</td>
-                                                </tr>
-
-                                            </table>
-                                            
-                                        </div>
-                                    </div>
-                                
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     
 @endsection

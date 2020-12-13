@@ -22,13 +22,6 @@ class CreateShopClientWorkBargainsTable extends Migration
             ->on('shop_client_works')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('client_id')
-            ->unsigned()->nullable()
-            ->foreign()
-            ->references('id')
-            ->on('clients')
-            ->delete('restrict')
-            ->update('cascade');
             $table->integer('admin_id')
             ->unsigned()->nullable()
             ->foreign()

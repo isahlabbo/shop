@@ -21,6 +21,11 @@ class ShopClientWork extends BaseModel
     	return $this->hasOne(ShopClientWorkCollect::class);
     }
 
+    public function shopClientWorkBargains()
+    {
+    	return $this->hasMany(ShopClientWorkBargain::class);
+    }
+
     public function shopClientWorkDone()
     {
     	return $this->hasOne(ShopClientWorkDone::class);
@@ -58,22 +63,27 @@ class ShopClientWork extends BaseModel
     public function progress()
     {
     	$progress = null;
-    	switch ($this->status) {
-    		case '0':
-    			$progress = 'Processing';
-    			break;
+    	if($this->fee == 0){
+    		$progress = 'The work is under review by the Admin pls wait for the feed back';
+    	}else{
+    		switch ($this->status) {
+	    		case '0':
+	    			$progress = 'Processing';
+	    			break;
 
-    		case '1':
-    			$progress = 'Done';
-    			break;
-    		case '2':
-    			$progress = 'Collected';
-    			break;		
-    		
-    		default:
-    			$progress = 'Undefine Status';
-    			break;
+	    		case '1':
+	    			$progress = 'Done';
+	    			break;
+	    		case '2':
+	    			$progress = 'Collected';
+	    			break;		
+	    		
+	    		default:
+	    			$progress = 'Undefine Status';
+	    			break;
+	    	}
     	}
+    	
     	return $progress;
     }
 }

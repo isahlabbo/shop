@@ -58,7 +58,10 @@ class Admin extends Authenticatable
         return $this->hasMany(ShopDesign::class);
     }
 
-
+    public function shopClientWorkBargains()
+    {
+        return $this->hasMany(ShopClientWorkBargain::class);
+    }
     public function gender()
     {
         return $this->belongsTo('Modules\Client\Entities\Gender');

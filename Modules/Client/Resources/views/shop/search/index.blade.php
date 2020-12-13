@@ -15,6 +15,9 @@
                 <img src="{{asset('img/intro-img.jpg')}}" alt="" height="200">
                 <a href="{{route('client.shop.subscription.subscribe',[$shop->id])}}">
                     <button class="btn-primary">{{client()->hasSubscription($shop->id) && client()->hasActiveSubscription($shop->id) ? 'Subscribed' : 'Subscribe'}}</button>
+                </a><br>
+                <a href="{{route('client.shop.work.create',[$shop->id])}}">
+                    i have a work for you
                 </a>
                 <table class="table">
                     <tr>

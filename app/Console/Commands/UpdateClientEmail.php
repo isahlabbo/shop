@@ -43,8 +43,8 @@ class UpdateClientEmail extends Command
            
             $client->update([
                 'CIN'=>$client->generateIdentificationNumber(),
-                'email'=>$client->phone.'@sewmycloth.com',
-                'password'=>Hash::make($client->password)
+                'email'=>$client->phone.'@smc.com',
+                'password'=>Hash::make($client->phone)
             ]);
         }
     }

@@ -27,6 +27,11 @@
                                     <div class="card-body">
                                         <table class="table">
                                             <tr>
+                                                <td>About Work</td>
+                                                <td>{{$work->description}}</td>
+                                            </tr>
+                                            @if($work->fee > 0)
+                                            <tr>
                                                 <td>Total Work Fee</td>
                                                 <td><b>#</b> {{$work->fee}}</td>
                                             </tr>
@@ -38,6 +43,9 @@
                                                 <td>Remaining Work Balance</td>
                                                 <td><b>#</b> {{$work->pendingPayment()}}</td>
                                             </tr>
+                                            @else
+                                                <a href="{{route('client.shop.work.bargain.index',[$work->shopClient->shop->id,$work->id])}}"><i class="fa fa-inbox"></i> Let Bargain Now</a>
+                                            @endif
                                             <tr>
                                                 <td>Work Progress</td>
                                                 <td>

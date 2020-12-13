@@ -61,6 +61,21 @@ Route::prefix('client')
             
         });
 
+        Route::prefix('{shopId}/work')
+            ->name('work.')
+            ->group(function() {
+            Route::get('create', 'ClientShopWorkController@create')->name('create');
+            Route::post('/register', 'ClientShopWorkController@register')->name('register');
+           
+            Route::prefix('{workId}/bargain')
+                ->name('bargain.')
+                ->group(function() {
+                Route::get('/', 'ShopClientWorkBargainController@index')->name('index');  
+                Route::post('/send', 'ShopClientWorkBargainController@send')->name('send');  
+            });
+
+        });   
+
         Route::prefix('{shopId}/designs')
             ->name('design.')
             ->group(function() {

@@ -95,6 +95,34 @@ class CustomerWorkController extends Controller
         ->withSuccess('Work has been registered successfully');
     }
 
+    public function update(Request $request, $shopId, $shopClientId, $shopClientWorkId)
+    {
+
+        $shopClientWork = ShopClientWork::find($shopClientWorkId);
+        $shopClientWork->update([
+            'description'=>$request->description,
+            'fee'=>$request->fee,
+            'paid_fee'=>$request->paid_fee,
+            'finishing_date'=>$request->finishing_date,
+            'finishing_time'=>$request->finishing_time
+        ]);
+        
+        $shop = Shop::find($shopId);
+
+        if($shopClientWork->shopClient->client->referral_code && referrer($shopClientWork->shopClient->client->referral_code)){
+            // get referrer
+            $referrer = referrer($shopClientWork->shopClient->client->referral_code);
+            // make referrer a shop customer
+            $referrerShopClient = $referrer->shopClients()->firstOrCreate(['shop_id'=>$shopId]);
+            // if the work fee is more than or eqal to 1000 update shop client referral bonus
+            if($request->fee >= $shop->shopReferralPlan->fee_limit){
+                $referrerShopClient->shopClientReferralBonuses()->create(['shop_client_work_id'=>$shopClientWork->id,'amount'=>$shop->shopReferralPlan->referral_bonus]);
+            }
+        }
+        return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientWork->shopClient->id])
+        ->withSuccess('Work has been registered successfully');
+    }
+
     /**
      * Show the specified resource.
      * @param int $id

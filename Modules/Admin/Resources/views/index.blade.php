@@ -16,18 +16,18 @@
                             <div class="card-header btn-secondary">{{$shop->name}}</div>
                             <div class="card-body">
                                 <table class="table">
-                                    @if(count($shop->availableWorksToBargain()) >0)
+                                   
                                     <tr>
                                         
                                         <td>
                                             <a href="{{route('admin.shop.customer.work.bargain.index',[$shop->id])}}">{{count($shop->availableWorksToBargain())}}  {{count($shop->availableWorksToBargain())>1 ? 'Clients':'Client'}} want to give you click to view the {{count($shop->availableWorksToBargain())>1 ? 'works':'work'}}</a>
                                         </td>
                                     </tr>
-                                    @endif
+                                    
                                     
                                     <tr>
                                         
-                                        <td><a href="{{route('admin.shop.customer.work.today.index',[$shop->id])}}">You have {{count($shop->workExpectedToBeCompletedToaday())}} {{count($shop->workExpectedToBeCompletedToaday())>1 ? 'works':'work'}}to complete in this shop taday</a>
+                                        <td><a href="{{route('admin.shop.customer.work.today.index',[$shop->id])}}">You have {{count($shop->workExpectedToBeCompletedToaday())}} {{count($shop->workExpectedToBeCompletedToaday())>1 ? 'works':'work'}} to complete in this shop taday</a>
                                         </td>
                                     </tr>
                                     

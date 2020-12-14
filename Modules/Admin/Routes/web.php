@@ -94,6 +94,7 @@ Route::prefix('admin')
                 Route::get('/done', 'CustomerWorkController@done')->name('done');
                 Route::get('/collect', 'CustomerWorkController@collect')->name('collect');
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
+                Route::post('/{workId}/update', 'CustomerWorkController@update')->name('update');
                 Route::post('/{workId}/pay', 'CustomerWorkController@pay')->name('pay');
 
             });

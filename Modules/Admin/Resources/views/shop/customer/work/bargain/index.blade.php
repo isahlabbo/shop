@@ -38,7 +38,8 @@
                         <td>{{$work->created_at}}</td>
                         <td>{{$work->progress()}}</td>
                         <td>
-                           <a href="#" data-toggle="modal" data-target="#update_{{$work->id}}">Am done with the bargaining and collected the cloth lets add work fee</a>  
+                           <a href="#" data-toggle="modal" data-target="#update_{{$work->id}}">Am done with the bargaining and collected the cloth lets add work fee</a>
+                           @include('admin::shop.customer.work.bargain.update')  
                         </td>
                         <td>
                             <a href="{{route('admin.shop.customer.work.bargain.comments',[$shop->id,$work->id])}}"><i class="fa fa-inbox"></i> Okay lets bargain</a>

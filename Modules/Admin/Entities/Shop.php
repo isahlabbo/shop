@@ -208,4 +208,15 @@ class Shop extends BaseModel
         return $works;
     }
 
+    public function availableWorksToBargain()
+    {
+        $works = [];
+        foreach ($this->availableWorks() as $work) {
+            if($work->fee == 0){
+                $works[] = $work;
+            }
+        }
+        return $works;
+    }
+
 }

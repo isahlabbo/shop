@@ -71,4 +71,18 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo('Modules\Apparent\Entities\Address');
     }
+
+    public function availableShopWorksToBargain()
+    {
+        $works = [];
+        foreach ($this->shops as $shop) {
+            foreach ($shop->availableWorks() as $work) {
+                if($work->fee == 0){
+                    $works[] = $work;
+                }
+            }
+        }
+        
+        return $works;
+    }
 }

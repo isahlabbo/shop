@@ -99,11 +99,25 @@ Route::prefix('admin')
             });
             
             // shop todays works routes
-            Route::name('work.today.')
-            ->prefix('/works/'.date('d-M-Y',time()))
+            Route::name('work.')
+            ->prefix('/works')
             ->group(function() {
-                Route::get('/', 'CustomerWorkController@workToday')->name('index');
+                // today's works routes
+                 Route::name('today.')
+                ->prefix(date('d-M-Y',time()))
+                ->group(function() {
+                    Route::get('/', 'CustomerWorkController@workToday')->name('index');
+                });
+
+                // today's works routes
+                 Route::name('bargain.')
+                ->prefix('/bargain')
+                ->group(function() {
+                    Route::get('/', 'CustomerWorkBargainController@index')->name('index');
+                });
+
             });
+            
 
             // shop customers family routes
             Route::name('family.member.')

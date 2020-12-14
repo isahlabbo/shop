@@ -114,6 +114,8 @@ Route::prefix('admin')
                 ->prefix('/bargain')
                 ->group(function() {
                     Route::get('/', 'CustomerWorkBargainController@index')->name('index');
+                    Route::get('/{workId}/comments', 'CustomerWorkBargainController@comment')->name('comments');
+                    Route::post('/{workId}/comment/send', 'CustomerWorkBargainController@sendComment')->name('comment.send');
                 });
 
             });

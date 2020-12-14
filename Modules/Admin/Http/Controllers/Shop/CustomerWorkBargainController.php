@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
+use Modules\Admin\Entities\ShopClientWork;
 
 class CustomerWorkBargainController extends Controller
 {
@@ -30,9 +31,18 @@ class CustomerWorkBargainController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function comment($shopId,$workId)
     {
-        return view('admin::create');
+        $shop = Shop::find($shopId);
+        if(!$shop){
+            return back()->withToast('Invalid shop ID');
+        }
+
+        $work = ShopClientWork::find($workId);
+        if(!$work){
+            return back()->withToast('Invalid work ID');
+        }
+        return view('admin::shop.customer.work.bargain.comment',['shop'=>$shop,'work'=>$work]);
     }
 
     /**
@@ -40,9 +50,14 @@ class CustomerWorkBargainController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function sendComment(Request $request, $shopId, $shopClientWorkId)
     {
-        //
+        $work = ShopClientWork::find($shopClientWorkId);
+        $work->shopClientWorkBargains()->firstOrCreate([
+            'comment'=>$request->comment,
+            'admin_id'=>admin()->id
+        ]);
+        return redirect()->route('admin.shop.customer.work.bargain.comments',[$shopId, $shopClientWorkId])->withSuccess('work bargain comment registered successfully');
     }
 
     /**

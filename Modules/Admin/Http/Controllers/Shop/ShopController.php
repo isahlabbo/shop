@@ -13,7 +13,7 @@ use App\Services\Upload\FileUpload;
 class ShopController extends Controller
 {
     use FileUpload;
-    
+
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -50,8 +50,10 @@ class ShopController extends Controller
             'words'=>$request->words,
             'about'=>$request->about
         ]);
-
-        $shop->update(['image'=>$this->storeFile($request->image,'Images/Shop/'.$shop->name.'/')]);
+        
+        if($request->image){
+            $shop->update(['image'=>$this->storeFile($request->image,'Images/Shop/'.$shop->name.'/')]);
+        }
 
         $shop->shopReferralPlan()->firstOrCreate([
             'fee_limit'=>$request->fee_limit,

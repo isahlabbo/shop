@@ -67,7 +67,7 @@ class ClientConnectionController extends Controller
     public function prepareData($data,$code)
     {
 
-        $data['email'] = $data['phone'].'@sewmycloth.com'; 
+        $data['email'] = $data['phone'].'@smc.com'; 
         $data['password'] = $data['phone']; 
         $data['referral_code'] = $code; 
         return $data; 

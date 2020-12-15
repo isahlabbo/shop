@@ -26,6 +26,7 @@
                     <th> <a href="{{route('admin.shop.customer.work.create',[$shop->id,$shopClient->id])}}"> <button class="btn-secondary btn">Add Work</button> </a>
                     </th>
                     <th></th>
+                    <th></th>
                 </thead>
                 <tbody>
                     @foreach($shopClient->shopClientWorks as $work)
@@ -65,6 +66,10 @@
                             @else
                                 Paid
                             @endif
+                        </td>
+                        <td>
+                            <button class="btn-secondary" data-toggle="modal" data-target="#update_{{$work->id}}"><i class="fa fa-eye"></i> Edit</button>
+                           @include('admin::shop.customer.work.bargain.update')  
                         </td>
                     </tr>
                     @endforeach

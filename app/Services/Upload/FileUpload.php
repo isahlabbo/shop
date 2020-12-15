@@ -7,9 +7,10 @@ trait FileUpload
 {
     public function storeFile($file, $location)
     {
-        $filename = time().$file->getClientOriginalName().'.'.$file->getClientOriginalExtension();
+        $filename = time().$file->getClientOriginalName();
 
         $fullPath = $location.$filename;
+        
         $file->storeAs($location, $filename, $this->fileSystem());
         
         return $fullPath;

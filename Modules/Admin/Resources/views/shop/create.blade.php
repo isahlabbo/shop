@@ -13,7 +13,7 @@
                 <div class="card-header" style="background-color: black; color: white">{{ __('New Shop Registration') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.shop.registration') }}">
+                    <form method="POST" action="{{ route('admin.shop.registration') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -23,6 +23,20 @@
                                 <input id="email" type="text" placeholder="AI Fasion Design" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Shop Picture') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="file" class="form-control  @error('name') is-invalid @enderror" name="image" value="{{ old('image') }}" autocomplete="name" autofocus>
+
+                                @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -11,6 +11,7 @@
         <table class="table table-triped">
             <thead>
                 <th>S/N</th>
+                <th>PICTURE</th>
                 <th>NAME</th>
                 <th>PHONE</th>
                 <th>FAMILY MEMBERS</th>
@@ -28,6 +29,13 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td> {{$shopClient->client->first_name}} {{$shopClient->client->last_name}}</td>
+                    <td> 
+                        @if($shopClient->client->image)
+                           <img src="{{storage_url($shopClient->client->image)}}" width="45" height="45" class="radius">
+                        @else
+                            <img src="{{asset('img/user.png')}}" width="45" height="45" class="radius">
+                        @endif
+                    </td>
                     <td>{{$shopClient->client->phone}}</td>
                     <td>
                     <a href="{{route('admin.shop.customer.family.member.index',[$shop->id,$shopClient->id])}}" class="btn-primary btn">

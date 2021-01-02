@@ -68,7 +68,7 @@ class CustomerController extends Controller
 
         $address = new AddressHandle($data);
 
-        $client = $this->registerNewCustomer($data, $address->address);
+        $client = $address->address->newClient($data, $address->address);
 
         $client->shopClients()->create([
             'shop_id'=>$shopId,

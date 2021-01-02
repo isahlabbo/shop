@@ -4,13 +4,16 @@ namespace Modules\Client\Services;
 
 trait HasIdentificationNumber
 {
-    
+    protected $lga;
+
     public function generateIdentificationNumber()
     {
-    	if($this->hasThisYearIdentification() && !empty($this->getYearAddressIdentificationNumbers())){
+        $this->lga = $this->address->area->town->lga;
+
+    	if($this->hasThisYearIdentification() && count($this->getYearLgaIdentificationNumbers()) > 0){
     		
     		// get the list of numbers in the address of this year
-            $identifications = $this->getYearAddressIdentificationNumbers();
+            $identifications = $this->getYearLgaIdentificationNumbers();
         	
         	// sort the numbers
             sort($identifications);
@@ -26,7 +29,7 @@ trait HasIdentificationNumber
     	}else{
     		// register the year identification session
 
-    		$this->newYearAddressIdetification();
+    		$this->newYearLgaIdetification();
             
             // generate new number
             $newNumber = $this->generateNumber();
@@ -64,30 +67,29 @@ trait HasIdentificationNumber
         return $ext.$number;
     }
 
-    public function newYearAddressIdetification()
+    public function newYearLgaIdetification()
     {
-    	return $this->address->yearlyAddressClientIdentifications()->create(['year'=>date('Y')]);
+    	return $this->lga->yearlyLgaClientIdentifications()->create([]);
     }
 
 	public function hasThisYearIdentification()
 	{
-		$count = 0;
-		foreach ($this->address->yearlyAddressClientIdentifications->where('year',date('Y')) as $key => $value) {
-			$count ++;
-		}
-		if($count > 0){
-			return true;
-		}else{
-			return false;
-		}
+		
+		if(count($this->lga->yearlyLgaClientIdentifications->where('year',date('Y')))>0){
+            return true;
+        }
+
+        return false;
 	}
 
-	public function getYearAddressIdentificationNumbers()
+	public function getYearLgaIdentificationNumbers()
 	{
 		$identifications = [];
-        
-		foreach ($this->address->clients as $client) {
-			$identifications[] = $client->CIN;
+
+		foreach ($this->lga->yearlyLgaClientIdentifications->where('year',date('Y')) as $identification) {
+            foreach ($identification->clients as $client) {
+                $identifications[] = $client->CIN;
+            }
 		}
         
 		return $identifications;

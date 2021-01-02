@@ -13,7 +13,7 @@ class UpdateClientEmail extends Command
      *
      * @var string
      */
-    protected $signature = 'sewmycloth:update-client-email';
+    protected $signature = 'sewmycloth:update-client-info';
 
     /**
      * The console command description.
@@ -41,10 +41,12 @@ class UpdateClientEmail extends Command
     {
         foreach(Client::cursor() as $client){
            
+
             $client->update([
                 'CIN'=>$client->generateIdentificationNumber(),
-                'email'=>$client->phone.'@smc.com',
-                'password'=>Hash::make($client->phone)
+                'email'=>$client->generateIdentificationNumber().'@smc.com',
+                'password'=>Hash::make($client->generateIdentificationNumber()),
+                'yearly_lga_client_identification_id' => $client->address->area->town->lga->getIdentification()->id,
             ]);
         }
     }

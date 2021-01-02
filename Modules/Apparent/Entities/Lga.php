@@ -24,4 +24,21 @@ class Lga extends BaseModel
         }
         return $shops;
     }
+
+    public function yearlyLgaClientIdentifications()
+    {
+        return $this->hasMany('Modules\Client\Entities\YearlyLgaClientIdentification');
+    }
+
+    public function getIdentification()
+    {   
+        $identification = null;
+
+        foreach ($this->yearlyLgaClientIdentifications->where('year',date('Y')) as $clientIdentification) {
+            $identification = $clientIdentification;
+        }
+        
+        return $identification;
+        
+    }
 }

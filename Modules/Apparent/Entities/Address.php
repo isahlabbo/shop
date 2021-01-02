@@ -15,10 +15,6 @@ class Address extends BaseModel
     	return $this->hasMany('Modules\Client\Entities\Client');
     }
 
-    public function yearlyAddressClientIdentifications()
-    {
-        return $this->hasMany('Modules\Client\Entities\YearlyAddressClientIdentification');
-    }
 
     public function apparents()
     {
@@ -59,7 +55,7 @@ class Address extends BaseModel
 
         $client->update([
             'CIN' => $client->generateIdentificationNumber(),
-            'yearly_address_client_identification_id' => $this->getIdentification()->id,
+            'yearly_address_client_identification_id' => $this->area->town->lga->getIdentification()->id,
         ]);
 
         if($client->gender->id == 1){
@@ -70,15 +66,5 @@ class Address extends BaseModel
         return $client;
     }
 
-    public function getIdentification()
-    {   
-        $identification = null;
-
-        foreach ($this->yearlyAddressClientIdentifications->where('year',date('Y')) as $clientIdentification) {
-            $identification = $clientIdentification;
-        }
-        
-        return $identification;
-        
-    }
+    
 }

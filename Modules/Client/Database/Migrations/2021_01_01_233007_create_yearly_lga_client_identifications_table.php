@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateYearlyAddressClientIdentificationsTable extends Migration
+class CreateYearlyLgaClientIdentificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateYearlyAddressClientIdentificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('yearly_address_client_identifications', function (Blueprint $table) {
+        Schema::create('yearly_lga_client_identifications', function (Blueprint $table) {
             $table->id();
-            $table->integer('address_id')
+            $table->integer('lga_id')
             ->unsigned()->nullable()
             ->foreign()
             ->references('id')
-            ->on('addresses')
+            ->on('lgas')
             ->delete('restrict')
             ->update('cascade');
             $table->integer('year')->default(date('Y'));
+            $table->integer('counter')->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateYearlyAddressClientIdentificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('yearly_address_client_identifications');
+        Schema::dropIfExists('yearly_lga_client_identifications');
     }
 }

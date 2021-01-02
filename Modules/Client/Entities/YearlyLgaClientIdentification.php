@@ -4,17 +4,15 @@ namespace Modules\Client\Entities;
 
 use App\BaseModel;
 
-class YearlyAddressClientIdentification extends BaseModel
+class YearlyLgaClientIdentification extends BaseModel
 {
     public function clients()
     {
     	return $this->hasMany(Client::class);
     }
 
-    public function address()
+    public function lga()
     {
-        return $this->belongsTo('Modules\Apparent\Entities\Address');
+        return $this->belongsTo('Modules\Apparent\Entities\Lga');
     }
-
-
 }

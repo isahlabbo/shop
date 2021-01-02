@@ -28,7 +28,7 @@ class Client extends Authenticatable
         'phone',
         'gender_id',
         'lga',
-        'yearly_address_client_identification_id',
+        'yearly_lga_client_identification_id',
         'CIN',
         'referral_code',
         'password',
@@ -56,9 +56,9 @@ class Client extends Authenticatable
     {
         return $this->belongsTo(Gender::class);
     }
-    public function yearlyAddressClientIdentification()
+    public function yearlyLgaClientIdentification()
     {
-        return $this->belongsTo(YearlyAddressClientIdentification::class);
+        return $this->belongsTo(YearlyLgaClientIdentification::class);
     }
     public function address()
     {

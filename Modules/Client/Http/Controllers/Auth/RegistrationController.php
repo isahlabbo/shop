@@ -68,7 +68,7 @@ class RegistrationController extends Controller
 
         $client->update([
             'CIN' => $client->generateIdentificationNumber(),
-            'yearly_address_client_identification_id' => $address->getIdentification()->id,
+            'yearly_lga_client_identification_id' => $address->area->town->lga->getIdentification()->id,
         ]);
 
         if($client->gender->id == 1){

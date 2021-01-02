@@ -1,10 +1,10 @@
-in<?php
+<?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateRelationsTable extends Migration
+class CreateUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRelationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('relations', function (Blueprint $table) {
+        Schema::create('uploads', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('location');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateRelationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('relations');
+        Schema::dropIfExists('uploads');
     }
 }

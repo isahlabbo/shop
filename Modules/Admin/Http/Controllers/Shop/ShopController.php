@@ -35,6 +35,7 @@ class ShopController extends Controller
     {
         return view('admin::shop.create',[
             'states'=>State::all(),
+            'component'=> ['address'=>true],
             'designTypes'=>DesignType::all()
         ]);
     }

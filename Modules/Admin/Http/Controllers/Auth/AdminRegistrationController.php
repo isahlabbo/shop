@@ -36,36 +36,13 @@ class AdminRegistrationController extends Controller
                 
         $address = new AddressHandle($request->all());
 
-        $this->create($request->all(), $address->address);
+        $address->address->create($request->all());
 
         return redirect()->route('admin.login')->withSuccess('Admin Registered successfully');
 
     }
 
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data, Address $address)
-    {
-        
-
-        $admin = $address->admins()->create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'gender_id' => $data['gender'],
-            'password' => Hash::make($data['password']),
-        ]);
-        
-        if($data['image']){
-            $admin->update(['image'=>$this->storeFile($data['image'], 'Images/Profiles/Admins/')]);
-        }
-    }
+    
 
     
 }

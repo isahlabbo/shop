@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-6">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
 		<br>
 		<div class="card">
                 <div class="card-header" style="background-color: black; color: white">{{ __('New Shop Registration') }}</div>
@@ -15,7 +15,8 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.shop.registration') }}" enctype="multipart/form-data">
                         @csrf
-
+                        <div class="row">
+                        <div class="col-md-6">
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Shop Title') }}</label>
 
@@ -123,16 +124,19 @@
                                 @enderror
                             </div>
                         </div>
-
+                    </div>
+                    <div class="col-md-6">
                         @include('registration.address')
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right"></label>
-
                             <div class="col-md-6">
                                 <button class="btn btn-primary btn-block"> Register</button>
                             </div>
                         </div>
+                    </div>
+                    
+                </div>
+                        
                     </form>
                 </div>
             </div>

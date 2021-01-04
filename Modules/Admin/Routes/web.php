@@ -31,9 +31,14 @@ Route::prefix('admin')
     ->group(function() {
         Route::get('/create', 'ShopController@create')->name('create');
         Route::post('/registration', 'ShopController@registration')->name('registration');
-        
-
         // shop payment routes
+        Route::name('admin.')
+        ->prefix('admins')
+        ->group(function() {
+            Route::get('/', 'ShopAdminController@index')->name('index');
+            Route::get('/create', 'ShopAdminController@create')->name('create');
+            Route::post('/register', 'ShopAdminController@register')->name('register');
+        });
         Route::name('payment.')
         ->prefix('{shopId}/payment')
         ->group(function() {

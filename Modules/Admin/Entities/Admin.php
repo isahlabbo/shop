@@ -72,6 +72,11 @@ class Admin extends Authenticatable
         return $this->belongsTo('Modules\Apparent\Entities\Address');
     }
 
+    public function shopAdmins()
+    {
+        return $this->hasMany(ShopAdmin::class);
+    }
+    
     public function availableShopWorksToBargain()
     {
         $works = [];

@@ -56,6 +56,12 @@ class Shop extends BaseModel
     	return $this->hasMany(Programme::class);
     }
 
+    public function shopAdmins()
+    {
+        return $this->hasMany(ShopAdmin::class);
+    }
+
+
     public function availablePaidBonus()
     {
         $bonuses = [];

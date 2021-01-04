@@ -5,10 +5,12 @@ namespace Modules\Apparent\Entities;
 use App\BaseModel;
 use Modules\Apparent\Entities\Address;
 use Illuminate\Support\Facades\Hash;
+use App\Services\Upload\FileUpload;
 
 class Address extends BaseModel
 {
     
+    use FileUpload;
 
     public function clients()
     {
@@ -40,7 +42,24 @@ class Address extends BaseModel
     {
         return $this->belongsTo(Area::class);
     }
+    
+    public function newAdmin(array $data)
+    {
+        $admin = $this->admins()->create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'gender_id' => $data['gender'],
+            'password' => Hash::make($data['password']),
+        ]);
+        
+        if(isset($data['image'])){
+            $admin->update(['image'=>$this->storeFile($data['image'], 'Images/Profiles/Admins/')]);
+        }
 
+        return $admin;
+    }
     public function newClient(array $data)
     {
         $client = $this->clients()->create([

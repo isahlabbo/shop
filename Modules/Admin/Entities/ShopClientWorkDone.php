@@ -4,7 +4,7 @@ namespace Modules\Admin\Entities;
 
 use App\BaseModel;
 
-class ShopClientWorkDone extends Model
+class ShopClientWorkDone extends BaseModel
 {
     public function shopClientWork()
     {

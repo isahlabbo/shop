@@ -13,7 +13,7 @@
         {{$shopClient->client->first_name}} {{$shopClient->client->last_name}} new work registration
         </div>
         <div class="card-body">
-            <form action="{{route('admin.shop.customer.work.register',[$shopClient->shop->id,$shopClient->id])}}" method="post">
+            <form action="{{route('admin.shop.customer.work.register',[$shopClient->shop->id,$shopClient->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Work Description') }}</label>
@@ -64,6 +64,17 @@
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Finishing Time') }}</label>
                     <div class="col-md-8">
                         <input type="time" name="finishing_time" id="" class="form-control" placeholder="Specify the work fee">
+                        @error('time')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-md-right">Picture</label>
+                    <div class="col-md-8">
+                        <input type="file" name="image" id="" class="form-control">
                         @error('time')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -54,9 +54,16 @@ class ShopDesignController extends Controller
             'description'=>$request->description,
             'fee'=>$request->fee,
             'shop_client_work_id'=>$shopClientWorkId,
-            'design_image'=>$this->storeFile($request->design_image, 'Images/Upload/'.Shop::find($shopId)->name.'/Designs'),
-            'prove_image'=>$this->storeFile($request->prove_image, 'Images/Upload/'.Shop::find($shopId)->name.'/Proves')
+            'design_image'=>$this->storeFile($request->design_image, 'Images/Shop/'.$shopId.'/Design/Works/')
             ]);
+
+        if($request->prove_image){
+            $design->update(['prove_image'=>$this->storeFile($request->prove_image, 'Images/Shop/'.$shopId.'/Design/Work/Prove/')]);
+        }
+
+        if($request->prove_image){
+            
+        }
 
         return redirect()->route('admin.shop.design.index',[$shopId]);        
     }

@@ -9,9 +9,12 @@ use Modules\Admin\Entities\Shop;
 use Modules\Client\Entities\Client;
 use Modules\Admin\Entities\ShopClient;
 use Modules\Admin\Entities\ShopClientWork;
+use App\Services\Upload\FileUpload;
 
 class CustomerWorkController extends Controller
 {
+    use FileUpload;
+    
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -90,6 +93,9 @@ class CustomerWorkController extends Controller
             if($request->fee >= $shop->shopReferralPlan->fee_limit){
                 $referrerShopClient->shopClientReferralBonuses()->create(['shop_client_work_id'=>$shopClientWork->id,'amount'=>$shop->shopReferralPlan->referral_bonus]);
             }
+        }
+        if(isset($request->image)){
+            $shopClientWork->update(['cloth_image'=>$this->storeFile($request->image, 'Images/Shop/'.$shop->id.'/Works/')]);
         }
         return redirect()->route('admin.shop.customer.work.index',[$shopId,$shopClientId])
         ->withSuccess('Work has been registered successfully');

@@ -15,6 +15,7 @@
             <table class="table table-triped">
                 <thead>
                     <th>S/N</th>
+                    <th>Sample</th>
                     <th>Description</th>
                     <th>Fee</th>
                     <th>paid</th>
@@ -32,6 +33,7 @@
                     @foreach($shopClient->shopClientWorks as $work)
                     <tr>
                         <td>{{$loop->index+1}}</td>
+                        <td> <img src="{{storage_url($work->cloth_image)}}" width="45" height="45"></td>
                         <td> {{$work->description}}</td>
                         <td> #{{$work->fee}}</td>
                         <td> #{{$work->paid_fee}}</td>

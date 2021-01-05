@@ -37,7 +37,7 @@ class ClientConnectionController extends Controller
             'genders'=>Gender::all(),
             'message'=>client()->CIN.' New Connection Registration page',
             'route'=>route('client.connection.register',[$referral]),
-            'status'=>null,
+            'component'=>['address'=>true,'referral'=>true],
             'referral'=>$referral,
         ]);
     }

@@ -58,6 +58,10 @@ class Address extends BaseModel
             $admin->update(['image'=>$this->storeFile($data['image'], 'Images/Profiles/Admins/')]);
         }
 
+        if(isset($data['shop'])){
+            $admin->update(['status'=>0]);
+        }
+
         return $admin;
     }
     public function newClient(array $data)
@@ -74,7 +78,7 @@ class Address extends BaseModel
 
         $client->update([
             'CIN' => $client->generateIdentificationNumber(),
-            'yearly_address_client_identification_id' => $this->area->town->lga->getIdentification()->id,
+            'yearly_lga_client_identification_id' => $this->area->town->lga->getIdentification()->id,
         ]);
 
         if($client->gender->id == 1){

@@ -51,7 +51,7 @@ class CustomerController extends Controller
             'genders'=>Gender::all(),
             'message'=>$shop->name.' Customer Registration',
             'route'=>route('admin.shop.customer.register',[$shop->id]),
-            'status'=>null,
+            'component'=>['address'=>true,'referral'=>true],
             'referral'=>null
             ]);
     }

@@ -41,6 +41,11 @@ class UpdateClientEmail extends Command
     {
         foreach(Client::cursor() as $client){
            
+            $bar = $this->output->createProgressBar(count(Client::all()));
+
+            $bar->setBarWidth(100);
+
+            $bar->start();
 
             $client->update([
                 'CIN'=>$client->generateIdentificationNumber(),
@@ -48,6 +53,8 @@ class UpdateClientEmail extends Command
                 'password'=>Hash::make($client->generateIdentificationNumber()),
                 'yearly_lga_client_identification_id' => $client->address->area->town->lga->getIdentification()->id,
             ]);
+            $bar->advance();
         }
+        $bar->finish();
     }
 }

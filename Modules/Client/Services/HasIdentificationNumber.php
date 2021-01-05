@@ -69,7 +69,7 @@ trait HasIdentificationNumber
 
     public function newYearLgaIdetification()
     {
-    	return $this->lga->yearlyLgaClientIdentifications()->create([]);
+    	return $this->lga->yearlyLgaClientIdentifications()->firstOrCreate(['year'=>date('Y')]);
     }
 
 	public function hasThisYearIdentification()
@@ -87,7 +87,9 @@ trait HasIdentificationNumber
 		$identifications = [];
 
 		foreach ($this->lga->yearlyLgaClientIdentifications->where('year',date('Y')) as $identification) {
+
             foreach ($identification->clients as $client) {
+
                 $identifications[] = $client->CIN;
             }
 		}

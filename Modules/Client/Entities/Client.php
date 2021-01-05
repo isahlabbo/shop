@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Admin\Entities\Shop;
 use Modules\Client\Services\AvailableShopTrait as HasShops;
 use Modules\Client\Services\HasIdentificationNumber as Identifiable;
+use Illuminate\Support\Facades\Hash;
 
 class Client extends Authenticatable
 {
@@ -231,6 +232,18 @@ class Client extends Authenticatable
         return $works;
     }
 
-
+   public function updateInfor($data)
+   {
+    
+       $this->update([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'gender_id' => $data['gender'],
+            'referral_code' => $data['referral_code'],
+            'password' => Hash::make($data['password']),
+        ]);
+   }
     
 }

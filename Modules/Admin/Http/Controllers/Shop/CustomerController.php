@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
 use Modules\Client\Entities\Gender;
+use Modules\Client\Entities\Client;
 use Modules\Apparent\Entities\State;
 use Modules\Apparent\Entities\Address;
 use Modules\Apparent\Entities\Religion;
@@ -101,9 +102,16 @@ class CustomerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit($shopId, $clientId)
     {
-        return view('admin::edit');
+        return view('admin::shop.customer.edit',[
+            'message'=>'Edit Customer information',
+            'component'=>['address'=>true,'referral'=>true,'data'=>Client::find($clientId)],
+            'states'=>State::all(),
+            'genders'=>Gender::all(),
+            'route'=>route('admin.shop.customer.update',[$shopId,$clientId]),
+            'referral'=>null
+        ]);
     }
 
     /**
@@ -112,9 +120,24 @@ class CustomerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $shopId, $clientId)
     {
-        //
+        $data = $this->prepareData($request->all(),$request->referral_code);
+
+        $address = new AddressHandle($data);
+        
+        $data['address_id'] = $address->address->id;
+
+        $client = Client::find($clientId);
+
+        $client->updateInfor($data);
+
+        $client->shopClients()->create([
+            'shop_id'=>$shopId,
+            'refferal_code'=>$request->refferal_code,
+            ]);
+
+        return redirect()->route('admin.shop.customer.edit',[$shopId,$clientId])->withSuccess('Customer Updated successfully');
     }
 
     /**

@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-        <table class="table table-triped">
+        <table class="table table-triped" id="customers">
             <thead>
                 <th>S/N</th>
                 <th>PICTURE</th>
@@ -55,9 +55,11 @@
                     <td>{{$shopClient->client->CIN}}</td>
                     
                     <td>
+                        <a href="{{route('admin.shop.customer.edit',[$shop->id,$shopClient->client->id])}}">
                         <button class="btn-primary btn">
                             Edit
                         </button>
+                        </a>
                         <button class="btn-secondary btn">
                             Delete
                         </button>
@@ -74,4 +76,14 @@
         </table>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(function() {
+        $('#customers').DataTable({
+            
+        });
+    });
+</script>
 @endsection

@@ -88,7 +88,9 @@ Route::prefix('admin')
         ->group(function() {
             Route::get('/', 'CustomerController@index')->name('index');
             Route::get('/create', 'CustomerController@create')->name('create');
+            Route::get('/{clientId}/edit', 'CustomerController@edit')->name('edit');
             Route::post('/register', 'CustomerController@register')->name('register');
+            Route::post('/{clientId}/update', 'CustomerController@update')->name('update');
             
             // shop customers works routes
             Route::name('work.')

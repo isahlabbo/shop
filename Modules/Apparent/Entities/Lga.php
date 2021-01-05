@@ -38,7 +38,11 @@ class Lga extends BaseModel
             $identification = $clientIdentification;
         }
         
-        return $identification;
+        if($identification){
+           return $identification;
+        }
+
+        return $this->yearlyLgaClientIdentifications()->create(['year'=>date('Y')]);
         
     }
 }

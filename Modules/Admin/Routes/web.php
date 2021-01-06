@@ -57,6 +57,7 @@ Route::prefix('admin')
         ->group(function() {
             Route::get('/', 'ApparentController@index')->name('index');
             Route::get('/create', 'ApparentController@create')->name('create');
+            Route::get('/{apparentId}/edit', 'ApparentController@edit')->name('edit');
             Route::get('/application', 'ApparentController@application')->name('application');
             Route::post('/register', 'ApparentController@register')->name('register');
         });

@@ -19,6 +19,7 @@
                 <th>GENDER</th>
                 <th>RELIGION</th>
                 <th>TRIBE</th>
+                <th>PROGRAMME</th>
                 <th></th>
                 <th> <a href="{{route('admin.shop.apparent.create',[$shop->id])}}"> <button class="btn-secondary btn">New Apparent</button> </a></th>
             </thead>
@@ -34,6 +35,7 @@
                     <td>{{$apparent->gender->name ?? ''}}</td>
                     <td>{{$apparent->religion->name ?? ''}}</td>
                     <td>{{$apparent->tribe->name ?? ''}}</td>
+                    <td>{{$apparent->programme->name ?? ''}}</td>
                     <td>
                         <a href="#" data-toggle="modal" data-target="#grantor_{{$apparent->grantor->id ?? ''}}"> 
                             <button class="btn-primary btn">
@@ -42,9 +44,11 @@
                         </a>
                     </td>
                     <td>
-                        <button class="btn-primary btn">
-                            Edit
-                        </button>
+                        <a href="{{route('admin.shop.apparent.edit',[$shop->id,$apparent->id])}}" >
+                            <button class="btn-primary btn">
+                                Edit
+                            </button>
+                        </a>
                         <button class="btn-secondary btn">
                             Delete
                         </button>

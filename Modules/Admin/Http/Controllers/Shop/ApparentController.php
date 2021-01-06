@@ -10,6 +10,7 @@ use Modules\Client\Entities\Gender;
 use Modules\Apparent\Entities\State;
 use Modules\Apparent\Entities\Religion;
 use Modules\Apparent\Entities\Tribe;
+use Modules\Apparent\Entities\Apparent;
 use Modules\Apparent\Services\AddressHandle;
 use Illuminate\Support\Facades\Hash;
 
@@ -69,7 +70,7 @@ class ApparentController extends Controller
     {
         $data = $request->all();
         $data['shop_id'] = $shopId;
-        
+
         $apparentAddress = new AddressHandle($data);
         //create apparent
 
@@ -100,9 +101,16 @@ class ApparentController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit($shopId, $apparentId)
     {
-        return view('admin::edit');
+        return view('admin::shop.apparent.edit',[
+            'component'=>['data'=>Apparent::find($apparentId)],
+            'shop'=>Shop::find($shopId),
+            'genders'=>Gender::all(),
+            'states'=>State::all(),
+            'religions'=>Religion::all(),
+            'tribes'=>Tribe::all()
+        ]);
     }
 
     /**

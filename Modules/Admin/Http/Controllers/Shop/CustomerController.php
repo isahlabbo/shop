@@ -28,6 +28,35 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
+    public function referral()
+    {
+        return view('admin::shop.customer.shopReferral');
+    }
+
+    public function referralRegistration(Request $request)
+    {
+        $request->validate([
+            'shop'=>'required',
+            'CIN'=>'required',
+        ]);
+        $client = null;
+        foreach (Client::where('CIN',$request->CIN)->get() as $client) {
+            # code...
+        }
+
+
+
+        if($client){
+            if(count($client->shopClients->where('shop_id',$request->shop)) >0 ){
+                return redirect()->route('admin.shop.customer.referral',['direct'])->withWarning('The Customer record exist in this shop');
+            }
+
+            $client->shopClients()->firstOrCreate(['shop_id'=>$request->shop]);
+            return redirect()->route('admin.shop.customer.referral',['direct'])->withSuccess('Customer Referred successfully');
+        }else{
+            return redirect()->route('admin.shop.customer.referral',['direct'])->withWarning('invalid Customer Identification Number');
+        }
+    }
     public function index($shopId)
     {
         $shop = Shop::find($shopId);

@@ -90,6 +90,8 @@ Route::prefix('admin')
             Route::get('/create', 'CustomerController@create')->name('create');
             Route::get('/{clientId}/edit', 'CustomerController@edit')->name('edit');
             Route::get('/{shopClientId}/delete', 'CustomerController@delete')->name('delete');
+            Route::get('/referral', 'CustomerController@referral')->name('referral');
+            Route::post('/referral/register', 'CustomerController@referralRegistration')->name('referral.register');
             Route::post('/register', 'CustomerController@register')->name('register');
             Route::post('/{clientId}/update', 'CustomerController@update')->name('update');
             

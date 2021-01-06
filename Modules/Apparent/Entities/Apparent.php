@@ -5,10 +5,13 @@ namespace Modules\Apparent\Entities;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Services\Upload\FileUpload;
+use Illuminate\Support\Facades\Hash;
+
 
 class Apparent extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, FileUpload;
 
     /**
      * The attributes that are mass assignable.
@@ -81,5 +84,33 @@ class Apparent extends Authenticatable
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function updateInfor(array $data)
+    {
+        $this->update([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'gender_id' => $data['gender'],
+            'religion_id' => $data['religion'],
+            'tribe_id' => $data['tribe'],
+            'programme_id' => $data['programme'],
+            'shop_id' => $data['shop_id'],
+            'address_id' => $data['address_id']
+        ]);
+
+        if($data['password']){
+            $this->update([
+                'password' => Hash::make($data['password'])
+            ]);
+        }
+
+        if(isset($data['apparent_image'])){
+           $this->updateFile($this, 'image', $data['apparent_image'], 'Images/Shop/'.$data['shop_id'].'/Apparents/');
+        }
+        
+        return $this;
     }
 }

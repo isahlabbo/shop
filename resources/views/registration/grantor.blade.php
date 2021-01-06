@@ -66,7 +66,7 @@
     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Change Grantor Image') }}</label>
 
     <div class="col-md-6">
-        <input id="grantor_image" type="file" class="form-control" name="grantor_image" required autocomplete="grantor_image">
+        <input id="grantor_image" type="file" class="form-control" name="grantor_image" autocomplete="grantor_image">
     </div>
 </div>
 <div class="form-group row">

@@ -119,9 +119,28 @@ class ApparentController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $shopId, $apparentId)
     {
-        //
+        $data = $request->all();
+        $data['shop_id'] = $shopId;
+
+        $apparentAddress = new AddressHandle($data);
+        //create apparent
+       $data['address_id'] = $apparentAddress->address->id;
+
+        $apparent = Apparent::find($apparentId);
+        $apparent->updateInfor($data);
+
+        
+        
+        $grantorAddress = new AddressHandle($this->formalizeThisData($data));
+        //register the grantor
+        $data['address_id'] = $grantorAddress->address->id;
+        $apparent->grantor->updateInfor($data);
+
+        //redirect to the apparent registered page for the shop
+        return redirect()->route('admin.shop.apparent.index',[$shopId])
+        ->withSuccess('Apparent information Updated successfully');
     }
 
     /**

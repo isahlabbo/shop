@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
+use Modules\Admin\Entities\ShopClient;
 use Modules\Client\Entities\Gender;
 use Modules\Client\Entities\Client;
 use Modules\Apparent\Entities\State;
@@ -130,12 +131,8 @@ class CustomerController extends Controller
 
         $client = Client::find($clientId);
 
-        $client->updateInfor($data);
+        $client->updateInfor($data, $shopId);
 
-        $client->shopClients()->create([
-            'shop_id'=>$shopId,
-            'refferal_code'=>$request->refferal_code,
-            ]);
 
         return redirect()->route('admin.shop.customer.edit',[$shopId,$clientId])->withSuccess('Customer Updated successfully');
     }
@@ -145,9 +142,11 @@ class CustomerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function delete($shopId, $shopClientId)
     {
-        //
+        $shopClient = ShopClient::find($shopClientId);
+        $shopClient->delete();
+        return back()->withSuccess('Customer delete from your shop');
     }
 
     protected function registerNewCustomer(array $data, Address $address)

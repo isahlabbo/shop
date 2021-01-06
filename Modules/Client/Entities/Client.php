@@ -232,10 +232,10 @@ class Client extends Authenticatable
         return $works;
     }
 
-   public function updateInfor($data)
+   public function updateInfor($data, $shopId)
    {
     
-       $this->update([
+        $this->update([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -244,6 +244,13 @@ class Client extends Authenticatable
             'referral_code' => $data['referral_code'],
             'password' => Hash::make($data['password']),
         ]);
+        foreach ($this->shopClients->where('shop_id',$shopId) as $shopClient) {
+            $shopClient->update([
+            'shop_id'=>$shopId,
+            'refferal_code'=>$data['referral_code'],
+            ]);
+        } 
+
    }
     
 }

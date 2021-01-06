@@ -64,6 +64,46 @@ class Address extends BaseModel
 
         return $admin;
     }
+
+    public function newApparent(array $data)
+    {
+        $apparent = $this->apparents()->create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+            'gender_id' => $data['gender'],
+            'religion_id' => $data['religion'],
+            'tribe_id' => $data['tribe'],
+            'programme_id' => $data['programme'],
+            'shop_id' => $data['shop_id']
+        ]);
+        if(isset($data['apparent_image'])){
+            $apparent->update(['image'=>$this->storeFile($data['apparent_image'], 'Images/Shop/'.$data['shop_id'].'/Apparents/')]);
+        }
+        
+        return $apparent;
+    }
+
+    public function newGrantor(array $data, $apparent)
+    {
+        $grantor = $this->grantors()->create([
+            'name'=>$data['grantor_name'],
+            'email'=>$data['grantor_email'],
+            'phone'=>$data['grantor_phone'],
+        ]);
+        
+        if(isset($data['grantor_image'])){
+            $grantor->update(['image'=>$this->storeFile($data['grantor_image'], 'Images/Shop/'.$data['shop_id'].'/Grantors/')]);
+        }
+
+        //connect the grantor and its apparent
+        $apparent->update(['grantor_id'=>$grantor->id]);
+
+
+    }
+
     public function newClient(array $data)
     {
         $client = $this->clients()->create([

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrapModify.css')}}"/>
     
 </head>
-<body>
+<body style="background-color: #ab092e">
 
     <!-- Page Preloder -->
     <div id="preloder">

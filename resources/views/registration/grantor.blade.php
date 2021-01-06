@@ -51,7 +51,13 @@
         @enderror
     </div>
 </div>
+<div class="form-group row">
+    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Grantor Image') }}</label>
 
+    <div class="col-md-6">
+        <input id="grantor_image" type="file" class="form-control" name="grantor_image" required autocomplete="grantor_image">
+    </div>
+</div>
 <div class="form-group row">
     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Grantor State') }}</label>
     <div class="col-md-6">

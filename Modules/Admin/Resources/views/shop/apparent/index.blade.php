@@ -11,6 +11,7 @@
         <table class="table table-triped">
             <thead>
                 <th>S/N</th>
+                <th>PICTURE</th>
                 <th>NAME</th>
                 <th>EMAIL</th>
                 <th>PHONE</th>
@@ -25,15 +26,16 @@
                 @foreach($shop->apparents as $apparent)
                 <tr>
                     <td>{{$loop->index+1}}</td>
+                    <td> <img src="{{storage_url($apparent->image)}}" height="45" width="45"> </td>
                     <td> {{$apparent->first_name}} {{$apparent->last_name}}</td>
                     <td>{{$apparent->email}}</td>
                     <td>{{$apparent->phone}}</td>
-                    <td>{{$apparent->address->name}}</td>
-                    <td>{{$apparent->gender->name}}</td>
-                    <td>{{$apparent->religion->name}}</td>
-                    <td>{{$apparent->tribe->name}}</td>
+                    <td>{{$apparent->address->name ?? ''}}</td>
+                    <td>{{$apparent->gender->name ?? ''}}</td>
+                    <td>{{$apparent->religion->name ?? ''}}</td>
+                    <td>{{$apparent->tribe->name ?? ''}}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#grantor_{{$apparent->grantor->id}}"> 
+                        <a href="#" data-toggle="modal" data-target="#grantor_{{$apparent->grantor->id ?? ''}}"> 
                             <button class="btn-primary btn">
                                 Grantor
                             </button> 

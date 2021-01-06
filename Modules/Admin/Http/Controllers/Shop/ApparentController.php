@@ -54,6 +54,7 @@ class ApparentController extends Controller
             'shop'=>$shop,
             'genders'=>Gender::all(),
             'states'=>State::all(),
+            'component'=>['address'=>true],
             'religions'=>Religion::all(),
             'tribes'=>Tribe::all()
             ]);
@@ -67,37 +68,17 @@ class ApparentController extends Controller
     public function register(Request $request, $shopId)
     {
         $data = $request->all();
+        $data['shop_id'] = $shopId;
+        
         $apparentAddress = new AddressHandle($data);
         //create apparent
-        $apparent = $apparentAddress->address->apparents()->create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' => Hash::make($data['password']),
-            'gender_id' => $data['gender'],
-            'religion_id' => $data['religion'],
-            'tribe_id' => $data['tribe'],
-            'programme_id' => $data['programme'],
-            'shop_id' => $shopId
 
-        ]);
+        $apparent = $apparentAddress->address->newApparent($data);
         //modify the address to point the grantor address
-        $data['state'] = $data['grantor_state'];
-        $data['lga'] = $data['grantor_lga'];
-        $data['town'] = $data['grantor_town'];
-        $data['area'] = $data['grantor_area'];
-        $data['address'] = $data['grantor_address'];
-        $grantorAddress = new AddressHandle($data);
+        
+        $grantorAddress = new AddressHandle($this->formalizeThisData($data));
         //register the grantor
-        $grantor = $grantorAddress->address->grantors()->create([
-            'name'=>$data['grantor_name'],
-            'email'=>$data['grantor_email'],
-            'phone'=>$data['grantor_phone'],
-        ]);
-
-        //connect the grantor and its apparent
-        $apparent->update(['grantor_id'=>$grantor->id]);
+        $grantorAddress->address->newGrantor($data, $apparent);
 
         //redirect to the apparent registered page for the shop
         return redirect()->route('admin.shop.apparent.index',[$shopId])
@@ -143,5 +124,15 @@ class ApparentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function formalizeThisData(array $data)
+    {
+        $data['state'] = $data['grantor_state'];
+        $data['lga'] = $data['grantor_lga'];
+        $data['town'] = $data['grantor_town'];
+        $data['area'] = $data['grantor_area'];
+        $data['address'] = $data['grantor_address'];
+        return $data;
     }
 }

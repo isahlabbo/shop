@@ -14,7 +14,7 @@
 
                 <div class="card-body">
                     
-                    <form method="POST" action="{{ route('admin.shop.apparent.register',[$shop->id]) }}">
+                    <form method="POST" action="{{ route('admin.shop.apparent.register',[$shop->id]) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -105,6 +105,14 @@
 
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Apparent Image') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="apparent_image" type="file" class="form-control" name="apparent_image" required autocomplete="apparent_image">
                                     </div>
                                 </div>
 

@@ -21,6 +21,7 @@ class Apparent extends Authenticatable
         'password',
         'email',
         'phone',
+        'image',
         'gender_id',
         'religion_id',
         'tribe_id',

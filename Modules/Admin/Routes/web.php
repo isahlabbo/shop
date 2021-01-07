@@ -162,12 +162,15 @@ Route::prefix('admin')
             Route::get('/', 'ProgrammeController@index')->name('index');
             Route::get('/create', 'ProgrammeController@create')->name('create');
             Route::post('/register', 'ProgrammeController@register')->name('register');
+            Route::post('/{programmeId}/update', 'ProgrammeController@update')->name('update');
+            Route::get('/{programmeId}/delete', 'ProgrammeController@delete')->name('delete');
 
             Route::name('schedule.')
             ->prefix('{programmeId}/scheduls')
             ->group(function() {
                 Route::get('/', 'ProgrammeWeeklyScheduleController@index')->name('index');
                 Route::post('/{scheduleId}/update', 'ProgrammeWeeklyScheduleController@update')->name('update');
+                Route::get('/{scheduleId}/delete', 'ProgrammeWeeklyScheduleController@delete')->name('delete');
             });
         });
     });

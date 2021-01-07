@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
+use Modules\Admin\Entities\Programme;
 
 class ProgrammeController extends Controller
 {
@@ -73,35 +74,39 @@ class ProgrammeController extends Controller
         return redirect()->route('admin.shop.programme.index',[$shopId])->withSuccess('Shop programme registered successfully');
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
-    }
-
+    
     /**
      * Update the specified resource in storage.
      * @param Request $request
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $shopId, $programmeId)
     {
-        //
+        $programme = Programme::find($programmeId);
+
+        if($programme->duration != $request->duration){
+            foreach ($programme->programmeWeeklySchedules as $schedule) {
+                $schedule->delete();
+            }
+        }
+
+        $programme->update([
+            'name'=>$request->name,
+            'fee'=>$request->fee,
+            'duration'=>$request->duration,
+            'about'=>$request->about,
+        ]);
+
+        foreach ($programme->weeks() as $week) {
+            $programme->programmeWeeklySchedules()->firstOrCreate([
+                'week'=>'Week '.$week,
+                'topic'=>"topic name",
+                'objective'=>"aims and objective",
+            ]);
+        }
+
+        return redirect()->route('admin.shop.programme.index',[$shopId])->withSuccess('Programme updated');
     }
 
     /**
@@ -109,8 +114,19 @@ class ProgrammeController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function delete($shopId, $programmeId)
     {
-        //
+        $programme = Programme::find($programmeId);
+
+        if(count($programme->apparents) > 0){
+             return redirect()->route('admin.shop.programme.index',[$shopId])->withWarning('Programme cant be deleted because of the registered apparents in');
+        }
+
+        foreach ($programme->programmeWeeklySchedules as $schedule) {
+            $schedule->delete();
+        }
+        $programme->delete();
+        return redirect()->route('admin.shop.programme.index',[$shopId])->withSuccess('Programme deleted');
+
     }
 }

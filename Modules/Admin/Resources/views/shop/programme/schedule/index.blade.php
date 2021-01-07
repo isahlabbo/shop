@@ -29,7 +29,17 @@
 					       	   <td>{{$schedule->week}}</td>
 					       	   <td>{{$schedule->topic ?? ''}}</td>
 					       	   <td>{{$schedule->objective ?? ''}}</td>
-					       	   <td><button class="btn btn-secondary" data-toggle="modal" data-target="#schedul_{{$schedule->id}}">Edit</button></td>
+					       	   <td>
+					       	   	<button class="btn btn-secondary" data-toggle="modal" data-target="#schedul_{{$schedule->id}}">
+					       	   	    Edit
+					       	    </button>
+                                
+                                <a href="{{route('admin.shop.programme.schedule.delete',[$shop->id, $programme->id, $schedule->id])}}" onclick="return confirm('Are you sure you want this week schedule')">
+					       	    <button class="btn btn-secondary">
+					       	   	    Delete
+					       	    </button>
+                                 </a>
+					       	   </td>
 					       </tr>
 					       @include('admin::shop.programme.schedule.edit')
 					    @endforeach

@@ -35,12 +35,15 @@
                         {{$programme->hasEveningSchedule() ? 'Acive' : 'Not Active'}}
                     </td>
                     <td>
-                        <button class="btn-primary btn">
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#programme_{{$programme->id}}">
                             Edit
                         </button>
+                        <a href="{{route('admin.shop.programme.delete',[$shop->id,$programme->id])}}" 
+                            onclick="return confirm('Are you sure you want to delete this programme')">
                         <button class="btn-secondary btn">
                             Delete
                         </button>
+                        </a>
                         <a href="{{route('admin.shop.programme.schedule.index',[$shop->id,$programme->id])}}">
                             <button class="btn-primary btn">
                                 Time Table
@@ -48,6 +51,7 @@
                         </a>
                     </td>
                 </tr>
+                @include('admin::shop.programme.edit')
                 @endforeach
             </tbody>
         </table>

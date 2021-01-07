@@ -84,7 +84,7 @@ class ProgrammeWeeklyScheduleController extends Controller
             'objective'=>$request->objective,
         ]);
 
-        return redirect()->route('admin.shop.programme.schedule.index',[$shopId, $programmeId]);
+        return redirect()->route('admin.shop.programme.schedule.index',[$shopId, $programmeId])->withSuccess($schedule->week.' schedule updated');
     }
 
     /**
@@ -92,8 +92,12 @@ class ProgrammeWeeklyScheduleController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function delete($shopId, $programmeId, $scheduleId)
     {
-        //
+        $schedule = ProgrammeWeeklySchedule::find($scheduleId);
+        $schedule->delete();
+        return redirect()->route('admin.shop.programme.schedule.index',[$shopId, $programmeId])
+        ->withSuccess($schedule->week.' schedule deleted');
+
     }
 }

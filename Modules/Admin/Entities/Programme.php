@@ -46,4 +46,9 @@ class Programme extends BaseModel
 
         return $weeks;
     }
+
+    public function apparents()
+    {
+        return $this->hasMany('Modules\Apparent\Entities\Apparent');
+    }
 }

@@ -28,6 +28,7 @@ class AdminRegistrationController extends Controller
             'states'=>State::all(),
             'designTypes'=>DesignType::all(),
             'genders'=>Gender::all(),
+            'component'=>['address'=>true]
         ]);
     }
 

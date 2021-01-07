@@ -28,4 +28,22 @@ class Programme extends BaseModel
         }
         return $flag;
     }
+
+    public function programmeWeeklySchedules()
+    {
+        return $this->hasMany(ProgrammeWeeklySchedule::class);
+    }
+
+    public function weeks()
+    {
+        $weeks = [];
+        
+        $count = $this->duration * 4;
+       
+        for ($i=1; $i <= $count ; $i++) { 
+            $weeks[] = $i;
+        }
+
+        return $weeks;
+    }
 }

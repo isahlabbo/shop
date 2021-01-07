@@ -41,6 +41,11 @@
                         <button class="btn-secondary btn">
                             Delete
                         </button>
+                        <a href="{{route('admin.shop.programme.schedule.index',[$shop->id,$programme->id])}}">
+                            <button class="btn-primary btn">
+                                Time Table
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

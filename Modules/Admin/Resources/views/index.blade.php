@@ -1,5 +1,7 @@
 @extends('admin::layouts.master')
-
+@section('title')
+   SEWMYCLOTH Shop Admin Dasboard
+@endsection
 @section('content')
 <div class="row">
 

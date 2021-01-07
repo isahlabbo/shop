@@ -61,6 +61,14 @@ class ProgrammeController extends Controller
         if($request->evening){
             $programme->programmeSchedules()->create(['schedule_id'=>2]);
         }
+
+        foreach ($programme->weeks() as $week) {
+            $programme->programmeWeeklySchedules()->firstOrCreate([
+                'week'=>'Week '.$week,
+                'topic'=>"topic name",
+                'objective'=>"aims and objective",
+            ]);
+        }
         
         return redirect()->route('admin.shop.programme.index',[$shopId])->withSuccess('Shop programme registered successfully');
     }

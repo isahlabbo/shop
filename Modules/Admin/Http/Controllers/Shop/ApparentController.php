@@ -148,9 +148,23 @@ class ApparentController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function delete($shopId, $apparentId)
     {
-        //
+        $apparent = Apparent::find($apparentId);
+        if($apparent->grantor){
+            // delete the grator image from the server
+            $apparent->grantor->deleteFile();
+
+            // delete the grantor information
+            $apparent->grantor->delete();
+        }
+        // delete the grator image from the server
+        $apparent->deleteFile();
+
+        $apparent->delete();
+
+        return redirect()->route('admin.shop.apparent.index',[$shopId])
+        ->withSuccess('Apparent deleted successfully');
     }
 
     public function formalizeThisData(array $data)

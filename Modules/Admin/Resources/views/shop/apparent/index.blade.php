@@ -38,10 +38,12 @@
                     <td>{{$apparent->programme->name ?? ''}}</td>
                     <td>
                         <a href="#" data-toggle="modal" data-target="#grantor_{{$apparent->grantor->id ?? ''}}"> 
-                            <button class="btn-primary btn">
+                            <button class="btn-primary btn" data-toggle="modal" data-target="#grantor_{{$apparent->id}}">
                                 Grantor
                             </button> 
                         </a>
+                        @include('admin::shop.apparent.grantor')
+
                     </td>
                     <td>
                         <a href="{{route('admin.shop.apparent.edit',[$shop->id,$apparent->id])}}" >
@@ -49,9 +51,11 @@
                                 Edit
                             </button>
                         </a>
-                        <button class="btn-secondary btn">
-                            Delete
-                        </button>
+                        <a href="{{route('admin.shop.apparent.delete',[$shop->id,$apparent->id])}}" onclick="return confirm('Are you sure you want to delete this apparent from your shop')">
+                            <button class="btn-secondary btn">
+                                Delete
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

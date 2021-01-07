@@ -31,4 +31,10 @@ trait FileUpload
     {
         return app()->environment('production') ? 's3' : 'public';
     }
+
+    public function deleteFile()
+    {
+        if($this->image)
+            Storage::disk($this->fileSystem())->delete($this->image);
+    }
 }

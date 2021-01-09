@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
 use Modules\Admin\Entities\Programme;
+use Modules\Admin\Entities\ProgrammeClass;
 
 class ProgrammeClassController extends Controller
 {
@@ -79,9 +80,20 @@ class ProgrammeClassController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $shopId, $programmeId, $classId)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'start'=>'required',
+            'end'=>'required',
+        ]);
+
+       $class = ProgrammeClass::find($classId);
+
+       $class->update($request->all());
+
+       return redirect()->route('admin.shop.programme.class.index',[$shopId, $programmeId])
+       ->withSuccess($class->name.' Update');
     }
 
     /**
@@ -89,8 +101,16 @@ class ProgrammeClassController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function delete($shopId, $programmeId, $classId)
     {
-        //
+        $class = ProgrammeClass::find($classId);
+        if(count($class->apparents) == 0){
+            $class->delete();
+            return redirect()->route('admin.shop.programme.class.index',[$shopId, $programmeId])
+            ->withSuccess($class->name.' Deleted');
+        }else{
+            return redirect()->route('admin.shop.programme.class.index',[$shopId, $programmeId])
+           ->withSuccess($class->name.' Deleted');
+        }
     }
 }

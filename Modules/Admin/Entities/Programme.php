@@ -18,11 +18,7 @@ class Programme extends BaseModel
 
     public function newClass(array $data)
     {
-        return $this->programmeClasses()->create([
-            'name'=>$data['name'],
-            'start'=>strtotime($data['start']),
-            'end'=>strtotime($data['end']),
-        ]);
+        return $this->programmeClasses()->create($data);
     }
 
     public function hasMorningSchedule()

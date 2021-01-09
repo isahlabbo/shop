@@ -11,6 +11,11 @@ class ProgrammeClass extends BaseModel
     	return $this->belongsTo(Programme::class);
     }
 
+    public function apparents()
+    {
+    	return $this->hasMany('Modules\Apparent\Entities\Apparent');
+    }
+
     public function apparentProgrammeClasses()
     {
     	return $this->hasMany(ApparentProgrammeClass::class);
@@ -30,7 +35,7 @@ class ProgrammeClass extends BaseModel
 
     public function secondSpent()
     {
-    	return time() - $this->start;
+    	return time() - strtotime($this->start);
     }
 
     public function present()

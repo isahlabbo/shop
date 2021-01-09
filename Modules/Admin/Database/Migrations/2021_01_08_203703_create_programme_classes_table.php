@@ -22,8 +22,8 @@ class CreateProgrammeClassesTable extends Migration
             ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('start');
-            $table->integer('end');
+            $table->date('start');
+            $table->date('end');
             $table->string('name');  
             $table->timestamps();
         });

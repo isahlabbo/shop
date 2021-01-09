@@ -26,18 +26,17 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td> {{$class->name}}</td>
-                    <td> {{date('d/M/Y',$class->start)}}</td>
-                    <td>{{date('d/M/Y',$class->end)}}</td>
+                    <td> {{$class->start}}</td>
+                    <td>{{$class->end}}</td>
                     <td>{{$class->present()->week ?? 'Un define week'}}</td>
                     <td>{{$class->present()->topic ?? 'Un define topic'}}</td>
                     
                     <td>
-                        <button class="btn-primary btn" data-toggle="modal" data-target="#programme_{{$programme->id}}">
+                        <button class="btn-primary btn" data-toggle="modal" data-target="#class_{{$class->id}}">
                             Edit
                         </button>
 
-                        <a href="{{route('admin.shop.programme.class.delete',[$shop->id,$programme->id,$class->id])}}" 
-                            onclick="return confirm('Are you sure you want to delete this class,)">
+                        <a href="{{route('admin.shop.programme.class.delete',[$shop->id,$programme->id,$class->id])}}" onclick="return confirm('Are you sure you want to delete this class ?')">
                         <button class="btn-secondary btn">
                             Delete
                         </button>

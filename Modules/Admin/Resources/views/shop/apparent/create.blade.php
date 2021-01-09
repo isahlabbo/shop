@@ -128,6 +128,15 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Programme Class') }}</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="class">
+                                            <option value="">Choose Programme Class</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="col-md-4">
@@ -178,4 +187,5 @@
 @section('scripts')
     <script src="{{asset('js/Ajax/address.js')}}"></script>
     <script src="{{asset('js/Ajax/grantorAddress.js')}}"></script>
+    <script src="{{asset('js/Ajax/programmeClass.js')}}"></script>
 @endsection

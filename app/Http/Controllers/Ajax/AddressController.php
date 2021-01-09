@@ -9,6 +9,7 @@ use Modules\Apparent\Entities\Lga;
 use Modules\Apparent\Entities\Town;
 use Modules\Apparent\Entities\Area;
 use Modules\Apparent\Entities\Address;
+use Modules\Admin\Entities\ProgrammeClass;
 
 class AddressController extends Controller
 {
@@ -34,6 +35,11 @@ class AddressController extends Controller
     public function getAddresses($area_id)
     {
         return response()->json(Address::where('area_id',$area_id)->pluck('name','id'));
+    }
+
+    public function getProgrammeClass($programmeId)
+    {
+        return response()->json(ProgrammeClass::where('programme_id',$programmeId)->pluck('name','id'));
     }
 
     

@@ -19,6 +19,8 @@
 
                                 @include('registration.shop')
                                 
+                                @include('registration.shop')
+                                
                             </div>  
 
                             <div class="col-md-6">

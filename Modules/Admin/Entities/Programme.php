@@ -11,6 +11,20 @@ class Programme extends BaseModel
     	return $this->hasMany(ProgrammeSchedule::class);
     }
 
+    public function programmeClasses()
+    {
+        return $this->hasMany(ProgrammeClass::class);
+    }
+
+    public function newClass(array $data)
+    {
+        return $this->programmeClasses()->create([
+            'name'=>$data['name'],
+            'start'=>strtotime($data['start']),
+            'end'=>strtotime($data['end']),
+        ]);
+    }
+
     public function hasMorningSchedule()
     {
         $flag = false;

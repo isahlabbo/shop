@@ -56,6 +56,11 @@ class Apparent extends Authenticatable
         return $this->belongsTo('Modules\Client\Entities\Gender');
     }
 
+    public function apparentProgrammeClasses()
+    {
+        return $this->hasMany('Modules\Admin\Entities\ApparentProgrammeClass');
+    }
+
     public function shop()
     {
         return $this->belongsTo('Modules\Admin\Entities\Shop');

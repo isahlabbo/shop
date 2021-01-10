@@ -82,6 +82,8 @@ class Address extends BaseModel
         if(isset($data['apparent_image'])){
             $apparent->update(['image'=>$this->storeFile($data['apparent_image'], 'Images/Shop/'.$data['shop_id'].'/Apparents/')]);
         }
+
+        $apparent->apparentProgrammeClasses()->firstOrCreate(['programme_class_id'=>$data['class']]);
         
         return $apparent;
     }

@@ -1,55 +1,68 @@
 <!-- modal -->
-<div class="modal fade" id="grantor_{{$apparent->id}}" role="dialog">
+<div class="modal fade" id="grantor_{{$apparentProgrammeClass->apparent->id ?? 'k'}}" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-            <img src="{{storage_url($apparent->grantor->image)}}" height="200" width="200">	
+            <img src="{{storage_url($apparentProgrammeClass->apparent->grantor->image ?? '')}}" height="200" width="200">	
             </div>
             <div class="modal-body">
             	<table>
 	            	<tr>
 	            		<td>Name</td>
-	                    <td>{{$apparent->grantor->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->name ?? ''}}</td>
                      </tr>
                      <tr>
                      	<td>Email</td>
-	                    <td>{{$apparent->grantor->email}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->email ?? ''}}</td>
 	                </tr>
                     <tr>
                         <td>Phone</td>    
-	                    <td>{{$apparent->grantor->phone}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->phone ?? ''}}</td>
 	                </tr>
                     <tr>
                         <td>Gender</td>    
-	                    <td>{{$apparent->grantor->gender->name ?? ''}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->gender->name ?? ''}}</td>
 	                </tr>
                     <tr>
                         <td>Country</td>    
-	                    <td>{{$apparent->grantor->address->area->town->lga->state->country->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->address->area->town->lga->state->country->name ?? ''}}</td>
 	                </tr>
                     <tr>
                         <td>State</td>    
-	                    <td>{{$apparent->grantor->address->area->town->lga->state->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->address->area->town->lga->state->name ?? ''}}</td>
 	                </tr>
                     <tr>
                         <td>Local Government</td>    
-	                    <td>{{$apparent->grantor->address->area->town->lga->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->address->area->town->lga->name ?? ''}}</td>
 	                </tr>
 	                <tr>
                         <td>Town</td>    
-	                    <td>{{$apparent->grantor->address->area->town->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->address->area->town->name ?? ''}}</td>
 	                </tr>
 	                <tr>
                         <td>Area</td>    
-	                    <td>{{$apparent->grantor->address->area->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->address->area->name ?? ''}}</td>
 	                </tr>
 
 	                <tr>
                         <td>Location</td>    
-	                    <td>{{$apparent->grantor->address->name}}</td>
+	                    <td>{{$apparentProgrammeClass->apparent->grantor->address->name ?? ''}}</td>
 	                </tr>
-                    
+                </table>     
+                <table>   
+                    <tr>
+                        <td>{{$apparentProgrammeClass->apparent->address->name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$apparentProgrammeClass->apparent->gender->name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$apparentProgrammeClass->apparent->religion->name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$apparentProgrammeClass->apparent->tribe->name ?? ''}}</td>
+                    </tr>
                 </table>
             </div>
             <div class="modal-footer">

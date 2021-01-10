@@ -30,7 +30,8 @@ class Apparent extends Authenticatable
         'tribe_id',
         'shop_id',
         'grantor_id',
-        'programme_id'
+        'programme_id',
+        'programme_class_id'
     ];
 
     /**

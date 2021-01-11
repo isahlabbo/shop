@@ -50,7 +50,7 @@
                                 </button> 
                                 @include('admin::shop.apparent.pay')
                                 @else
-                                    Paymeny Cleared
+                                    Payment Cleared
                                 @endif
                             </td>
 

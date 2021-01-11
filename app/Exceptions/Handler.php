@@ -71,6 +71,10 @@ class Handler extends ExceptionHandler
                 $login = 'client.login';
             break;
 
+            case 'apparent':
+                $login = 'apparent.login';
+            break;
+
             default:
                 
             break;

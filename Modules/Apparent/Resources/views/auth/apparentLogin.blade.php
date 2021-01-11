@@ -1,7 +1,7 @@
 @extends('layouts.minimal')
 
 @section('title')
- SEWMYCLOTH Client login page
+ SEWMYCLOTH Apparent login page
 @endsection
 
 @section('content')
@@ -9,11 +9,11 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<br>
-		<div class="card">
-                <div class="card-header card-header-primary">{{ __('Client Login') }}</div>
+		<div class="card shadow">
+                <div class="card-header card-header-primary shadow">{{ __('Apparent Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('client.login') }}">
+                    <form method="POST" action="{{ route('apparent.login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -58,10 +58,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary shadow">
                                     {{ __('Login') }}
                                 </button>
-                                <a href="{{url('/')}}" class="btn btn-secondary">
+                                <a href="{{url('/')}}" class="btn btn-secondary shadow">
                                     {{ __('Home') }}
                                 </a>
                                 @if (Route::has('password.request'))
@@ -69,9 +69,6 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                                <a class="btn btn-link" href="{{ route('client.registration') }}">
-                                        {{ __('i dont have account') }}
-                                    </a>
                             </div>
                         </div>
                     </form>

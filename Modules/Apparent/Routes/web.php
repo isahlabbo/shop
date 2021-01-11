@@ -11,6 +11,18 @@
 |
 */
 
-Route::prefix('apparent')->group(function() {
-    Route::get('/', 'ApparentController@index');
+Route::
+    prefix('apparent')
+    ->name('apparent.')
+    ->group(function() {
+    Route::get('/dashboard', 'ApparentController@index')->name('dashboard');
+    Route::namespace('Auth')
+    ->group(function() {
+        Route::get('/login', 'ApparentLoginController@index')->name('login');
+        Route::get('/registration', 'ApparentRegistrationController@index')->name('registration');
+        Route::post('/register', 'ApparentRegistrationController@register')->name('register');
+	    Route::post('/login', 'ApparentLoginController@login')->name('login');
+	    Route::post('logout', 'ApparentLoginController@logout')->name('logout');
+    });
 });
+    

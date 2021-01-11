@@ -69,6 +69,17 @@ return [
             'hash' => false,
         ],
 
+        'apparent' => [
+            'driver' => 'session',
+            'provider' => 'apparents',
+        ],
+
+        'apparent_api' => [
+            'driver' => 'token',
+            'provider' => 'apparents',
+            'hash' => false,
+        ],
+
 
     ],
 
@@ -106,6 +117,12 @@ return [
             'model' => Modules\Admin\Entities\Admin::class,
             
         ],
+
+        'apparents' => [
+            'driver' => 'eloquent',
+            'model' => Modules\Apparent\Entities\Apparent::class,
+            
+        ],
     ],
 
     /*
@@ -141,6 +158,13 @@ return [
 
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'apparents' => [
+            'provider' => 'apparents',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -1,7 +1,7 @@
 @extends('layouts.minimal')
 
 @section('title')
- Client login page
+ SEWMYCLOTH Admin login page
 @endsection
 
 @section('content')

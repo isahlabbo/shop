@@ -18,6 +18,7 @@
                 <th>PROGRAMME</th>
                 <th>CLASS</th>
                 <th></th>
+                <th>PAYMENT</th>
                 <th> <a href="{{route('admin.shop.apparent.create',[$shop->id])}}"> <button class="btn-secondary btn">New Apparent</button> </a></th>
             </thead>
             <tbody>
@@ -34,13 +35,22 @@
                             <td>{{$programme->name ?? ''}}</td>
                             <td>{{$programmeClass->name ?? ''}}</td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#grantor_{{$apparentProgrammeClass->apparent->grantor->id ?? ''}}"> 
-                                    <button class="btn-primary btn" data-toggle="modal" data-target="#grantor_{{$apparentProgrammeClass->apparent->id ?? 'k'}}">
-                                        Grantor
-                                    </button> 
-                                </a>
+                                 
+                                <button class="btn-primary btn" data-toggle="modal" data-target="#grantor_{{$apparentProgrammeClass->apparent->id ?? 'k'}}">
+                                    More...
+                                </button> 
+                                
                                 @include('admin::shop.apparent.grantor')
                             </td>
+
+                            <td>
+                                
+                                <button class="btn-primary btn" data-toggle="modal" data-target="#pay_{{$apparentProgrammeClass->id}}">
+                                    Pay #{{$apparentProgrammeClass->pendingPayment()}}
+                                </button> 
+                                @include('admin::shop.apparent.pay')
+                            </td>
+
                             <td>
                                 <a href="{{route('admin.shop.apparent.edit',[$shop->id,$apparentProgrammeClass->apparent->id ?? ''])}}" >
                                     <button class="btn-primary btn">

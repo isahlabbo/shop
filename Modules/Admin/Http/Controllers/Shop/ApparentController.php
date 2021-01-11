@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Admin\Entities\Shop;
+use Modules\Admin\Entities\apparentProgrammeClass;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Entities\State;
 use Modules\Apparent\Entities\Religion;
@@ -84,6 +85,14 @@ class ApparentController extends Controller
         //redirect to the apparent registered page for the shop
         return redirect()->route('admin.shop.apparent.index',[$shopId])
         ->withSuccess('Apparent registered successfully');
+    }
+
+    public function pay(Request $request, $shopId, $apparentProgrammeClassId)
+    {
+        $apparentProgrammeClass = apparentProgrammeClass::find($apparentProgrammeClassId);
+        $apparentProgrammeClass->apparentProgrammeClassPayments()->create(['amount'=>$request->amount]);
+
+        return redirect()->route('admin.shop.apparent.index', $shopId)->withSuccess('Payment registered successfully');
     }
 
     /**

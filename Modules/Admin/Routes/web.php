@@ -60,6 +60,7 @@ Route::prefix('admin')
             Route::get('/{apparentId}/edit', 'ApparentController@edit')->name('edit');
             Route::get('/{apparentId}/delete', 'ApparentController@delete')->name('delete');
             Route::post('/{apparentId}/update', 'ApparentController@update')->name('update');
+            Route::post('/{apparentId}/pay', 'ApparentController@pay')->name('pay');
             Route::get('/application', 'ApparentController@application')->name('application');
             Route::post('/register', 'ApparentController@register')->name('register');
         });

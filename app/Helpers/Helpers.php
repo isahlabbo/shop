@@ -28,6 +28,13 @@ if (!function_exists('referrer')) {
     }
 }
 
+if (!function_exists('getPercentageOf')) {
+    function getPercentageOf($percent, $amount)
+    {
+        return ($amount/100) * $percent;
+    }
+}
+
 if (!function_exists('connections')) {
     function connections($client)
     {

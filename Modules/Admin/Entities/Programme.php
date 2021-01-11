@@ -6,6 +6,11 @@ use App\BaseModel;
 
 class Programme extends BaseModel
 {
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
+    
     public function programmeSchedules()
     {
     	return $this->hasMany(ProgrammeSchedule::class);

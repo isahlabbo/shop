@@ -86,6 +86,17 @@ if (!function_exists('admin')) {
     }
 }
 
+if (!function_exists('apparent')) {
+    function apparent()
+    {
+        $apparent = null;
+        if(auth()->guard('apparent')->check()){
+            $apparent = auth()->guard('apparent')->user();
+        }
+        return $apparent;
+    }
+}
+
 if (!function_exists('user')) {
     function user()
     {       

@@ -24,5 +24,11 @@ Route::
 	    Route::post('/login', 'ApparentLoginController@login')->name('login');
 	    Route::post('logout', 'ApparentLoginController@logout')->name('logout');
     });
+    Route::
+    prefix('class')
+    ->name('class.')
+    ->group(function() {
+        Route::get('/{classId}/time-table', 'TimeTableController@index')->name('timeTable');
+    });
 });
     

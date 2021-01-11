@@ -14,7 +14,7 @@
 				{{$shop->name}} {{strtoupper($programme->name)}} WEEKLY SCHEDULES
 			</div>
 			<div class="card-body">
-				<table class="table bordered">
+				<table class="table table-bordered">
 					<thead>
 						<tr>
 							<th>Week No</th>

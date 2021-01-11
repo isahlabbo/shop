@@ -44,11 +44,14 @@
                             </td>
 
                             <td>
-                                
+                                @if($apparentProgrammeClass->pendingPayment() > 0)
                                 <button class="btn-primary btn" data-toggle="modal" data-target="#pay_{{$apparentProgrammeClass->id}}">
                                     Pay #{{$apparentProgrammeClass->pendingPayment()}}
                                 </button> 
                                 @include('admin::shop.apparent.pay')
+                                @else
+                                    Paymeny Cleared
+                                @endif
                             </td>
 
                             <td>

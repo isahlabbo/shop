@@ -137,6 +137,17 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Discount') }}</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="discount">
+                                            @for($i=0; $i <= 100; $i++)
+                                            <option value="{{$i}}">% {{$i}}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="col-md-4">

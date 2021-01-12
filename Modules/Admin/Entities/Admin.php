@@ -76,6 +76,21 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(ShopAdmin::class);
     }
+
+    public function shopClientWorkAdminShares()
+    {
+        return $this->hasMany(ShopClientWorkAdminShare::class);
+    }
+
+    public function getBenefit(ShopClientWork $work)
+    {
+        $benefit = null;
+        foreach ($this->shopClientWorkAdminShares->where('shop_client_work_id',$work->id) as $workBenefit) {
+            $benefit = $workBenefit;
+        }
+
+        return $benefit;
+    }
     
     public function availableShopWorksToBargain()
     {

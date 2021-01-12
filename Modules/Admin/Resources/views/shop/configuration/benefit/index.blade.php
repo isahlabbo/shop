@@ -12,7 +12,7 @@
             <div class="card-body">
                 <form action="{{route('admin.shop.configuration.benefit.update',[$shop->id])}}" method="post" enctype="multipart/form-data">
                     @csrf
-
+                    @if($shop->shopWorkBenefitPlan)
                     <div class="form-group row">
 					    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Shop And Its Maintenance') }}</label>
 					    <div class="col-md-6">
@@ -68,7 +68,55 @@
 					        </select>
 					    </div>
 					</div>
+                    @else
+                    <div class="form-group row">
+					    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Shop And Its Maintenance') }}</label>
+					    <div class="col-md-6">
+					        <select class="form-control" name="shop_and_its_maintenance">
+					        	<option value=""><b>%</b>Choose Percentage Share</option>
+					        	@for($i = 1; $i <= 100; $i++)
+					        	    <option value="{{$i}}">% {{$i}}</option>
+					        	@endfor
+					        </select>
+					    </div>
+					</div>
 
+					<div class="form-group row">
+					    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Work Expensive') }}</label>
+					    <div class="col-md-6">
+					        <select class="form-control" name="work_expensive">
+					        	<option value=""><b>%</b>Choose Percentage Share</option>
+					        	@for($i = 1; $i <= 100; $i++)
+					        	    <option value="{{$i}}">% {{$i}}</option>
+					        	@endfor
+					        </select>
+					    </div>
+					</div>
+
+					<div class="form-group row">
+					    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Work Agent') }}</label>
+					    <div class="col-md-6">
+					        <select class="form-control" name="work_agent">
+					        	<option value=""><b>%</b>Choose Percentage Share</option>
+					        	@for($i = 1; $i <= 100; $i++)
+					        	    <option value="{{$i}}">% {{$i}}</option>
+					        	@endfor
+					        </select>
+					    </div>
+					</div>
+
+					<div class="form-group row">
+					    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Work Beneficial') }}</label>
+					    <div class="col-md-6">
+					        <select class="form-control" name="work_beneficial">
+					        	<option value=""><b>%</b>Choose Percentage Share</option>
+					        	@for($i = 1; $i <= 100; $i++)
+					        	    <option value="{{$i}}">% {{$i}}</option>
+					        	@endfor
+					        </select>
+					    </div>
+					</div>
+                    @endif
 					<div class="form-group row">
 					    <label for="password" class="col-md-4 col-form-label text-md-right"></label>
 					    <div class="col-md-6">

@@ -46,6 +46,11 @@ class Shop extends BaseModel
         return $this->hasOne(ShopWorkBenefitPlan::class);
     }
 
+    public function shopClientWorkShopShares()
+    {
+        return $this->hasMany(ShopClientWorkShopShare::class);
+    }
+
     public function designType()
     {
     	return $this->belongsTo(DesignType::class);

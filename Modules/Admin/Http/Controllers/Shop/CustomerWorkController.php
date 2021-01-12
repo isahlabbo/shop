@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers\Shop;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Entities\Admin;
 use Modules\Admin\Entities\Shop;
 use Modules\Client\Entities\Client;
 use Modules\Admin\Entities\ShopClient;
@@ -83,6 +84,13 @@ class CustomerWorkController extends Controller
             'finishing_date'=>$request->finishing_date,
             'finishing_time'=>$request->finishing_time
             ]);
+        $shopClientWork->shopClientWorkShopShare()->create([
+            'shop_and_its_maintenance' => getPercentageOf($shop->shopWorkBenefitPlan->shop_and_its_maintenance,$request->fee),
+            'work_beneficial' => getPercentageOf($shop->shopWorkBenefitPlan->work_beneficial,$request->fee),
+            'work_agent' => getPercentageOf($shop->shopWorkBenefitPlan->work_agent,$request->fee),
+            'work_expensive' => getPercentageOf($shop->shopWorkBenefitPlan->work_expensive,$request->fee),
+        ]);
+
         if($shopClient->client->referral_code){
             // get referrer
             $referrer = referrer($shopClient->client->referral_code);
@@ -103,7 +111,7 @@ class CustomerWorkController extends Controller
 
     public function update(Request $request, $shopId, $shopClientId, $shopClientWorkId)
     {
-
+        $shop = Shop::find($shopId);
         $shopClientWork = ShopClientWork::find($shopClientWorkId);
         $shopClientWork->update([
             'description'=>$request->description,
@@ -112,8 +120,14 @@ class CustomerWorkController extends Controller
             'finishing_date'=>$request->finishing_date,
             'finishing_time'=>$request->finishing_time
         ]);
-        
-        $shop = Shop::find($shopId);
+
+        $share = $shopClientWork->shopClientWorkShopShare()->firstOrCreate([]);
+        $share->update([
+            'shop_and_its_maintenance' => getPercentageOf($shop->shopWorkBenefitPlan->shop_and_its_maintenance,$request->fee),
+            'work_beneficial' => getPercentageOf($shop->shopWorkBenefitPlan->work_beneficial,$request->fee),
+            'work_agent' => getPercentageOf($shop->shopWorkBenefitPlan->work_agent,$request->fee),
+            'work_expensive' => getPercentageOf($shop->shopWorkBenefitPlan->work_expensive,$request->fee),
+             ]);
 
         if($shopClientWork->shopClient->client->referral_code && referrer($shopClientWork->shopClient->client->referral_code)){
             // get referrer
@@ -181,5 +195,37 @@ class CustomerWorkController extends Controller
 
         return back()->withSuccess('Payment registered successful with '.$newBalance.' remaining');
     }
+    public function shareBenefit(Request $request, $shopId, $clientId, $shopClientWorkId)
+    {
+        $percentage = $this->validPercentage($request->all());
+        $shopClientWork = ShopClientWork::find($shopClientWorkId);
 
+        if($percentage == 100){
+            foreach ($request->all() as $key => $value) {
+                if(is_numeric($key)){
+                   $admin = Admin::find($key);
+                    $share = $admin->shopClientWorkAdminShares()->firstOrCreate([
+                    'shop_client_work_id'=>$shopClientWorkId
+                    ]);
+                    $share->update([
+                    'amount'=>getPercentageOf($value[0], $shopClientWork->shareableBalance()),
+                    'percent'=>$value[0]
+                    ]);
+                }       
+            }
+            return redirect()->route('admin.shop.customer.work.index',[$shopId, $clientId])->withSuccess('The work partispation benefit is shared among admins of the shop');
+        }
+        return redirect()->route('admin.shop.customer.work.index',[$shopId, $clientId])->withWarning('Sorry you have share 100 percent among the partsipating admin but '.$percentage.' is given');
+    }
+
+    public function validPercentage($data)
+    {
+        $percentage = 0;
+        foreach ($data as $key => $value) {
+            if(is_numeric($key)){
+                $percentage = $percentage + $value[0];
+            }       
+        }
+        return $percentage;
+    }
 }

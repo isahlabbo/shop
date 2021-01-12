@@ -41,6 +41,22 @@ class ShopClientWork extends BaseModel
         return $this->fee - $this->paid_fee;
     }
 
+    public function shareableBalance()
+    {
+        return getPercentageOf($this->shopClient->shop->shopWorkBenefitPlan->work_beneficial, $this->fee);
+    }
+
+    public function shopClientWorkAdminShares()
+    {
+        return $this->hasMany(ShopClientWorkAdminShare::class);
+    }
+
+    public function shopClientWorkShopShare()
+    {
+        return $this->hasOne(ShopClientWorkShopShare::class);
+    }
+
+
     public function pay($total)
     {
 

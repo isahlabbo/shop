@@ -35,6 +35,7 @@ Route::prefix('admin')
         Route::name('configuration.')
         ->prefix('{shopId}/configurations')
         ->group(function() {
+
             Route::name('benefit.')
             ->prefix('benefit')
             ->group(function() {
@@ -121,6 +122,7 @@ Route::prefix('admin')
                 Route::post('/register', 'CustomerWorkController@register')->name('register');
                 Route::post('/{workId}/update', 'CustomerWorkController@update')->name('update');
                 Route::post('/{workId}/pay', 'CustomerWorkController@pay')->name('pay');
+                Route::post('/{workId}/benefit/share', 'CustomerWorkController@shareBenefit')->name('benefit.share');
 
             });
             

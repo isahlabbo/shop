@@ -54,9 +54,11 @@
                                 <a href="{{route('admin.shop.customer.work.collect',[$shop->id,$work->id])}}" style="color: white">Collected</a>
                             </button>
                         @elseif($work->status == 2)
-                            <button class="btn-primary btn"> 
-                                <a href="{{route('admin.shop.customer.work.collect',[$shop->id,$work->id])}}" style="color: white"><i class="fa fa-share">Benefit</i></a>
+                            <button class="btn-primary btn" data-toggle="modal" data-target="#benefit_{{$work->id}}"> 
+                                <i class="fa fa-share"> <b>#</b> {{$work->shareableBalance()}}</i>
                             </button>
+                           @include('admin::shop.customer.work.shareBenefit')  
+
                         @else
                             <button class="btn-primary btn"> 
                                 <a href="{{route('admin.shop.design.create',[$shop->id,$work->id])}}" style="color: white">Upload Work</a>

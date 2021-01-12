@@ -25,7 +25,15 @@
                     </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.shop.design.index',[$shop->id]) }}">Designs</a>
-                    </li>                                                                
+                    </li>
+                     <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            configuration
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('admin.shop.configuration.benefit.plan',[$shop->id])}}"></i> Shop Benfit plan</a>
+                        </div>
+                    </li>                                                               
                 </ul>
                 
             </div>

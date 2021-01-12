@@ -8,6 +8,10 @@
 <div class="row">
     <div class="col-md-1"></div> 
     <div class="col-md-10">
+        <br>
+        <a href="{{route('admin.shop.customer.create',[$shop->id])}}">
+        <button class="btn btn-primary"><i class="fa fa-plus"> Customer</i></button>
+        </a>
         @foreach($shop->shopClients as $shopClient)
         @if($shopClient->client->stageOfThisClient() != 'sub client')
             <div class="col-md-3">

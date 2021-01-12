@@ -31,6 +31,17 @@ Route::prefix('admin')
     ->group(function() {
         Route::get('/create', 'ShopController@create')->name('create');
         Route::post('/registration', 'ShopController@registration')->name('registration');
+
+        Route::name('configuration.')
+        ->prefix('{shopId}/configurations')
+        ->group(function() {
+            Route::name('benefit.')
+            ->prefix('benefit')
+            ->group(function() {
+                Route::get('/plan', 'ShopBenefitPlanController@benefitPlan')->name('plan');
+                Route::post('/update', 'ShopBenefitPlanController@update')->name('update');
+            });
+        });
         // shop payment routes
         Route::name('admin.')
         ->prefix('admins')

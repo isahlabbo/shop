@@ -21,5 +21,10 @@ class AdminController extends Controller
         return view('admin::index');
     }
 
+    public function warlet()
+    {
+        return view('admin::warlet');
+    }
+
     
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Client\Entities\Gender;
 use Modules\Apparent\Entities\State;
+use Modules\Admin\Entities\ShopAdmin;
 use Modules\Apparent\Services\AddressHandle;
 use Modules\Admin\Http\Requests\AdminRegistrationFormRequest as FormRequest;
 
@@ -65,9 +66,13 @@ class ShopAdminController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function pay(Request $request, $shopAdminId)
     {
-        return view('admin::show');
+        $request->validate(['paid'=>'required']);
+        $shopAdmin = ShopAdmin::find($shopAdminId);
+        $message = $shopAdmin->payOrCreditTheAdminCard($request->all());
+
+        return redirect()->route('admin.shop.admin.index')->withSuccess($message);
     }
 
     /**

@@ -15,6 +15,7 @@ Route::prefix('admin')
 ->name('admin.')
 ->group(function() {
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+    Route::get('/warlet', 'AdminController@warlet')->name('warlet');
     
     Route::namespace('Auth')
     ->group(function() {
@@ -49,6 +50,7 @@ Route::prefix('admin')
         ->group(function() {
             Route::get('/', 'ShopAdminController@index')->name('index');
             Route::get('/create', 'ShopAdminController@create')->name('create');
+            Route::post('/{adminId}/pay', 'ShopAdminController@pay')->name('pay');
             Route::post('/register', 'ShopAdminController@register')->name('register');
         });
         Route::name('payment.')

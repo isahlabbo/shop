@@ -17,6 +17,7 @@
                 <th>ADDRESS</th>
                 <th>GENDER</th>
                 <th>SHOP</th>
+                <th>WARLET</th>
                 <th></th>
                 <th> <a href="{{route('admin.shop.admin.create')}}"> <button class="btn-secondary btn">New Admin</button> </a></th>
             </thead>
@@ -32,6 +33,10 @@
 	                    <td>{{$shopAdmin->admin->gender->name}}</td>
 	                    <td>
 	                        {{$shop->name}}
+	                    </td>
+	                    <td>
+	                    	<button class="btn btn-primary" data-toggle="modal" data-target="#warlet_{{$shopAdmin->id}}">WARLET</button>
+	                    	@include('admin::shop.admin.warlet')
 	                    </td>
 	                    <td>
 	                        <button class="btn-primary btn">

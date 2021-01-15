@@ -40,6 +40,12 @@
                                     {{ __('Logout') }}
                                 </a>
 
+                                @if(admin())
+                                <a class="dropdown-item" href="{{ route('admin.warlet') }}">
+                                    {{ __('Warlet') }}
+                                </a>
+                                @endif
+
                                 <form id="logout-form" action="{{ route('client.logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

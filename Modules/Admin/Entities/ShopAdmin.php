@@ -52,7 +52,7 @@ class ShopAdmin extends BaseModel
     public function debitCardBalance()
     {
     	$amount = 0;
-    	foreach ($this->shopAdminCreditShares as $card) {
+    	foreach ($this->shopAdminCreditShares->where('used',0) as $card) {
     		$amount = $amount + $card->amount; 
     	}
     	return $amount;

@@ -207,10 +207,36 @@ class CustomerWorkController extends Controller
                     $share = $admin->shopClientWorkAdminShares()->firstOrCreate([
                     'shop_client_work_id'=>$shopClientWorkId
                     ]);
+                    $shareAmount = getPercentageOf($value[0], $shopClientWork->shareableBalance());
                     $share->update([
-                    'amount'=>getPercentageOf($value[0], $shopClientWork->shareableBalance()),
+                    'amount'=>$shareAmount,
                     'percent'=>$value[0]
                     ]);
+
+                    // check if admin has debit card, use it and pay the work
+                    foreach ($admin->shopAdmins->where('shop_id',$shopId) as $shopAdmin) {
+                        $cardBalance = $shopAdmin->debitCardBalance();
+                        if($cardBalance > 0){
+
+                            if($cardBalance >= $shareAmount){
+                                $share->update(['paid'=>$shareAmount]);
+                            }else{
+                                $share->update(['paid'=>$cardBalance]);
+                            }
+
+                            $cardBalance = $cardBalance - $shareAmount;
+
+                            // tell card you have used it
+                            foreach ($shopAdmin->shopAdminCreditShares as $card) {
+                                $card->update(['used'=>time()]);
+                            }
+
+                            // create another card record with remaining balance
+                            if($cardBalance > 0){
+                                $shopAdmin->shopAdminCreditShares()->create(['amount'=>$cardBalance]);
+                            }
+                        }
+                    }
                 }       
             }
             return redirect()->route('admin.shop.customer.work.index',[$shopId, $clientId])->withSuccess('The work partispation benefit is shared among admins of the shop');

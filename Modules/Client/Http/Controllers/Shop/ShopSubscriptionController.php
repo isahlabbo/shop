@@ -5,6 +5,7 @@ namespace Modules\Client\Http\Controllers\Shop;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Entities\Shop;
 
 class ShopSubscriptionController extends Controller
 {
@@ -34,7 +35,7 @@ class ShopSubscriptionController extends Controller
             client()->clientShopSubscriptions()->create(['shop_id'=>$shopId]);
             $message = 'Subscribed Successfully';
         }
-        return back()->withSuccess($message);
+        return redirect()->route('client.shop.view',[$shopId])->withSuccess($message);
     }
 
 

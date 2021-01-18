@@ -52,7 +52,8 @@ Route::prefix('client')
 
         Route::get('/', 'SearchShopController@index')->name('index');
         Route::get('/create', 'SearchShopController@create')->name('create');
-        Route::post('search', 'SearchShopController@search')->name('search');
+        Route::post('/search', 'SearchShopController@search')->name('search');
+        Route::get('/{shopId}/view', 'SearchShopController@view')->name('view');
 
         Route::prefix('{shopId}/subscription')
             ->name('subscription.')

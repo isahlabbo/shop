@@ -1,18 +1,17 @@
 @extends('client::layouts.master')
 
 @section('title')
-    SEWMYCLOTH shops search results
+    SEWMYCLOTH shops view
 @endsection
 
 @section('content')
 <br>
-<div class="container row">
-    
-	@foreach($shops as $shop)
-    <div class="col-md-4">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
         <div class="card shadow">
             <div class="card-body">
-                <img src="{{storage_url($shop->image)}}" alt="" height="200">
+                <img src="{{storage_url($shop->image)}}" alt="" height="200" width="850">
                 <br>
                 
                 <a href="{{route('client.shop.subscription.subscribe',[$shop->id])}}">
@@ -36,8 +35,12 @@
                         <td> {{$shop->address->area->town->lga->state->name}}, {{$shop->address->area->town->lga->name}}, {{$shop->address->area->town->name}}, {{$shop->address->area->name}}, {{$shop->address->name}}</td>
                     </tr>
                     <tr>
-                        <td><b>Contact:</b> </td>
+                        <td><b>Shop Contact:</b> </td>
                         <td>
+                        	<tr>
+                                <td>Name</td>
+                                <td>{{$shop->admin->first_name}} {{$shop->admin->last_name}}</td>
+                            </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>{{$shop->admin->email}}</td>
@@ -51,14 +54,18 @@
                     <tr>
                         <td><b>Alternative Contact:</b> </td>
                         <td>
-                            @foreach($shop->apparents as $apparent)
+                            @foreach($shop->shopAdmins as $shopAdmin)
+                            <tr>
+                                <td>Name</td>
+                                <td>{{$shopAdmin->admin->first_name}} {{$shopAdmin->admin->last_name}}</td>
+                            </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>{{$apparent->email}}</td>
+                                <td>{{$shopAdmin->admin->email}}</td>
                             </tr> 
                             <tr>
                                 <td>Phone</td>
-                                <td>{{$apparent->phone}}</td>
+                                <td>{{$shopAdmin->admin->phone}}</td>
                             </tr>
                             @endforeach
                         </td>
@@ -71,6 +78,5 @@
             </div>
         </div>
     </div>
-    @endforeach
 </div>    
 @endsection

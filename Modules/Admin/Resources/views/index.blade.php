@@ -22,7 +22,7 @@
                                     <tr>
                                         
                                         <td>
-                                            <a href="{{route('admin.shop.customer.work.bargain.index',[$shop->id])}}">{{count($shop->availableWorksToBargain())}}  {{count($shop->availableWorksToBargain())>1 ? 'Clients':'Client'}} want to give you click to view the {{count($shop->availableWorksToBargain())>1 ? 'works':'work'}}</a>
+                                            <a href="{{route('admin.shop.customer.work.bargain.index',[$shop->id])}}">{{count($shop->availableWorksToBargain())}}  {{count($shop->availableWorksToBargain())>1 ? 'of your Customers':'of your Customer'}} want to give you work click to view the {{count($shop->availableWorksToBargain())>1 ? 'works':'work'}}</a>
                                         </td>
                                     </tr>
                                     

@@ -5,6 +5,7 @@ namespace Modules\Client\Http\Controllers\Shop;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Entities\Shop;
 use Modules\Apparent\Entities\State;
 use Modules\Apparent\Entities\Address;
 use Modules\Apparent\Entities\Town;
@@ -66,5 +67,9 @@ class SearchShopController extends Controller
         }
 
         return $shops;
+    }
+    public function view($shopId)
+    {
+        return view('client::shop.search.view',['shop'=>Shop::find($shopId)]);
     }
 }

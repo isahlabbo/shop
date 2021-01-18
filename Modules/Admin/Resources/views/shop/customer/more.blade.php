@@ -41,8 +41,8 @@
 	                    <td>{{$shopClient->client->referral_code}}</td>
 	                </tr>
                     <tr>
-                        <td>Cutomer Identification Number</td>    
-	                    <td>{{$shopClient->client->CIN}}</td>
+                        <td>E-mail Address</td>    
+	                    <td>{{$shopClient->client->email}}</td>
 	                </tr>
                     <tr>    
 	                    <td>

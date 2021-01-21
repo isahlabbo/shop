@@ -35,6 +35,7 @@ if (!function_exists('getPercentageOf')) {
     }
 }
 
+
 if (!function_exists('connections')) {
     function connections($client)
     {

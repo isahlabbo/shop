@@ -217,13 +217,11 @@ class CustomerWorkController extends Controller
                     foreach ($admin->shopAdmins->where('shop_id',$shopId) as $shopAdmin) {
                         $cardBalance = $shopAdmin->debitCardBalance();
                         if($cardBalance > 0){
-
                             if($cardBalance >= $shareAmount){
                                 $share->update(['paid'=>$shareAmount]);
                             }else{
                                 $share->update(['paid'=>$cardBalance]);
                             }
-
                             $cardBalance = $cardBalance - $shareAmount;
 
                             // tell card you have used it

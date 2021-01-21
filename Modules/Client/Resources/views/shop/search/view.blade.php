@@ -52,7 +52,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Alternative Contact:</b> </td>
+                        <td><b>Alternative Shop Contact:</b> </td>
                         <td>
                             @foreach($shop->shopAdmins as $shopAdmin)
                             <tr>

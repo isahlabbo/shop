@@ -5,7 +5,6 @@ namespace Modules\Client\Http\Controllers\Shop;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Entities\Shop;
 
 class ShopSubscriptionController extends Controller
 {

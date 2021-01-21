@@ -56,6 +56,8 @@ class ShopController extends Controller
             $shop->update(['image'=>$this->storeFile($request->image,'Images/Shop/'.$shop->name.'/')]);
         }
 
+        admin()->shopAdmins()->firstOrCreate(['shop_id'=>$shop->id]);
+
         $shop->shopReferralPlan()->firstOrCreate([
             'fee_limit'=>$request->fee_limit,
             'referral_bonus'=>$request->referral_bonus

@@ -69,7 +69,9 @@ class ShopAdminController extends Controller
     public function pay(Request $request, $shopAdminId)
     {
         $request->validate(['paid'=>'required']);
+        
         $shopAdmin = ShopAdmin::find($shopAdminId);
+
         $message = $shopAdmin->payOrCreditTheAdminCard($request->all());
 
         return redirect()->route('admin.shop.admin.index')->withSuccess($message);
